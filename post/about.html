@@ -21,7 +21,7 @@
   <link rel="shortcut icon" href="/img/icon.png">
   <title>
     
-    关于我 | gorun
+    关于我 | GORUN
     
   </title>
 
@@ -80,7 +80,7 @@
     <div id="gkt-nav" class="gkt-header-container">
         <a href="/" class="gkt-header-title float-left">
             <img class="float-left" src="/img/icon.png" alt="">
-            <span>临在跑</span>
+            <span>GORUN</span>
         </a>
         <nav class="gkt-header-nav text-right">
             <ul>
@@ -156,6 +156,20 @@
 <script src="/js/qrious.min.js"></script>
 
 
+<div class="hidden-xs col-xs-12 text-center">
+    <canvas id="geektutu-post-qr"></canvas>
+    <p style="margin-top: -10px;"><small>微信扫一扫，阅读/分享</small></p>
+</div>
+<script>
+    (function () {
+        new QRious({
+            element: document.getElementById('geektutu-post-qr'),
+            value: window.location.href,
+            size: 120
+        });
+    })();
+</script>
+
         <hr style="margin-top: 2rem;">
         <div>
             
@@ -167,7 +181,7 @@
             <p>
                 本站永久域名「 <a
                         href="/post/about.html">gorun.top</a>
-                    」，也可搜索「 临在跑 」找到我。
+                    」，也可搜索「 GORUN 」找到我。
             </p>
             
             
@@ -323,11 +337,11 @@
     
 <div class="col-xs-12 text-center" style="margin-top: 30px;">
     
-    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/018429/gorun" title=""><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
-    
     <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/018429" title=""><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
     
-    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/wa-jue-ji-65" title=""><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://space.bilibili.com/28526479" title=""><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/bili.png" /></a>
+    
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/wa-jue-ji-65" title=""><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
     
 </div>
 
@@ -497,8 +511,8 @@
             clientSecret: 'b2674451e21feae50520f99337ec15d2aebe7879',
             accessToken: 'xxxx',
             repo: 'hexo-theme-geektutu',
-            owner: 'geektutu',
-            admin: ['geektutu'],
+            owner: 'jwbao',
+            admin: ['jwbao'],
             id: window.location.pathname,
             distractionFreeMode: false
         });
@@ -624,11 +638,11 @@
     
     <div class="link-list">
         
-        <a target="_blank" rel="noopener" href="https://github.com/018429/gorun"><img src="/img/related_links/github.png" /></a>
-        
         <a target="_blank" rel="noopener" href="https://github.com/018429"><img src="/img/related_links/github.png" /></a>
         
-        <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/wa-jue-ji-65"><img src="/img/related_links/github.png" /></a>
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/28526479"><img src="/img/related_links/bili.png" /></a>
+        
+        <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/wa-jue-ji-65"><img src="/img/related_links/zhihu.png" /></a>
         
     </div>
     
@@ -810,7 +824,7 @@
 </style>
 <footer class="text-center col-xs-12">
     <p>
-        <small>© 2021 - linzairun - </small>
+        <small>© 2021 - jwbao - </small>
         <small>
             <a target="_blank" rel="nofollow noopener" href="http://beian.miit.gov.cn/"></a>
         </small>
@@ -911,7 +925,7 @@
 <script>
     (function (window, document, undefined) {
         var hearts = [];
-        var keywords = ["点个赞", "留个言", "赞赏一下", "临在跑", "gorun.top"];
+        var keywords = ["点个赞", "留个言", "赞赏一下", "GORUN", "gorun.top"];
         function randomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
         }
