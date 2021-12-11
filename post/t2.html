@@ -25,7 +25,7 @@
     
   </title>
 
-  <link rel="canonical" href="https://gorun.top/tags/Python/">
+  <link rel="canonical" href="https://gorun.top/post/t2.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -135,63 +135,442 @@
 <main class="col-xs-12 padding-0 markdown-it">
     <!-- Post Container -->
     
-    <style>
-        @media (min-width: 1200px) {
-            .main-container {
-                width: 1000px !important;
-            }
-        }
-    </style>
-    <div class="float-left post-container box-shadow">
-        
-<!-- Main Content -->
-<div class="post-list">
     
+    <!-- Post Content -->
+<div class="float-left post-container box-shadow">
+    <div class="u-arrow-wrapper hidden-xs">
+        
+        <a class="float-left" href="/post/hello-world.html"><i class="u-arrow-left"></i></a>
+        
+        
+    </div>
+    <article class="col-xs-12">
+        <h1>  </h1>
+        
+        
+        
+        <div class="gkt-article-start"></div>
+        <hr>
+<pre><code>title: TensorFlow入门(一) - mnist手写数字识别(网络搭建)
+date: 2017-12-09 11:51:24
+description: TensorFlow 入门系列文章，mnist手写数字识别(网络搭建)。
+tags:
+- 机器学习
+- tensorflow
+- mnist
+- Python
+nav:
+- TensorFlow
+categories:
+- TensorFlow教程
+top: 1
+github: https://github.com/geektutu/tensorflow-tutorial-samples
+image: post/tensorflow-mnist-simplest/xxx.jpg
+---
 
-    <!-- 归档列表 -->
-    <ul>
+这篇文章是整个 TensorFlow入门-mnist手写数字识别系列的第一篇，主要介绍了如何从0开始用tensorflow搭建最简单的网络进行训练。
+
+··· 省略
+</code></pre>
+<ul>
+<li>第一<ul>
+<li>第一一</li>
+</ul>
+</li>
+<li>第二</li>
+<li>第三<ul>
+<li>第三三</li>
+</ul>
+</li>
+</ul>
+
         
-        <li class="post-item-parent post-item-color-1">
-            <a href="/archives/#2021" class="post-text-parent" id="2021">
-                2021
+<script src="/js/qrious.min.js"></script>
+
+
+        <hr style="margin-top: 2rem;">
+        <div>
+            
+            <p>
+                <span>本文发表于 2021-12-11，最后修改于 2021-12-11。</span>
+            </p>
+            <!-- 文章末尾的提示 start -->
+            
+            <p>
+                本站永久域名「 <a
+                        href="/post/t2.html">gorun.top</a>
+                    」，也可搜索「 临在跑 」找到我。
+            </p>
+            
+            
+                
+            <!-- 文章末尾的提示 end -->
+        </div>
+        <hr />
+        <p name="pagination" style="font-size: 1.2em">
+    
+    <a class="float-left" href="/post/hello-world.html">上一篇 « 我叫鲍家文，来自华北电力大学，立志成为最会跑步的gorun开发工程师~</a>
+    
+    
+</p>
+    </article>
+    <!-- 赞赏 -->
+    <!--打赏-->
+
+<style>
+    #reward .reward-btn-wrapper {
+        width: 100px;
+        padding-top: 35px;
+        cursor: pointer;
+        margin: 0 auto;
+    }
+
+    #reward .reward-btn {
+        padding: 2px 15px;
+        color: #fff;
+        background-color: #ea6f5a;
+        border-radius: 20px;
+    }
+
+    #reward .reward-code {
+        position: absolute;
+        top: -220px;
+        left: 50%;
+        display: none;
+        width: 360px;
+        height: 240px;
+        margin-left: -180px;
+        padding: 15px 20px;
+        border: 1px solid #e6e6e6;
+        background: #fff;
+        box-shadow: 0 1px 1px 1px #efefef;
+    }
+
+    #reward .reward-code:after,
+    #reward .reward-code:before {
+        position: absolute;
+        content: '';
+        border: 10px solid transparent
+    }
+
+    #reward .reward-code:after {
+        bottom: -19px;
+        left: 50%;
+        margin-left: -10px;
+        border-top-color: #fff
+    }
+
+    #reward .reward-code:before {
+        bottom: -20px;
+        left: 50%;
+        margin-left: -10px;
+        border-top-color: #e6e6e6
+    }
+
+    #reward .qr-code {
+        width: 50%;
+        float: left;
+        padding: 5px;
+    }
+
+    #reward .qr-code p {
+        margin-top: -6px;
+    }
+
+    #reward img {
+        transform: none;
+        -webkit-transform: none;
+        margin-left: 0;
+    }
+
+    #reward img[alt='i'] {
+        width: 20px;
+        height: 20px;
+        z-index: 2;
+        position: absolute;
+        margin: 65px 0 0 65px;
+    }
+
+    #reward img[alt="ali"] {
+        width: 100%;
+        box-sizing: border-box;
+        border: 5px solid #0f9be0;
+    }
+
+    #reward img[alt="wechat"] {
+        width: 100%;
+        box-sizing: border-box;
+        border: 5px solid #3db034;
+    }
+
+    #reward .reward-tip {
+        font-size: 1.2em;
+        margin-bottom: 0;
+        color: #ea6f5a;
+    }
+</style>
+<div id="reward" class="col-xs-12">
+    <div class="reward-btn-wrapper">
+        <div class="reward-btn text-center">赞赏支持</div>
+    </div>
+    <div class="reward-code text-center">
+        <p class="text-center reward-tip"><strong>请我吃胡萝卜 =^_^= </strong></p>
+        <div class="qr-code">
+            <img src="/img/icon.png" alt="i">
+            <img id="reward-ali" src="" alt="ali">
+            <p><small>支付宝</small></p>
+        </div>
+        <div class="qr-code">
+            <img src="/img/icon.png" alt="i">
+            <img id="reward-wechat" src="" alt="wechat">
+            <p><small>微信</small></p>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window, document) {
+        var aliQr = new QRious({ value: 'HTTPS://QR.ALIPAY.COM/FKX060337TUXBAX9LIFJE8' });
+        var wechatQr = new QRious({ value: 'wxp://f2f0qgGBlfD1nZXjvBjievxB0z0fc0W2sBq5' });
+        document.querySelector('#reward-ali').src = aliQr.toDataURL();
+        document.querySelector('#reward-wechat').src = wechatQr.toDataURL();
+
+        var rewardBtn = document.querySelector('#reward .reward-btn-wrapper');
+        var qrCode = document.querySelector('#reward .reward-code')
+        var activeFunc = function (e) {
+            qrCode.style.display = 'block';
+        }
+        var hideFunc = function (e) {
+            qrCode.style.display = 'none';
+        }
+
+        rewardBtn.addEventListener('mouseenter', activeFunc, false)
+        rewardBtn.addEventListener('mouseover', activeFunc, false)
+        rewardBtn.addEventListener('mouseleave', hideFunc, false)
+        qrCode.addEventListener('mouseenter', activeFunc, false)
+        qrCode.addEventListener('mouseover', activeFunc, false)
+        qrCode.addEventListener('mouseleave', hideFunc, false)
+    })(window, document);
+</script>
+
+    
+<div class="col-xs-12 text-center" style="margin-top: 30px;">
+    
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/018429/gorun" title=""><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
+    
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/018429" title=""><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
+    
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/wa-jue-ji-65" title=""><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
+    
+</div>
+
+    <!-- 推荐阅读三篇文章 -->
+    <div class="col-xs-12">
+        <h3>推荐阅读</h3>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+            </div>
+            <a href="/post/t2.html" class="title">
+                Untitled
             </a>
-        </li>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2021-12-11，</span>
+                    <span class="hidden-xs">全文530字，</span>
+                    <span>阅读约2分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
         
-        <li>
-            <a class="post-item-title" href="/post/t2.html">Untitled</a>
-            <span class="post-item-date">(Dec 11, 2021)</span>
-        </li>
-        
-        <li>
-            <a class="post-item-title" href="/post/hello-world.html">我叫鲍家文，来自华北电力大学，立志成为最会跑步的gorun开发工程师~</a>
-            <span class="post-item-date">(Dec 11, 2021)</span>
-        </li>
-        
-        
-        <li class="post-item-parent post-item-color-2">
-            <a href="/archives/#2017" class="post-text-parent" id="2017">
-                2017
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+            </div>
+            <a href="/post/hello-world.html" class="title">
+                我叫鲍家文，来自华北电力大学，立志成为最会跑步的gorun开发工程师~
             </a>
-        </li>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2021-12-11，</span>
+                    <span class="hidden-xs">全文862字，</span>
+                    <span>阅读约3分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
         
-        <li>
-            <a class="post-item-title" href="/post/tensorflow-mnist-simplest.html">TensorFlow入门(一) - mnist手写数字识别(网络搭建)</a>
-            <span class="post-item-date">(Dec 9, 2017)</span>
-        </li>
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#关于我"
+                    title="关于我">关于我</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/about.html" class="title">
+                关于我
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2017-07-03，</span>
+                    <span class="hidden-xs">全文115字，</span>
+                    <span>阅读约1分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
         
-        <li>
-            <a class="post-item-title" href="/post/about.html">关于我</a>
-            <span class="post-item-date">(Jul 3, 2017)</span>
-        </li>
-        
-        
-    </ul>
+    </div>
+    <div class="col-xs-12">
+        <!-- 标签列表 -->
+        <!-- Featured Tags -->
+<style>
+    #featured-tag .post-tag-item {
+        font-size: 12px;
+        line-height: 30px;
+        display: inline-block;
+        height: 30px;
+        margin: 5px 0px;
+        padding: 0 7px;
+        color: #333;
+        border-radius: 15px;
+        background: #f6f6f6;
+    }
+
+    #featured-tag .post-tag-item:hover {
+        color: #337ab7;
+    }
+</style>
+<div id="featured-tag">
+    
+    <a class="post-tag-item" href="/tags/#关于我" title="关于我"
+        rel="1">#关于我 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#机器学习" title="机器学习"
+        rel="1">#机器学习 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#tensorflow" title="tensorflow"
+        rel="1">#tensorflow (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#mnist" title="mnist"
+        rel="1">#mnist (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#Python" title="Python"
+        rel="1">#Python (1) </a>
+    
 </div>
     </div>
-    <aside class="float-left gkt-sidebar hidden-xs hidden-sm">
-        <div style="clear: both"></div>
-        <div class="gkt-sidebar-wrapper">
-            <section class="bg-white box-shadow"><style>
+    <!-- 评论 -->
+    
+    <div class="col-xs-12">
+        
+<div class="col-xs-12 padding-0">
+    <div id="gitalk-container">
+        <div class="gt-container text-center" style="margin-top: 50px;">
+            <button class="gt-btn gt-btn-public"><span class="gt-btn-text">去 Github 评论</span></button>
+        </div>
+    </div>
+    <div id="gitalk-related"></div>
+</div>
+
+<link rel="stylesheet" href="/css/gitalk.css">
+
+
+<script src="/js/gitalk.min.js"></script>
+
+<script>
+    window.addEventListener('load', function () {
+        function renderCommentUrl(data) {
+            var url = (data[window.location.pathname] || {}).url
+            url && getDom('#gitalk-container button').addEventListener('click', function (e) { window.open(url)})
+            url || (getDom('#gitalk-container').style.display = 'none')
+        }
+        const gitalk = new Gitalk({
+            clientID: 'c1fdd456a4caae5f7df0',
+            clientSecret: 'b2674451e21feae50520f99337ec15d2aebe7879',
+            accessToken: 'xxxx',
+            repo: 'hexo-theme-geektutu',
+            owner: 'geektutu',
+            admin: ['geektutu'],
+            id: window.location.pathname,
+            distractionFreeMode: false
+        });
+        fetch("https://api.github.com/user").then(function(resp){
+            gitalk.render('gitalk-container');
+        }).catch(function(e){
+            fetch('/tool/issues.json').then(function (r) { return r.json() }).then(renderCommentUrl).catch(function (e) { })
+        })
+        getDom('#gitalk-container').addEventListener('click', function (e) {
+            e && e.stopPropagation && e.stopPropagation();
+        });
+    })
+</script>
+<script>
+    window.addEventListener('load', function () {
+        function render(comments) {
+            var template = '<a href="${comment.url}?utm_source=gitalk" class="dis-item-url"><h3 class="dis-item-title">${comment.title}</h3>' +
+                '<p class="dis-item-des">${comment.count} 评论 ● ${comment.date}</p>' +
+                '<div class="dis-item-content"><img class="dis-item-img" src="${comment.icon}" alt="icon"><p><b><span class="dis-item-user">${comment.user}</span></b>&nbsp;——&nbsp;${comment.body}</p></div>' +
+                '</a>'
+
+            var wrapper = getDom('#gitalk-related');
+            comments = shuffle(comments);
+            comments.slice(0, 4).forEach(function (c) {
+                var div = document.createElement('div');
+                div.classList.add('dis-item');
+                div.innerHTML = template.replace("${comment.url}", c.url)
+                    .replace("${comment.title}", c.title)
+                    .replace("${comment.count}", c.count)
+                    .replace("${comment.date}", c.date)
+                    .replace("${comment.icon}", c.icon)
+                    .replace("${comment.user}", c.user)
+                    .replace("${comment.body}", c.body)
+                wrapper.appendChild(div)
+            })
+            var p = document.createElement('p')
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.classList.add('dis-divide');
+            wrapper.appendChild(p);
+            wrapper.classList.add('dis-wrapper')
+        }
+        function shuffle(a) {
+            for (var i = a.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+        fetch('/tool/comments.json').then(function (r) { return r.json() }).then(render).catch(function (e) { })
+    })
+</script>
+
+    </div>
+    
+</div>
+<aside class="float-left gkt-sidebar hidden-xs hidden-sm">
+    <div style="clear: both"></div>
+    <div class="gkt-sidebar-wrapper">
+        <section class="box-shadow"><style>
     .gkt-summary {
         border: 1px solid #DDDDDD;
         border-radius: 3px;
@@ -267,46 +646,48 @@
     </div>
     
 </div></section>
-            <section class="gkt-sidebar-content bg-white box-shadow"><!-- Featured Tags -->
-<style>
-    #featured-tag .post-tag-item {
-        font-size: 12px;
-        line-height: 30px;
-        display: inline-block;
-        height: 30px;
-        margin: 5px 0px;
-        padding: 0 7px;
-        color: #333;
-        border-radius: 15px;
-        background: #f6f6f6;
-    }
+        
+        
+        
+        <section class="gkt-sidebar-content box-shadow">
+            <strong>最近的文章</strong>
+            <ul>
+                
+                <li>
+                    <a href="/post/t2.html"></a>
+                </li>
+                
+                <li>
+                    <a href="/post/hello-world.html">我叫鲍家文，来自华北电力大学，立志成为最会跑步的gorun开发工程师~</a>
+                </li>
+                
+                <li>
+                    <a href="/post/tensorflow-mnist-simplest.html">mnist手写数字识别(网络搭建)</a>
+                </li>
+                
+                <li>
+                    <a href="/post/about.html">关于我</a>
+                </li>
+                
+            </ul>
+        </section>
+        
+    </div>
+</aside>
 
-    #featured-tag .post-tag-item:hover {
-        color: #337ab7;
-    }
-</style>
-<div id="featured-tag">
-    
-    <a class="post-tag-item" href="/tags/#关于我" title="关于我"
-        rel="1">#关于我 (1) </a>
-    
-    <a class="post-tag-item" href="/tags/#机器学习" title="机器学习"
-        rel="1">#机器学习 (1) </a>
-    
-    <a class="post-tag-item" href="/tags/#tensorflow" title="tensorflow"
-        rel="1">#tensorflow (1) </a>
-    
-    <a class="post-tag-item" href="/tags/#mnist" title="mnist"
-        rel="1">#mnist (1) </a>
-    
-    <a class="post-tag-item" href="/tags/#Python" title="Python"
-        rel="1">#Python (1) </a>
-    
-</div></section>
-            
-            
-        </div>
-    </aside>
+<script>
+    (function () {
+        function resizeUArrow() {
+            var s = getDom('.u-arrow-wrapper').style
+            var pc = getDom('.post-container')
+            s.left = getPosition(pc).x + 'px';
+            s.width = pc.clientWidth + 'px';
+        }
+        resizeUArrow()
+        window.addEventListener('resize', resizeUArrow);
+    })();
+</script>
+
     
 
 <script>
