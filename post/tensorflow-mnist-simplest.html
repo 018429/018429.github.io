@@ -186,23 +186,15 @@
         
         <div class="gkt-article-start"></div>
         <p>这篇文章是整个 TensorFlow入门-mnist手写数字识别系列的第一篇，主要介绍了如何从0开始用tensorflow搭建最简单的网络进行训练。</p>
-<p>··· 省略</p>
+<h2 id="mnist数据集"><a href="#mnist数据集" class="headerlink" title="mnist数据集"></a>mnist数据集</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>MNIST是一个入门级的计算机视觉数据集，它包含各种手写数字图片。在机器学习中的地位相当于Python入门的打印<code>Hello World</code>。官网该数据集包含以下四个部分</p>
 <ul>
-<li>GO<ul>
-<li>开源项目：gin，ginweb，gin-vue-admin</li>
-<li>书籍：go web编程，go语言笔记，go语言设计与实现</li>
-<li>Go面试题.pdf</li>
+<li>1</li>
+<li>2</li>
+<li>3</li>
+<li>4</li>
 </ul>
-</li>
-<li>计算机基础<ul>
-<li>数据结构与算法：codetop每日一题</li>
-<li>计算机网络：B站韩老师</li>
-<li>操作系统导论</li>
-<li>书籍：数据密集型应用，计算机程序的构造和解释</li>
-</ul>
-</li>
-<li>八股</li>
-</ul>
+<h3 id="图片和标签"><a href="#图片和标签" class="headerlink" title="图片和标签"></a>图片和标签</h3><p>mnist数据集里的每张图片大小为28 * 28像素，可以用28 * 28的大小的数组来表示一张图片。<br>标签用大小为10的数组来表示，这种编码我们称之为One hot（独热编码）。</p>
+<h2 id="神经网络的重要概念"><a href="#神经网络的重要概念" class="headerlink" title="神经网络的重要概念"></a>神经网络的重要概念</h2><h3 id="输入（x）输出（y）、标签（label）"><a href="#输入（x）输出（y）、标签（label）" class="headerlink" title="输入（x）输出（y）、标签（label）"></a>输入（x）输出（y）、标签（label）</h3><p>对于识别mnist图片而言，输入是大小为784（28 * 28）的向量，输出是大小为10的概率向量（概率最大的位置，即预测的数字）。</p>
 
         
 <script src="/js/qrious.min.js"></script>
@@ -421,6 +413,35 @@
                 
                 <span>/</span>
                 
+                <a class="text-gray" href="/tags/#golang"
+                    title="golang">golang</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/golangqa.html" class="title">
+                Go 语言笔试面试题汇总
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2021-12-11，</span>
+                    <span class="hidden-xs">全文549字，</span>
+                    <span>阅读约2分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/tensorflow-mnist-simplest/xxx.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
                 <a class="text-gray" href="/tags/#机器学习"
                     title="机器学习">机器学习</a>
                 <span>/</span>
@@ -488,28 +509,6 @@
                     <span>发表于2021-12-11，</span>
                     <span class="hidden-xs">全文568字，</span>
                     <span>阅读约2分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-            </div>
-            <a href="/post/hello-world.html" class="title">
-                我叫鲍家文，来自华北电力大学，立志成为最会跑步的Golang开发工程师~
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2021-12-11，</span>
-                    <span class="hidden-xs">全文863字，</span>
-                    <span>阅读约3分钟</span>
                 </small>
             </p>
         </div>
@@ -739,6 +738,8 @@
 <div id="sidebar-toc">
   <!-- TOC  -->
   
+  
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#mnist%E6%95%B0%E6%8D%AE%E9%9B%86"><span class="toc-nav-text">mnist数据集</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E7%9A%84%E9%87%8D%E8%A6%81%E6%A6%82%E5%BF%B5"><span class="toc-nav-text">神经网络的重要概念</span></a></li></ol>
   
 </div>
 
