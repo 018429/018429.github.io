@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="golang,gorun,临在跑的博客,">
+  <meta name="keywords" content="golang,gorun,临在跑的博客,GORM,Golang,">
   <!-- page.description has higher priority -->
-  <meta name="description" content="膜拜的大佬博客">
+  <meta name="description" content="gorm学习系列文章">
   <link rel="shortcut icon" href="/img/icon.png">
   <title>
     
-    友链 | GORUN
+    gorm学习笔记1.0 | GORUN
     
   </title>
 
-  <link rel="canonical" href="https://gorun.top/post/link.html">
+  <link rel="canonical" href="https://gorun.top/post/gorm学习笔记1.0.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -98,7 +98,7 @@
             <ul>
                 
                 
-                <li class="gkt-cate-name float-left ">
+                <li class="gkt-cate-name float-left active">
                     <a class="float-left" href="/post/gorm学习笔记1.0.html">GORM</a>
                     
                 </li>
@@ -140,23 +140,36 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/about.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/link.html"><i class="u-arrow-left"></i></a>
         
-        
-        <a class="float-right" href="/post/gorm学习笔记1.0.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> 友链 </h1>
+        <h1> gorm学习笔记1.0 </h1>
         
         
+        <div class="hidden-lg hidden-md series_links">
+            <p> <strong> Gorang学习笔记系列文章链接：</strong></p>
+            <ul>
+                
+                <li>
+                    <a href="/post/gorm学习笔记1.0.html">gorm学习笔记1.0</a>
+                    <span class="post-item-date">(Dec 26, 2021)</span>
+                </li>
+                
+            </ul>
+        </div>
+        
+        
+        <blockquote>
+            <p>源代码/数据集已上传到
+                <a href="https://github.com/018429" target="_blank" rel="noopener">Github - </a>
+            </p>
+        </blockquote>
         
         <div class="gkt-article-start"></div>
-        <h2 id="友情链接"><a href="#友情链接" class="headerlink" title="友情链接"></a>友情链接</h2><p><a target="_blank" rel="noopener" href="https://geektutu.com/">geektutu</a></p>
-<p><a target="_blank" rel="noopener" href="https://draveness.me/">左书祺大佬</a></p>
-<p><a target="_blank" rel="noopener" href="https://gocn.vip/">gocn</a></p>
-<p><a target="_blank" rel="noopener" href="https://qcrao.com/">饶大</a></p>
-<p><a target="_blank" rel="noopener" href="https://xargin.com/">曹大</a></p>
+        <p>这篇文章是整个 gorm学习系列的第一篇，主要介绍了如何使用gorm框架。</p>
+<p>好好学习大佬的文章geeorm和geerpc~</p>
 
         
 <script src="/js/qrious.min.js"></script>
@@ -180,13 +193,22 @@
         <div>
             
             <p>
-                <span>本文发表于 2021-12-11，最后修改于 2021-12-11。</span>
+                <span>专题: </span>
+                
+                <a href="/series/#Gorang学习笔记">
+                    <code key="Gorang学习笔记" class="post-label">Gorang学习笔记</code>
+                </a>
+                
+            </p>
+            
+            <p>
+                <span>本文发表于 2021-12-26，最后修改于 2021-12-26。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
             <p>
                 本站永久域名「 <a
-                        href="/post/link.html">gorun.top</a>
+                        href="/post/gorm学习笔记1.0.html">gorun.top</a>
                     」，也可搜索「 GORUN 」找到我。
             </p>
             
@@ -197,10 +219,8 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/about.html">上一篇 « 关于我</a>
+    <a class="float-left" href="/post/link.html">上一篇 « 友链</a>
     
-    
-    <a class="float-right" href="/post/gorm学习笔记1.0.html">下一篇 » gorm学习笔记1.0</a>
     
 </p>
     </article>
@@ -642,6 +662,62 @@
     
 </div></section>
         
+        
+        <section class="gkt-sidebar-content box-shadow">
+            <strong>Gorang学习笔记</strong>
+            <ul>
+                
+                <li>
+                    <a href="/post/gorm学习笔记1.0.html"
+                        class="gkt-sidebar-active">gorm学习笔记1.0</a>
+                    
+                    <!-- Table of Contents -->
+<div id="sidebar-toc">
+  <!-- TOC  -->
+  
+  
+</div>
+
+<script>
+  (function () {
+    var h2 = document.querySelectorAll('article h2');
+    var h3 = document.querySelectorAll('article h3');
+    var linkList = document.querySelectorAll('#sidebar-toc a');
+
+    function findLinkElement(name) {
+      for (var i = 0; i < linkList.length; i++) {
+        var items = linkList[i].href.split('#');
+        if (items && items[items.length - 1] === encodeURIComponent(name)) {
+          return i;
+        }
+      }
+      return -1;
+    }
+
+    function activeLink(titleList) {
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      for (var i = titleList.length - 1; i >= 0; i--) {
+        if (scrollTop - titleList[i].offsetTop > 0) {
+          var index = findLinkElement(titleList[i].id);
+          index != -1 && linkList[index].classList.add('gkt-sidebar-active');
+          break;
+        }
+      }
+    }
+
+    window.addEventListener("scroll", function (e) {
+      [].slice.call(linkList).forEach(function (link) {
+        link.classList.remove('gkt-sidebar-active');
+      })
+      activeLink(h2);
+    })
+  })();
+</script>
+                    
+                </li>
+                
+            </ul>
+        </section>
         
         
         <section class="gkt-sidebar-content box-shadow">
