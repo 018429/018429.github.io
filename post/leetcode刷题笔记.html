@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="golang,gorun,临在跑的博客,GORM,Golang,">
+  <meta name="keywords" content="golang,gorun,临在跑的博客,Golang,leetcode,">
   <!-- page.description has higher priority -->
-  <meta name="description" content="gorm学习系列文章">
+  <meta name="description" content="leecode刷题笔记">
   <link rel="shortcut icon" href="/img/icon.png">
   <title>
     
-    gorm学习笔记1.0 | GORUN
+    leetcode刷题笔记 | GORUN
     
   </title>
 
-  <link rel="canonical" href="https://gorun.top/post/gorm学习笔记1.0.html">
+  <link rel="canonical" href="https://gorun.top/post/leetcode刷题笔记.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -140,14 +140,12 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/link.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/gorm学习笔记1.0.html"><i class="u-arrow-left"></i></a>
         
-        
-        <a class="float-right" href="/post/leetcode刷题笔记.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> gorm学习笔记1.0 </h1>
+        <h1> leetcode刷题笔记 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
@@ -175,8 +173,13 @@
         </blockquote>
         
         <div class="gkt-article-start"></div>
-        <p>这篇文章是整个 gorm学习系列的第一篇，主要介绍了如何使用gorm框架。</p>
-<p>好好学习大佬的文章geeorm和geerpc~</p>
+        <h5 id="将一维数组转变为二维数组"><a href="#将一维数组转变为二维数组" class="headerlink" title="将一维数组转变为二维数组"></a>将一维数组转变为二维数组</h5><p>共享底层数组空间，二维数组只需保存相应位置的指针即可~</p>
+<p>tips:容量已知的情况下，提前初始化好避免扩容的时空消耗。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">construct2DArray</span><span class="params">(original []<span class="keyword">int</span>, m <span class="keyword">int</span>, n <span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    k := <span class="built_in">len</span>(original)</span><br><span class="line">    <span class="keyword">if</span> k != m*n &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">    &#125;</span><br><span class="line">    ans := <span class="built_in">make</span>([][]<span class="keyword">int</span>, <span class="number">0</span>, m)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>;i &lt; k; i+=n &#123;</span><br><span class="line">        ans = <span class="built_in">append</span>(ans, original[i:i+n])</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="消除游戏"><a href="#消除游戏" class="headerlink" title="消除游戏"></a>消除游戏</h5><p>等差数列模拟，对元素个数的奇偶性分情况讨论~</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">lastRemaining</span><span class="params">(n <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    a1,an := <span class="number">1</span>,n<span class="comment">//首元素，尾元素</span></span><br><span class="line">    k:=<span class="number">0</span><span class="comment">//left right 切换</span></span><br><span class="line">    cnt:=n<span class="comment">//元素个数</span></span><br><span class="line">    step:=<span class="number">1</span><span class="comment">//公差</span></span><br><span class="line">    <span class="keyword">for</span> cnt &gt; <span class="number">1</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> k%<span class="number">2</span>==<span class="number">0</span> &#123;</span><br><span class="line">            <span class="comment">//from left to right</span></span><br><span class="line">            <span class="keyword">if</span> cnt%<span class="number">2</span>==<span class="number">0</span>&#123;</span><br><span class="line">                a1 += step</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                a1+=step</span><br><span class="line">                an-=step</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="comment">//from right to left</span></span><br><span class="line">            <span class="keyword">if</span> cnt%<span class="number">2</span>==<span class="number">0</span>&#123;</span><br><span class="line">                an-=step</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                a1+=step</span><br><span class="line">                an-=step</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        step&lt;&lt;=<span class="number">1</span></span><br><span class="line">        cnt&gt;&gt;=<span class="number">1</span></span><br><span class="line">        k++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 
         
 <script src="/js/qrious.min.js"></script>
@@ -209,13 +212,13 @@
             </p>
             
             <p>
-                <span>本文发表于 2021-12-26，最后修改于 2022-01-02。</span>
+                <span>本文发表于 2022-01-02，最后修改于 2022-01-02。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
             <p>
                 本站永久域名「 <a
-                        href="/post/gorm学习笔记1.0.html">gorun.top</a>
+                        href="/post/leetcode刷题笔记.html">gorun.top</a>
                     」，也可搜索「 GORUN 」找到我。
             </p>
             
@@ -226,10 +229,8 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/link.html">上一篇 « 友链</a>
+    <a class="float-left" href="/post/gorm学习笔记1.0.html">上一篇 « gorm学习笔记1.0</a>
     
-    
-    <a class="float-right" href="/post/leetcode刷题笔记.html">下一篇 » leetcode刷题笔记</a>
     
 </p>
     </article>
@@ -395,39 +396,6 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Golang"
-                    title="Golang">Golang</a>
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#leetcode"
-                    title="leetcode">leetcode</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/leetcode刷题笔记.html" class="title">
-                leetcode刷题笔记
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2022-01-02，</span>
-                    <span class="hidden-xs">全文1180字，</span>
-                    <span>阅读约4分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
                 <a class="text-gray" href="/tags/#GORM"
                     title="GORM">GORM</a>
                 <span>/</span>
@@ -445,6 +413,28 @@
                 <small>
                     <span>发表于2021-12-26，</span>
                     <span class="hidden-xs">全文256字，</span>
+                    <span>阅读约1分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+            </div>
+            <a href="/post/link.html" class="title">
+                友链
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2021-12-11，</span>
+                    <span class="hidden-xs">全文194字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -692,11 +682,19 @@
                 
                 <li>
                     <a href="/post/gorm学习笔记1.0.html"
-                        class="gkt-sidebar-active">gorm学习笔记1.0</a>
+                        class="">gorm学习笔记1.0</a>
+                    
+                </li>
+                
+                <li>
+                    <a href="/post/leetcode刷题笔记.html"
+                        class="gkt-sidebar-active">leetcode刷题笔记</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
   <!-- TOC  -->
+  
+  
   
   
 </div>
@@ -736,12 +734,6 @@
     })
   })();
 </script>
-                    
-                </li>
-                
-                <li>
-                    <a href="/post/leetcode刷题笔记.html"
-                        class="">leetcode刷题笔记</a>
                     
                 </li>
                 
