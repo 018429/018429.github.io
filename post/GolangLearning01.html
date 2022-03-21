@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="golang,gorun,临在跑的博客,os,">
+  <meta name="keywords" content="golang,gorun,临在跑的博客,Golang,">
   <!-- page.description has higher priority -->
-  <meta name="description" content="os学习系列文章">
+  <meta name="description" content="go语言学习系列文章">
   <link rel="shortcut icon" href="/img/icon.png">
   <title>
     
-    os学习笔记1.0 | GORUN
+    go语言学习 | GORUN
     
   </title>
 
-  <link rel="canonical" href="https://gorun.top/post/os01.html">
+  <link rel="canonical" href="https://gorun.top/post/GolangLearning01.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -99,27 +99,27 @@
                 
                 
                 <li class="gkt-cate-name float-left ">
-                    <a class="float-left" href="/post/gorm学习笔记1.0.html">GORM</a>
+                    <a class="float-left" href="/post/SFCMapping01.html">SFC</a>
                     
                 </li>
                 
                 <li class="gkt-cate-name float-left active">
-                    <a class="float-left" href="/post/os01.html">OS ▾</a>
+                    <a class="float-left" href="/post/GolangLearning01.html">Golang ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
                         <li class="gkt-sub-cate-name active"><a class="float-left"
-                                href="/post/os01.html">os学习笔记1.0</a></li>
+                                href="/post/GolangLearning01.html">Golang教程</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
-                                href="/post/os02.html">os学习笔记2.0</a></li>
+                                href="/post/GolangLearning02.html">Golang算法竞赛</a></li>
                         
                     </ul>
                     
                 </li>
                 
                 <li class="gkt-cate-name float-left ">
-                    <a class="float-left" href="/post/基于网络功能虚拟化的业务优化编排研究——王泽南.html">SFC</a>
+                    <a class="float-left" href="/post/面试01.html">面试</a>
                     
                 </li>
                 
@@ -160,23 +160,21 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/os02.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/GolangLearning02.html"><i class="u-arrow-left"></i></a>
         
-        
-        <a class="float-right" href="/post/基于网络功能虚拟化的业务优化编排研究——王泽南.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> os学习笔记1.0 </h1>
+        <h1> go语言学习 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
-            <p> <strong> os学习笔记1.0系列文章链接：</strong></p>
+            <p> <strong> Golang教程系列文章链接：</strong></p>
             <ul>
                 
                 <li>
-                    <a href="/post/os01.html">os学习笔记1.0</a>
-                    <span class="post-item-date">(Mar 17, 2022)</span>
+                    <a href="/post/GolangLearning01.html">go语言学习</a>
+                    <span class="post-item-date">(Mar 21, 2022)</span>
                 </li>
                 
             </ul>
@@ -190,30 +188,7 @@
         </blockquote>
         
         <div class="gkt-article-start"></div>
-        <p>这篇文章是整个 os学习系列的第一篇，主要介绍了……</p>
-<h1 id="多级反馈队列"><a href="#多级反馈队列" class="headerlink" title="多级反馈队列"></a>多级反馈队列</h1><p>本章将介绍一种著名的调度方法——多级反馈队列（Multi-level Feedback Queue, MLFQ）。1962年，Corbato首次提出多级反馈队列，应用于兼容分时共享系统（CTSS）。</p>
-<p>多级反馈队列需要解决两方面的问题。首先，它要优化周转时间，这可以通过先执行短工作来实现。然而，操作系统通常不知道工作要运行多久，而这又是SJF（或STCF）等算法所必须的。其次，MLFQ希望给交互用户（如用户坐在屏幕前，等着进程结束）很好的交互体验，因此需要降低响应时间。然而，像轮转（RR）这样的算法虽然降低了响应时间，周转时间却很差。所以这里的问题是：通常我们对进程一无所知，应该如何构建调度程序来实现这些目标？调度程序如何在运行过程中学习进程的特征，从而做出更好的调度决策？</p>
-<blockquote>
-<p><strong>关键问题：没有完备的知识如何调度</strong></p>
-<p>没有工作长度的先验知识，如何设计一个能同时响应时间和周转时间的调度程序？</p>
-</blockquote>
-<blockquote>
-<p><strong>提示：从历史中学习</strong></p>
-<p>多级反馈队列是利用历史经验预测未来的一个典型的例子，操作系统中有很多地方采用了这种技术（同样存在于计算机科学领域的很多其他地方，比如硬件的分支预测及缓存算法）。如果工作有明显的阶段性行为，因此可以预测，那么这种方式会很有效。</p>
-</blockquote>
-<h2 id="1-MLFQ-基本原则"><a href="#1-MLFQ-基本原则" class="headerlink" title="1. MLFQ: 基本原则"></a>1. MLFQ: 基本原则</h2><p>MLFQ中有许多独立的队列（queue），每个队列有不同的优先级（priority level）。任何时刻，一个工作只能存在一个队列中。MLFQ总是优先执行较高优先级的工作（即在较高级队列中的工作）。</p>
-<p>当然，每个队列中可能会有多个工作，因此具有同样的优先级。在这种情况下，我们就对这些工作采用轮转调度。</p>
-<p>因此，MLFQ的调度策略的关键在于如何设置优先级。MLFQ没有为每个工作指定不变的优先级，而是根据观察到的行为调整它的优先级。例如，如果一个工作不断放弃CPU去等待键盘输入，这是交互型进程的可能行为，MLFQ因此会让它保持较高优先级。相反，如果一个工作长时间地占用CPU，MLFQ会降低其优先级。通过这种方式，MLFQ在进程运行过程中学习其行为，从而利用工作的历史来预测它未来的行为。</p>
-<p>至此，我们得到了MLFQ的两条基本规则。</p>
-<ul>
-<li><strong>规则1：</strong>如果A的优先级 &gt; B的优先级，运行A（不运行B)。</li>
-<li><strong>规则2:</strong>   如果A的优先级 = B的优先级，轮转运行A和B。</li>
-</ul>
-<p>如果要在某个特定时刻展示队列，可能会看到如下内容（见图1）。图1中，最高优先级有两个工作（A和B），工作C位于中等优先级，而D的优先级最低。按刚才介绍的基本规则，由于A和B有最高优先级，调度程序将交题的调度它们，可怜的C和D永远没有机会运行，太气人了！</p>
-<p><img src="img/os/mlfq01.webp" alt="图1"></p>
-<center>图1</center>
-
-<h2 id="2-尝试1：如何改变优先级"><a href="#2-尝试1：如何改变优先级" class="headerlink" title="2. 尝试1：如何改变优先级"></a>2. 尝试1：如何改变优先级</h2><p>我们必须决定，在一个工作的生命周期中，MLFQ如何改变其优先级（在哪个队列中）。要做到这一点，我们必须记得工作负载：既有运行时间很短，频繁放弃CPU的交互型工作，也有需要很多CPU时间，响应时间却不重要的长时间计算密集型工作。下面是我们第一次尝试优先级调整算法。</p>
+        <p>go go go ！ ！ ！</p>
 
         
 <script src="/js/qrious.min.js"></script>
@@ -239,20 +214,20 @@
             <p>
                 <span>专题: </span>
                 
-                <a href="/series/#os学习笔记1.0">
-                    <code key="os学习笔记1.0" class="post-label">os学习笔记1.0</code>
+                <a href="/series/#Golang教程">
+                    <code key="Golang教程" class="post-label">Golang教程</code>
                 </a>
                 
             </p>
             
             <p>
-                <span>本文发表于 2022-03-17，最后修改于 2022-03-21。</span>
+                <span>本文发表于 2022-03-21，最后修改于 2022-03-21。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
             <p>
                 本站永久域名「 <a
-                        href="/post/os01.html">gorun.top</a>
+                        href="/post/GolangLearning01.html">gorun.top</a>
                     」，也可搜索「 GORUN 」找到我。
             </p>
             
@@ -263,10 +238,8 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/os02.html">上一篇 « os学习笔记2.0</a>
+    <a class="float-left" href="/post/GolangLearning02.html">上一篇 « go语言学习</a>
     
-    
-    <a class="float-right" href="/post/基于网络功能虚拟化的业务优化编排研究——王泽南.html">下一篇 » NFV中虚拟网络功能智能编排方法研究</a>
     
 </p>
     </article>
@@ -432,8 +405,33 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#GORM"
-                    title="GORM">GORM</a>
+                <a class="text-gray" href="/tags/#面试"
+                    title="面试">面试</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/面试01.html" class="title">
+                Go语言面试
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2022-03-21，</span>
+                    <span class="hidden-xs">全文1545字，</span>
+                    <span>阅读约6分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
                 <span>/</span>
                 
                 <a class="text-gray" href="/tags/#Golang"
@@ -442,13 +440,13 @@
                 
                 
             </div>
-            <a href="/post/gorm学习笔记1.0.html" class="title">
-                gorm学习笔记1.0
+            <a href="/post/GolangLearning02.html" class="title">
+                go语言学习
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2021-12-26，</span>
-                    <span class="hidden-xs">全文256字，</span>
+                    <span>发表于2022-03-21，</span>
+                    <span class="hidden-xs">全文198字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -471,35 +469,6 @@
                 <small>
                     <span>发表于2021-12-11，</span>
                     <span class="hidden-xs">全文194字，</span>
-                    <span>阅读约1分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#关于我"
-                    title="关于我">关于我</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/about.html" class="title">
-                关于我
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2021-12-11，</span>
-                    <span class="hidden-xs">全文274字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -530,23 +499,17 @@
 </style>
 <div id="featured-tag">
     
-    <a class="post-tag-item" href="/tags/#关于我" title="关于我"
-        rel="1">#关于我 (1) </a>
-    
-    <a class="post-tag-item" href="/tags/#GORM" title="GORM"
-        rel="1">#GORM (1) </a>
-    
     <a class="post-tag-item" href="/tags/#Golang" title="Golang"
         rel="2">#Golang (2) </a>
     
-    <a class="post-tag-item" href="/tags/#leetcode" title="leetcode"
-        rel="1">#leetcode (1) </a>
+    <a class="post-tag-item" href="/tags/#SFC" title="SFC"
+        rel="1">#SFC (1) </a>
     
-    <a class="post-tag-item" href="/tags/#os" title="os"
-        rel="2">#os (2) </a>
+    <a class="post-tag-item" href="/tags/#关于我" title="关于我"
+        rel="1">#关于我 (1) </a>
     
-    <a class="post-tag-item" href="/tags/#NFV" title="NFV"
-        rel="1">#NFV (1) </a>
+    <a class="post-tag-item" href="/tags/#面试" title="面试"
+        rel="2">#面试 (2) </a>
     
 </div>
     </div>
@@ -700,7 +663,7 @@
             <span class="number">4</span><span>专题</span>
         </a>
         <a href="/tags" class="col-xs-4">
-            <span class="number">6</span><span>标签</span>
+            <span class="number">4</span><span>标签</span>
         </a>
     </nav>
 
@@ -719,19 +682,17 @@
         
         
         <section class="gkt-sidebar-content box-shadow">
-            <strong>os学习笔记1.0</strong>
+            <strong>Golang教程</strong>
             <ul>
                 
                 <li>
-                    <a href="/post/os01.html"
-                        class="gkt-sidebar-active">os学习笔记1.0</a>
+                    <a href="/post/GolangLearning01.html"
+                        class="gkt-sidebar-active">go语言学习</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
   <!-- TOC  -->
   
-  
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97"><span class="toc-nav-text">多级反馈队列</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-MLFQ-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-nav-text">1. MLFQ: 基本原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%B0%9D%E8%AF%951%EF%BC%9A%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-text">2. 尝试1：如何改变优先级</span></a></li></ol></li></ol>
   
 </div>
 
@@ -782,15 +743,15 @@
             <ul>
                 
                 <li>
-                    <a href="/post/基于网络功能虚拟化的业务优化编排研究——王泽南.html">NFV中虚拟网络功能智能编排方法研究</a>
+                    <a href="/post/面试02.html">Go语言面试</a>
                 </li>
                 
                 <li>
-                    <a href="/post/os02.html">os学习笔记2.0</a>
+                    <a href="/post/面试01.html">Go语言面试</a>
                 </li>
                 
                 <li>
-                    <a href="/post/os01.html">os学习笔记1.0</a>
+                    <a href="/post/GolangLearning02.html">go语言学习</a>
                 </li>
                 
             </ul>
