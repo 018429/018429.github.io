@@ -201,7 +201,7 @@
         
         <div class="gkt-article-start"></div>
         <p>这篇文章是整个 Go语言面试系列的第一篇，主要介绍了……</p>
-<h1 id="多级反馈队列"><a href="#多级反馈队列" class="headerlink" title="多级反馈队列"></a>多级反馈队列</h1><p>本章将介绍一种著名的调度方法——多级反馈队列（Multi-level Feedback Queue, MLFQ）。1962年，Corbato首次提出多级反馈队列，应用于兼容分时共享系统（CTSS）。</p>
+<h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><h2 id="多级反馈队列"><a href="#多级反馈队列" class="headerlink" title="多级反馈队列"></a>多级反馈队列</h2><p>本章将介绍一种著名的调度方法——多级反馈队列（Multi-level Feedback Queue, MLFQ）。1962年，Corbato首次提出多级反馈队列，应用于兼容分时共享系统（CTSS）。</p>
 <p>多级反馈队列需要解决两方面的问题。首先，它要优化周转时间，这可以通过先执行短工作来实现。然而，操作系统通常不知道工作要运行多久，而这又是SJF（或STCF）等算法所必须的。其次，MLFQ希望给交互用户（如用户坐在屏幕前，等着进程结束）很好的交互体验，因此需要降低响应时间。然而，像轮转（RR）这样的算法虽然降低了响应时间，周转时间却很差。所以这里的问题是：通常我们对进程一无所知，应该如何构建调度程序来实现这些目标？调度程序如何在运行过程中学习进程的特征，从而做出更好的调度决策？</p>
 <blockquote>
 <p><strong>关键问题：没有完备的知识如何调度</strong></p>
@@ -224,6 +224,158 @@
 <center>图1</center>
 
 <h2 id="2-尝试1：如何改变优先级"><a href="#2-尝试1：如何改变优先级" class="headerlink" title="2. 尝试1：如何改变优先级"></a>2. 尝试1：如何改变优先级</h2><p>我们必须决定，在一个工作的生命周期中，MLFQ如何改变其优先级（在哪个队列中）。要做到这一点，我们必须记得工作负载：既有运行时间很短，频繁放弃CPU的交互型工作，也有需要很多CPU时间，响应时间却不重要的长时间计算密集型工作。下面是我们第一次尝试优先级调整算法。</p>
+<h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="1-计算机硬件软件体系"><a href="#1-计算机硬件软件体系" class="headerlink" title="1. 计算机硬件软件体系"></a>1. 计算机硬件软件体系</h2><h3 id="1-1-冯-诺伊曼体系结构"><a href="#1-1-冯-诺伊曼体系结构" class="headerlink" title="1.1. 冯 诺伊曼体系结构"></a>1.1. 冯 诺伊曼体系结构</h3><ul>
+<li>计算机处理的数据和指令一律用二进制表示</li>
+<li>顺序执行程序</li>
+<li>计算机硬件由运算器、控制器、存储器和输入输出设备五大部分组成</li>
+</ul>
+<h3 id="1-2-计算机硬件组成"><a href="#1-2-计算机硬件组成" class="headerlink" title="1.2. 计算机硬件组成"></a>1.2. 计算机硬件组成</h3><ul>
+<li><p>输入设备</p>
+<ul>
+<li>输入设备将人们熟悉的信息转换为机器能识别的信息形式<ul>
+<li>键盘鼠标等</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>输出设备</p>
+<ul>
+<li>打印机显示器等</li>
+</ul>
+</li>
+<li><p>存储器</p>
+<ul>
+<li>存放数据和程序</li>
+<li>RAM(Random access memory) 内存<ul>
+<li>容量小，速度快，掉电易失</li>
+</ul>
+</li>
+<li>ROM(Read-only memory) 硬盘<ul>
+<li>容量大，速度慢，长久保存：查了一下啊早期的ROM是只读的，后来发展出来可擦写的EPROM，电脑的固态广义上属于EPROM</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>CPU</p>
+<ul>
+<li>控制器<ul>
+<li>控制器主要用来控制程序和数据的输入运行以及运算结果</li>
+</ul>
+</li>
+<li>运算器<ul>
+<li>运算器主要进行算数运算和逻辑运算，并将结果暂存到运算器中</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-3-硬盘的分类"><a href="#1-3-硬盘的分类" class="headerlink" title="1.3. 硬盘的分类"></a>1.3. 硬盘的分类</h3><ul>
+<li>机械硬盘<ul>
+<li>采用磁性碟片存储数据</li>
+<li>凹凸不平，凸起的地方代表1，凹下去的地方代表0</li>
+<li>7200转/分 100-200M/s</li>
+</ul>
+</li>
+<li>固态硬盘<ul>
+<li>通过闪存颗粒（固态电子存储芯片阵列）</li>
+</ul>
+</li>
+<li>读写速度的区别<ul>
+<li>固态是机械3-5倍</li>
+</ul>
+</li>
+<li>机械硬盘的数据读写<ul>
+<li>转速</li>
+<li>寻道时间</li>
+<li>数据传输时间</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-4-顺序读写和随机读写"><a href="#1-4-顺序读写和随机读写" class="headerlink" title="1.4. 顺序读写和随机读写"></a>1.4. 顺序读写和随机读写</h3><h3 id="1-5-网络连接概念"><a href="#1-5-网络连接概念" class="headerlink" title="1.5. 网络连接概念"></a>1.5. 网络连接概念</h3><ul>
+<li>IP地址<ul>
+<li>逻辑地址 标识网络一个主机</li>
+</ul>
+</li>
+<li>子网掩码</li>
+<li>默认网关<ul>
+<li>连接两个不同网络设备</li>
+</ul>
+</li>
+<li>DNS:域名解析</li>
+</ul>
+<h3 id="1-6-网络连接模式"><a href="#1-6-网络连接模式" class="headerlink" title="1.6. 网络连接模式"></a>1.6. 网络连接模式</h3><ul>
+<li>桥接模式</li>
+<li>NAT</li>
+</ul>
+<h3 id="1-7-软件分类"><a href="#1-7-软件分类" class="headerlink" title="1.7. 软件分类"></a>1.7. 软件分类</h3><ul>
+<li>应用软件</li>
+<li>系统软件<ul>
+<li>window<ul>
+<li>用户量大</li>
+<li>收费，民用</li>
+<li>软件齐全</li>
+</ul>
+</li>
+<li>Mac</li>
+<li>GNU/Linux<ul>
+<li>GNU是一个开源软件组织，世界上所有软件都应该开源免费<ul>
+<li>GNU is Not Unix</li>
+<li>GC++</li>
+<li>托瓦磁  零纳斯 Linus – Linux</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-8-Linux分支"><a href="#1-8-Linux分支" class="headerlink" title="1.8. Linux分支"></a>1.8. Linux分支</h3><ul>
+<li>Debain(免费)<ul>
+<li>Ubuntu用户界面</li>
+</ul>
+</li>
+<li>RedHat(收费)<ul>
+<li>CentOS服务器<ul>
+<li>完全开源免费</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="1-9-Linux下载"><a href="#1-9-Linux下载" class="headerlink" title="1.9. Linux下载"></a>1.9. Linux下载</h3><h2 id="2-虚拟机安全与配置"><a href="#2-虚拟机安全与配置" class="headerlink" title="2. 虚拟机安全与配置"></a>2. 虚拟机安全与配置</h2><h3 id="2-1-虚拟化技术"><a href="#2-1-虚拟化技术" class="headerlink" title="2.1. 虚拟化技术"></a>2.1. 虚拟化技术</h3><ul>
+<li>可以更好利用计算机闲置资源</li>
+<li>可以虚拟出更多机器</li>
+</ul>
+<h3 id="2-2-创建虚拟机"><a href="#2-2-创建虚拟机" class="headerlink" title="2.2. 创建虚拟机"></a>2.2. 创建虚拟机</h3><h3 id="2-3-安装操作系统"><a href="#2-3-安装操作系统" class="headerlink" title="2.3. 安装操作系统"></a>2.3. 安装操作系统</h3><h3 id="2-4-配置常见参数"><a href="#2-4-配置常见参数" class="headerlink" title="2.4. 配置常见参数"></a>2.4. 配置常见参数</h3><ul>
+<li>修改网络</li>
+<li>关闭防火墙</li>
+<li>软件安装检查</li>
+<li>关机</li>
+</ul>
+<h3 id="2-5-快照与克隆"><a href="#2-5-快照与克隆" class="headerlink" title="2.5. 快照与克隆"></a>2.5. 快照与克隆</h3><h3 id="2-6-修改克隆机配置"><a href="#2-6-修改克隆机配置" class="headerlink" title="2.6. 修改克隆机配置"></a>2.6. 修改克隆机配置</h3><ul>
+<li>网络信息</li>
+<li>主机名</li>
+</ul>
+<h3 id="2-7-连接Linux服务器"><a href="#2-7-连接Linux服务器" class="headerlink" title="2.7. 连接Linux服务器"></a>2.7. 连接Linux服务器</h3><ul>
+<li>Xshell<ul>
+<li>负责向虚拟机传输命令</li>
+</ul>
+</li>
+<li>Xftp<ul>
+<li>负责向虚拟机传输文件</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-Linux命令"><a href="#3-Linux命令" class="headerlink" title="3. Linux命令"></a>3. Linux命令</h2><h3 id="3-1-命令学习方法"><a href="#3-1-命令学习方法" class="headerlink" title="3.1. 命令学习方法"></a>3.1. 命令学习方法</h3><h3 id="3-2-常用命令"><a href="#3-2-常用命令" class="headerlink" title="3.2. 常用命令"></a>3.2. 常用命令</h3><ul>
+<li>whereis 查找命令在哪</li>
+<li>file 查看文件类型</li>
+<li>useradd 创建用户</li>
+<li>who 当前主机谁在登录</li>
+<li>whoami 我是谁</li>
+<li>pwd 我在哪</li>
+<li>uname -a 内核信息</li>
+<li>echo ; clear; history</li>
+</ul>
 
         
 <script src="/js/qrious.min.js"></script>
@@ -442,64 +594,6 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#面试"
-                    title="面试">面试</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/面试02.html" class="title">
-                Go语言面试
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文1545字，</span>
-                    <span>阅读约6分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#计算机基础"
-                    title="计算机基础">计算机基础</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/面试01.html" class="title">
-                计算机基础
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文1546字，</span>
-                    <span>阅读约6分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
                 <a class="text-gray" href="/tags/#Golang"
                     title="Golang">Golang</a>
                 <span>/</span>
@@ -514,6 +608,57 @@
                     <span>发表于2022-03-21，</span>
                     <span class="hidden-xs">全文861字，</span>
                     <span>阅读约3分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+            </div>
+            <a href="/post/link.html" class="title">
+                友链
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2021-12-11，</span>
+                    <span class="hidden-xs">全文194字，</span>
+                    <span>阅读约1分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#关于我"
+                    title="关于我">关于我</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/about.html" class="title">
+                关于我
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2021-12-11，</span>
+                    <span class="hidden-xs">全文274字，</span>
+                    <span>阅读约1分钟</span>
                 </small>
             </p>
         </div>
@@ -741,7 +886,7 @@
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97"><span class="toc-nav-text">多级反馈队列</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-MLFQ-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-nav-text">1. MLFQ: 基本原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%B0%9D%E8%AF%951%EF%BC%9A%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-text">2. 尝试1：如何改变优先级</span></a></li></ol></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">操作系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97"><span class="toc-nav-text">多级反馈队列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-MLFQ-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-nav-text">1. MLFQ: 基本原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%B0%9D%E8%AF%951%EF%BC%9A%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-text">2. 尝试1：如何改变优先级</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Linux"><span class="toc-nav-text">Linux</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB"><span class="toc-nav-text">1. 计算机硬件软件体系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E5%85%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-nav-text">2. 虚拟机安全与配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Linux%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">3. Linux命令</span></a></li></ol></li></ol>
   
 </div>
 
