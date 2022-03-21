@@ -104,7 +104,7 @@
                 </li>
                 
                 <li class="gkt-cate-name float-left active">
-                    <a class="float-left" href="/post/os01.html">os ▾</a>
+                    <a class="float-left" href="/post/os01.html">OS ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
@@ -210,7 +210,7 @@
 <li><strong>规则2:</strong>   如果A的优先级 = B的优先级，轮转运行A和B。</li>
 </ul>
 <p>如果要在某个特定时刻展示队列，可能会看到如下内容（见图1）。图1中，最高优先级有两个工作（A和B），工作C位于中等优先级，而D的优先级最低。按刚才介绍的基本规则，由于A和B有最高优先级，调度程序将交题的调度它们，可怜的C和D永远没有机会运行，太气人了！</p>
-<p><img src="C:\Git\workspace\blog\myblog\source\img\os\mlfq01.webp" alt="图1"></p>
+<p><img src="img/os/mlfq01.webp" alt="图1"></p>
 <center>图1</center>
 
 <h2 id="2-尝试1：如何改变优先级"><a href="#2-尝试1：如何改变优先级" class="headerlink" title="2. 尝试1：如何改变优先级"></a>2. 尝试1：如何改变优先级</h2><p>我们必须决定，在一个工作的生命周期中，MLFQ如何改变其优先级（在哪个队列中）。要做到这一点，我们必须记得工作负载：既有运行时间很短，频繁放弃CPU的交互型工作，也有需要很多CPU时间，响应时间却不重要的长时间计算密集型工作。下面是我们第一次尝试优先级调整算法。</p>
@@ -246,7 +246,7 @@
             </p>
             
             <p>
-                <span>本文发表于 2022-03-17，最后修改于 2022-03-17。</span>
+                <span>本文发表于 2022-03-17，最后修改于 2022-03-21。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -424,6 +424,35 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
+    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#NFV"
+                    title="NFV">NFV</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/基于网络功能虚拟化的业务优化编排研究——王泽南.html" class="title">
+                NFV中虚拟网络功能智能编排方法研究
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2022-03-18，</span>
+                    <span class="hidden-xs">全文2841字，</span>
+                    <span>阅读约10分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
     <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
@@ -438,36 +467,14 @@
                 
                 
             </div>
-            <a href="/post/os02.html" class="title">
-                os学习笔记2.0
+            <a href="/post/os01.html" class="title">
+                os学习笔记1.0
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2022-03-17，</span>
-                    <span class="hidden-xs">全文1586字，</span>
+                    <span class="hidden-xs">全文1550字，</span>
                     <span>阅读约6分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-            </div>
-            <a href="/post/link.html" class="title">
-                友链
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2021-12-11，</span>
-                    <span class="hidden-xs">全文194字，</span>
-                    <span>阅读约1分钟</span>
                 </small>
             </p>
         </div>
