@@ -104,15 +104,15 @@
                 </li>
                 
                 <li class="gkt-cate-name float-left ">
-                    <a class="float-left" href="/post/os02.html">OS ▾</a>
+                    <a class="float-left" href="/post/os01.html">OS ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
-                                href="/post/os02.html">os学习笔记2.0</a></li>
+                                href="/post/os01.html">os学习笔记1.0</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
-                                href="/post/os01.html">os学习笔记1.0</a></li>
+                                href="/post/os02.html">os学习笔记2.0</a></li>
                         
                     </ul>
                     
@@ -160,7 +160,7 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/os02.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/os01.html"><i class="u-arrow-left"></i></a>
         
         
     </div>
@@ -191,7 +191,7 @@
         <h3 id="业务的优化部署问题"><a href="#业务的优化部署问题" class="headerlink" title="业务的优化部署问题"></a>业务的优化部署问题</h3><p>业务的优化部署问题由于业务部署方式多样，部署的目标多变，场景丰富而得到了学术界的广泛关注，在该研究领域涌现了大量的研究工作。这些工作在研究业务编排时的聚焦对象通常是由VNF节点组成的服务链，因此，本小节中的业务优化部署主要也是指服务链的优化部署。在本小节中，我们将从不同的角度对相关的研究工作进行分类，并对相关工作进行论述。</p>
 <h6 id="按部署方式进行分类。"><a href="#按部署方式进行分类。" class="headerlink" title="按部署方式进行分类。"></a><strong>按部署方式进行分类</strong>。</h6><p>首先我们从部署方式的角度对业务的优化部署问题进行分类论述。如图1-7所示，按照业务所需的VNF节点是否能在业务之间共享，可以分为专属VNF节点的部署方式和共享VNF节点的部署方式。目前大多数工作均采用专属VNF节点的部署方式，例如文献[23-25]在对服务链部署问题进行建模时均假设单个VNF节点只能被一条服务链所使用。但是，随着容器形式VNF的部署，以及DPDK（Data Plane Development Kit，数据平面开发工具集）技术的应用，为了减少VNF的数据包处理进程在不同CPU核心之间切换所带来的开销，一些VNF在架构设计上（例如OpenNetVM和ClickOS）建议为单个VNF分配一个专用的CPU逻辑核，因此一台物理服务器承载的VNF实例数量将受限于其CPU逻辑核的数量。紧接着，文献[28]提出专属VNF节点在这种VNF架构设计中将造成部分VNF节点资源的浪费，因此提出了VNF节点在服务链之间共享的模型。</p>
 <p>文献[28]中所提出的VNF共享是指在空间维度对VNF节点进行共享，即同一时刻同一个VNF节点将处理多个不同业务的流量。这类工作在对问题进行建模时，通常会增加一个关于VNF节点处理能力的限制条件，即分配至VNF节点的流量大小不能超过VNF节点的处理能力。除了空间维度的共享，VNF节点还能在时间维度进行共享，即不同业务流量将在同一个VNF节点的不同时隙进行处理，文献[30]针对这种服务链的部署方式进行了研究，通过优化业务在VNF节点处理时隙之间的分配，降低业务的平均完成时间。实际上，VNF节点在时间维度共享所衍生出的问题模型与文献[31,32]，中提到的服务链调度（SFC Scheduling）问题本质上是一致的。服务链调度问题认为VNF实例可以在时间维度上共享物理服务器，即物理服务器可以在不同时隙运行不同类型的VNF，如果我们假设每一台物理服务器均可以支持所有类型的VNF，则文献[31,32]中所设计的算法可以运用于文献[30]中的问题模型。因此，服务链调度问题可以归纳于在时间维度共享VNF节点这个类别。</p>
-<img src="img/sfc/p1_7.webp" />
+<img src="/img/sfc/p1_7.webp" />
 
 <h6 id="按优化目标分类。"><a href="#按优化目标分类。" class="headerlink" title="按优化目标分类。"></a><strong>按优化目标分类</strong>。</h6><p>业务优化部署问题本质上是一个优化问题，因此所有的业务部署问题都拥有各自的优化目标。例如，文本传输业务的目标在于缩短业务的完成时间，游戏业务的主要目标在于降低端到端的时延，而站在服务提供商的角度，他们的目标是最大化所接收业务的利润。可见，在不同的场景下业务优化问题的目标是不同的。针对不同场景下的不同目标，出现了不同类型的研究工作，我们根据优化目标的不同，将相关工作分类进行论述。文献[17-19,33-36]所提出的模型和算法仅针对单一优化目标，例如文献[19,33-35]旨在降低VNF的运行和管理开销，文献[17,36]旨在提高业务的服务质量（Quality of Service, Qos），文献[18]，旨在提高业务的可用性。此外，部分文献所提出的模型和算法针对多个优化目标，即实现了多目标优化，例如文献[37]中所设计的算法旨在同时提高物理资源的利用率和降低使用的物理服务器的数量。上述文献提出的模型和算法中的优化目标都是固定的，文献[31,38]中所设计的算法能适用于不同的优化目标。他们所设计的算法主要属于两种类型，一种是元启发式算法（meta-heuristic algorithm），例如文献[31]中使用的禁忌搜索算法，通过设置不同的搜索目标，最终实现不同的优化目标，包括最大化接收的业务数量，或者是最小化业务的完成时间等。另一种是基于机器学习中强化学习的算法，例如文献[38]中所提出的算法NFVdeep，NFVdeep通过设置强化学习的学习目标，即反馈函数，实现不同的优化目标，包括最小化物理服务器的管理开销或者最大化接收业务的吞吐。</p>
 <img src="/img/sfc/p1_8.webp" />
@@ -246,7 +246,7 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/os02.html">上一篇 « os学习笔记2.0</a>
+    <a class="float-left" href="/post/os01.html">上一篇 « os学习笔记1.0</a>
     
     
 </p>
@@ -405,35 +405,6 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#NFV"
-                    title="NFV">NFV</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/基于网络功能虚拟化的业务优化编排研究——王泽南.html" class="title">
-                NFV中虚拟网络功能智能编排方法研究
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2022-03-18，</span>
-                    <span class="hidden-xs">全文2841字，</span>
-                    <span>阅读约10分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
     <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
@@ -448,13 +419,13 @@
                 
                 
             </div>
-            <a href="/post/os02.html" class="title">
-                os学习笔记2.0
+            <a href="/post/os01.html" class="title">
+                os学习笔记1.0
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2022-03-17，</span>
-                    <span class="hidden-xs">全文1551字，</span>
+                    <span class="hidden-xs">全文1550字，</span>
                     <span>阅读约6分钟</span>
                 </small>
             </p>
@@ -477,6 +448,35 @@
                 <small>
                     <span>发表于2021-12-11，</span>
                     <span class="hidden-xs">全文194字，</span>
+                    <span>阅读约1分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#关于我"
+                    title="关于我">关于我</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/about.html" class="title">
+                关于我
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2021-12-11，</span>
+                    <span class="hidden-xs">全文274字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -763,11 +763,11 @@
                 </li>
                 
                 <li>
-                    <a href="/post/os01.html">os学习笔记1.0</a>
+                    <a href="/post/os02.html">os学习笔记2.0</a>
                 </li>
                 
                 <li>
-                    <a href="/post/os02.html">os学习笔记2.0</a>
+                    <a href="/post/os01.html">os学习笔记1.0</a>
                 </li>
                 
             </ul>
