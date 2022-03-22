@@ -376,7 +376,48 @@
 <li>uname -a 内核信息</li>
 <li>echo ; clear; history</li>
 </ul>
-<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="1-数据库管理软件的由来"><a href="#1-数据库管理软件的由来" class="headerlink" title="1. 数据库管理软件的由来"></a>1. 数据库管理软件的由来</h2><h3 id="1-1-程序所有的组件不可能运行在一台机器上"><a href="#1-1-程序所有的组件不可能运行在一台机器上" class="headerlink" title="1.1. 程序所有的组件不可能运行在一台机器上"></a>1.1. 程序所有的组件不可能运行在一台机器上</h3><p>因为单点故障和单台机器性能有限，于是通过水平拓展方式增强整体性能。</p>
+<h3 id="3-2-特殊符号"><a href="#3-2-特殊符号" class="headerlink" title="3.2. 特殊符号"></a>3.2. 特殊符号</h3><ul>
+<li><code>.</code> 隐藏文件，.当前目录</li>
+<li><code>$</code> 变量</li>
+<li><code>*</code> 通配符</li>
+</ul>
+<h2 id="4-Linux文件系统"><a href="#4-Linux文件系统" class="headerlink" title="4. Linux文件系统"></a>4. Linux文件系统</h2><h3 id="4-1-万事万物皆文件"><a href="#4-1-万事万物皆文件" class="headerlink" title="4.1. 万事万物皆文件"></a>4.1. 万事万物皆文件</h3><h3 id="4-2-文件目录"><a href="#4-2-文件目录" class="headerlink" title="4.2. 文件目录"></a>4.2. 文件目录</h3><h3 id="4-3-Linux的文件操作"><a href="#4-3-Linux的文件操作" class="headerlink" title="4.3. Linux的文件操作"></a>4.3. Linux的文件操作</h3><ul>
+<li> cd 改变路径</li>
+<li>ll ls（type ll 别名ls -l –color=auto）</li>
+<li>mkdir [-p] 路径</li>
+<li>rmdir</li>
+<li>cp 源文件 目录 (拷贝)</li>
+<li>cp -r 文件夹 目录</li>
+<li>mv剪切文件和文件夹、修改文件名字</li>
+<li>rm删除</li>
+<li>touch 创建文件</li>
+<li>stat文件状态</li>
+<li>ln<ul>
+<li>创建符号的链接</li>
+<li>软符号链接<ul>
+<li>ln -s 文件 slink</li>
+</ul>
+</li>
+<li>硬链接<ul>
+<li>ln 文件 hlink</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-4-读取文件信息"><a href="#4-4-读取文件信息" class="headerlink" title="4.4. 读取文件信息"></a>4.4. 读取文件信息</h3><ul>
+<li><p>cat 查看内容</p>
+</li>
+<li><p>more/less/head/tail (head -8 profile | tail -1第八行)</p>
+</li>
+<li><p>tail -f 监控Inode</p>
+</li>
+<li><p>tail -F 监控文件名字</p>
+</li>
+<li><p>文件搜索find (find 目录 -name 文件名)</p>
+</li>
+</ul>
+<h3 id="4-5-VI和VIM编辑器"><a href="#4-5-VI和VIM编辑器" class="headerlink" title="4.5. VI和VIM编辑器"></a>4.5. VI和VIM编辑器</h3><h4 id="4-5-1-打开文件"><a href="#4-5-1-打开文件" class="headerlink" title="4.5.1. 打开文件"></a>4.5.1. 打开文件</h4><h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="1-数据库管理软件的由来"><a href="#1-数据库管理软件的由来" class="headerlink" title="1. 数据库管理软件的由来"></a>1. 数据库管理软件的由来</h2><h3 id="1-1-程序所有的组件不可能运行在一台机器上"><a href="#1-1-程序所有的组件不可能运行在一台机器上" class="headerlink" title="1.1. 程序所有的组件不可能运行在一台机器上"></a>1.1. 程序所有的组件不可能运行在一台机器上</h3><p>因为单点故障和单台机器性能有限，于是通过水平拓展方式增强整体性能。</p>
 <h3 id="1-2-数据安全问题"><a href="#1-2-数据安全问题" class="headerlink" title="1.2. 数据安全问题"></a>1.2. 数据安全问题</h3><p>各个机器上的程序是一个整体，所有组件的数据需要共享，于是想到数据和程序分离，文件存放于一台机器，多台机器通过网络访问文件(socket实现)。</p>
 <h3 id="1-3-并发"><a href="#1-3-并发" class="headerlink" title="1.3. 并发"></a>1.3. 并发</h3><p>我们必须写一个socket服务端来管理这台机器，然后写一个socket客户端，完成如下功能：</p>
 <ul>
@@ -400,6 +441,8 @@
 <p>InnoDB存储引擎通过多版本并发控制(MVCC)来获得高并发性，并且实现了SQL标准的四种隔离级别，默认为REPEATABLE级别，同时使用一种称为next-key locking的策略避免幻读。</p>
 <p>对于表数据存储，InnoDB存储引擎采用了聚集(clustered)的方式，每张表按主键顺序进行存储，如果没有显式定义主键，存储引擎为每一行生成一个6字节的ROWID作为主键。</p>
 <h4 id="3-2-2-MyISAM存储引擎"><a href="#3-2-2-MyISAM存储引擎" class="headerlink" title="3.2.2. MyISAM存储引擎"></a>3.2.2. MyISAM存储引擎</h4><p>不支持事物、表锁设计，支持全文索引，主要面向一些OLAP数据库应用。</p>
+<h3 id="3-3-基于存储引擎的模型"><a href="#3-3-基于存储引擎的模型" class="headerlink" title="3.3. 基于存储引擎的模型"></a>3.3. 基于存储引擎的模型</h3><p>大致基于存储引擎的模型分：B+ tree和LSM tree，复杂。</p>
+<p>bitcask这种模型，本质上也算LSM tree的范畴，简单。</p>
 <h2 id="4-事物"><a href="#4-事物" class="headerlink" title="4. 事物"></a>4. 事物</h2><p>在传统的关系式数据库中，常常用ACID性质来检验事务功能的安全性。</p>
 <h3 id="4-1-A-原子性"><a href="#4-1-A-原子性" class="headerlink" title="4.1. A: 原子性"></a>4.1. A: 原子性</h3><p>所谓原子性，一个事务(transaction)中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。一般的做法是类似数据快照的方案。</p>
 <h3 id="4-2-C-一致性"><a href="#4-2-C-一致性" class="headerlink" title="4.2. C: 一致性"></a>4.2. C: 一致性</h3><p>在事务开始之前和事务结束之后，数据库的完整性没有被破化。这表示写入的数据必须完全符合预期的。</p>
@@ -643,20 +686,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#计算机基础"
-                    title="计算机基础">计算机基础</a>
+                <a class="text-gray" href="/tags/#面试"
+                    title="面试">面试</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/面试01.html" class="title">
-                计算机基础
+            <a href="/post/面试02.html" class="title">
+                Go语言面试
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文5405字，</span>
-                    <span>阅读约19分钟</span>
+                    <span class="hidden-xs">全文1545字，</span>
+                    <span>阅读约6分钟</span>
                 </small>
             </p>
         </div>
@@ -699,21 +742,14 @@
             <div class="hidden-xs">
                 
                 
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#关于我"
-                    title="关于我">关于我</a>
-                <span>/</span>
-                
-                
             </div>
-            <a href="/post/about.html" class="title">
-                关于我
+            <a href="/post/link.html" class="title">
+                友链
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2021-12-11，</span>
-                    <span class="hidden-xs">全文263字，</span>
+                    <span class="hidden-xs">全文194字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -942,7 +978,7 @@
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">操作系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97"><span class="toc-nav-text">多级反馈队列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-MLFQ-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-nav-text">1. MLFQ: 基本原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%B0%9D%E8%AF%951%EF%BC%9A%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-text">2. 尝试1：如何改变优先级</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Linux"><span class="toc-nav-text">Linux</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB"><span class="toc-nav-text">1. 计算机硬件软件体系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E5%85%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-nav-text">2. 虚拟机安全与配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Linux%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">3. Linux命令</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-nav-text">数据库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-nav-text">1. 数据库管理软件的由来</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%BF%B0"><span class="toc-nav-text">2. 数据库概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-nav-text">3. 存储引擎</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E4%BA%8B%E7%89%A9"><span class="toc-nav-text">4. 事物</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E8%AE%BA-2018-CMU-15-445-645"><span class="toc-nav-text">5. 数据库导论 2018 CMU 15-445&#x2F;645</span></a></li></ol></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">操作系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97"><span class="toc-nav-text">多级反馈队列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-MLFQ-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-nav-text">1. MLFQ: 基本原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%B0%9D%E8%AF%951%EF%BC%9A%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-text">2. 尝试1：如何改变优先级</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Linux"><span class="toc-nav-text">Linux</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB"><span class="toc-nav-text">1. 计算机硬件软件体系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E5%85%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-nav-text">2. 虚拟机安全与配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Linux%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">3. Linux命令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">4. Linux文件系统</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-nav-text">数据库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-nav-text">1. 数据库管理软件的由来</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%BF%B0"><span class="toc-nav-text">2. 数据库概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-nav-text">3. 存储引擎</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E4%BA%8B%E7%89%A9"><span class="toc-nav-text">4. 事物</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E8%AE%BA-2018-CMU-15-445-645"><span class="toc-nav-text">5. 数据库导论 2018 CMU 15-445&#x2F;645</span></a></li></ol></li></ol>
   
 </div>
 
