@@ -376,6 +376,55 @@
 <li>uname -a 内核信息</li>
 <li>echo ; clear; history</li>
 </ul>
+<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="1-数据库管理软件的由来"><a href="#1-数据库管理软件的由来" class="headerlink" title="1. 数据库管理软件的由来"></a>1. 数据库管理软件的由来</h2><h3 id="1-1-程序所有的组件不可能运行在一台机器上"><a href="#1-1-程序所有的组件不可能运行在一台机器上" class="headerlink" title="1.1. 程序所有的组件不可能运行在一台机器上"></a>1.1. 程序所有的组件不可能运行在一台机器上</h3><p>因为单点故障和单台机器性能有限，于是通过水平拓展方式增强整体性能。</p>
+<h3 id="1-2-数据安全问题"><a href="#1-2-数据安全问题" class="headerlink" title="1.2. 数据安全问题"></a>1.2. 数据安全问题</h3><p>各个机器上的程序是一个整体，所有组件的数据需要共享，于是想到数据和程序分离，文件存放于一台机器，多台机器通过网络访问文件(socket实现)。</p>
+<h3 id="1-3-并发"><a href="#1-3-并发" class="headerlink" title="1.3. 并发"></a>1.3. 并发</h3><p>我们必须写一个socket服务端来管理这台机器，然后写一个socket客户端，完成如下功能：</p>
+<ul>
+<li>远程连接（支持并发）</li>
+<li>打开文件</li>
+<li>读写（加锁）</li>
+<li>关闭文件</li>
+</ul>
+<h2 id="2-数据库概述"><a href="#2-数据库概述" class="headerlink" title="2. 数据库概述"></a>2. 数据库概述</h2><h3 id="2-1-什么是数据"><a href="#2-1-什么是数据" class="headerlink" title="2.1. 什么是数据"></a>2.1. 什么是数据</h3><p>描述事物的符号记录称为数据</p>
+<h3 id="2-2-什么是数据库"><a href="#2-2-什么是数据库" class="headerlink" title="2.2. 什么是数据库"></a>2.2. 什么是数据库</h3><p>存放数据的仓库，数据库中的数据按一定的数据模型组织，描述和存储，具有较小的冗余度，较高的数据独立性和易拓展性，并可为各种用户共享。</p>
+<h3 id="2-3-什么是数据库管理系统"><a href="#2-3-什么是数据库管理系统" class="headerlink" title="2.3. 什么是数据库管理系统"></a>2.3. 什么是数据库管理系统</h3><p>在了解了Data和DB之后，如何科学的组织和存储数据，如何高效获取和维护数据成为了关键。这就用到了系统软件——数据库管理系统如Mysql、Oracle</p>
+<p>总结：</p>
+<ul>
+<li>数据库服务器：运行数据库管理软件</li>
+<li>数据库管理软件：管理数据库</li>
+<li>数据库：文件夹，组织文件/表</li>
+<li>表：文件，存放多行内容/多条记录</li>
+</ul>
+<h2 id="3-存储引擎"><a href="#3-存储引擎" class="headerlink" title="3. 存储引擎"></a>3. 存储引擎</h2><h3 id="3-1-什么是存储引擎"><a href="#3-1-什么是存储引擎" class="headerlink" title="3.1. 什么是存储引擎"></a>3.1. 什么是存储引擎</h3><p>存储引擎说白了就是如何存储数据、如何为存储数据建立索引和如何更新、查询数据等技术的实现方法。因为在关系型数据库中数据的存储是以表的形式存储的，所以存储引擎也可以称为表类型（即存储和操作此表的类型）。在Oracle和SQL Server等数据库中只有一种存储引擎，而Mysql数据库提供了多种存储引擎。</p>
+<h3 id="3-2-MySQL支持的存储引擎"><a href="#3-2-MySQL支持的存储引擎" class="headerlink" title="3.2. MySQL支持的存储引擎"></a>3.2. MySQL支持的存储引擎</h3><h4 id="3-2-1-InnoDB存储引擎"><a href="#3-2-1-InnoDB存储引擎" class="headerlink" title="3.2.1. InnoDB存储引擎"></a>3.2.1. InnoDB存储引擎</h4><p>支持事务，设计目标是面向联机事务处理(OLTP)的应用。其特点是<strong>行锁设计，支持外键</strong>，并支持类似Oracle的<strong>非锁定读，即默认读取操作不会产生锁</strong>。</p>
+<p>InnoDB存储引擎通过多版本并发控制(MVCC)来获得高并发性，并且实现了SQL标准的四种隔离级别，默认为REPEATABLE级别，同时使用一种称为next-key locking的策略避免幻读。</p>
+<p>对于表数据存储，InnoDB存储引擎采用了聚集(clustered)的方式，每张表按主键顺序进行存储，如果没有显式定义主键，存储引擎为每一行生成一个6字节的ROWID作为主键。</p>
+<h4 id="3-2-2-MyISAM存储引擎"><a href="#3-2-2-MyISAM存储引擎" class="headerlink" title="3.2.2. MyISAM存储引擎"></a>3.2.2. MyISAM存储引擎</h4><p>不支持事物、表锁设计，支持全文索引，主要面向一些OLAP数据库应用。</p>
+<h2 id="4-事物"><a href="#4-事物" class="headerlink" title="4. 事物"></a>4. 事物</h2><p>在传统的关系式数据库中，常常用ACID性质来检验事务功能的安全性。</p>
+<h3 id="4-1-A-原子性"><a href="#4-1-A-原子性" class="headerlink" title="4.1. A: 原子性"></a>4.1. A: 原子性</h3><p>所谓原子性，一个事务(transaction)中的所有操作，或者全部完成，或者全部不完成，不会结束在中间某个环节。实现事务的原子性，要支持回滚操作，在某个操作失败后，回滚到事务执行之前的状态。一般的做法是类似数据快照的方案。</p>
+<h3 id="4-2-C-一致性"><a href="#4-2-C-一致性" class="headerlink" title="4.2. C: 一致性"></a>4.2. C: 一致性</h3><p>在事务开始之前和事务结束之后，数据库的完整性没有被破化。这表示写入的数据必须完全符合预期的。</p>
+<h3 id="4-3-I-隔离性"><a href="#4-3-I-隔离性" class="headerlink" title="4.3. I: 隔离性"></a>4.3. I: 隔离性</h3><p>数据库允许多个并发事务同时对其数据进行读写和修改的能力，隔离性可以防止多个事务并发执行时由于交叉执行而导致的数据不一致。</p>
+<p><strong>隔离级别低到高：</strong></p>
+<h4 id="4-3-1-未提交读（READ-UNCOMMITTED）"><a href="#4-3-1-未提交读（READ-UNCOMMITTED）" class="headerlink" title="4.3.1. 未提交读（READ UNCOMMITTED）"></a>4.3.1. 未提交读（READ UNCOMMITTED）</h4><p>这个是最低的隔离级别。允许脏读(dirty reads)，事务可以看到其他事务尚未提交的修改。</p>
+<h4 id="4-3-2-在提交读（READ-COMMITTED）"><a href="#4-3-2-在提交读（READ-COMMITTED）" class="headerlink" title="4.3.2. 在提交读（READ COMMITTED）"></a>4.3.2. 在提交读（READ COMMITTED）</h4><p>定义：在这个隔离级别中，基于锁机制并发控制的DBMS需要需要对选定对象的写锁一直保持到事务结束，但是读锁在SELECT操作完成后马上释放（因此“不可重复读”现象可能会出现）。看下“不可重复读”的定义：在一次事务中，当一行数据获取两遍得到不同的结果表示发生了”不可重复读“。</p>
+<h4 id="4-3-3-在可重复读（REPEATABLE-READS）"><a href="#4-3-3-在可重复读（REPEATABLE-READS）" class="headerlink" title="4.3.3. 在可重复读（REPEATABLE READS）"></a>4.3.3. 在可重复读（REPEATABLE READS）</h4><p>定义：在这隔离级别中，基于锁机制并发控制的DBMS需要对选定对象的读锁(read locks)和写锁(write locks)一直保持到事务结束，但是不要求”范围锁“，因此可能出现”幻影读“。</p>
+<p>关于幻影读的定义，指在事务执行过程中，当两个完全相同的查询语句执行得到不同的结果集。这种现象称为”幻影读(phantom read)“，有些人也叫它幻读。</p>
+<h4 id="4-3-4-可串行化（Serializable）"><a href="#4-3-4-可串行化（Serializable）" class="headerlink" title="4.3.4. 可串行化（Serializable）"></a>4.3.4. 可串行化（Serializable）</h4><p>定义：这个隔离级别是最高的。避免了所有上面的“脏读”，”不可重复读“，”幻影读“现象。</p>
+<h3 id="4-4-D-持久化-durability"><a href="#4-4-D-持久化-durability" class="headerlink" title="4.4. D: 持久化 durability"></a>4.4. D: 持久化 durability</h3><p>事务处理结束以后，对数据修改就是永久的，即使系统故障<code>machine crashes</code>也不会丢失。</p>
+<h2 id="5-数据库导论-2018-CMU-15-445-645"><a href="#5-数据库导论-2018-CMU-15-445-645" class="headerlink" title="5. 数据库导论 2018 CMU 15-445/645"></a>5. 数据库导论 2018 CMU 15-445/645</h2><h3 id="5-1-p1-Course-introduction-amp-Realational-Data-Model"><a href="#5-1-p1-Course-introduction-amp-Realational-Data-Model" class="headerlink" title="5.1. p1 Course introduction &amp; Realational Data Model"></a>5.1. p1 Course introduction &amp; Realational Data Model</h3><p><strong>DATA MODEL</strong></p>
+<ul>
+<li>Relational    MostDBMSs</li>
+<li>No SQL<ul>
+<li>Key/Value</li>
+<li>Graph</li>
+<li>Document</li>
+<li>Column-family</li>
+</ul>
+</li>
+<li>Array / Matrix</li>
+<li>Hierarchical</li>
+<li>Network</li>
+</ul>
 
         
 <script src="/js/qrious.min.js"></script>
@@ -408,7 +457,7 @@
             </p>
             
             <p>
-                <span>本文发表于 2022-03-21，最后修改于 2022-03-21。</span>
+                <span>本文发表于 2022-03-21，最后修改于 2022-03-22。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -594,20 +643,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Golang"
-                    title="Golang">Golang</a>
+                <a class="text-gray" href="/tags/#计算机基础"
+                    title="计算机基础">计算机基础</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/GolangLearning02.html" class="title">
-                go语言学习
+            <a href="/post/面试01.html" class="title">
+                计算机基础
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文861字，</span>
-                    <span>阅读约3分钟</span>
+                    <span class="hidden-xs">全文5405字，</span>
+                    <span>阅读约19分钟</span>
                 </small>
             </p>
         </div>
@@ -621,15 +670,22 @@
             <div class="hidden-xs">
                 
                 
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#SFC"
+                    title="SFC">SFC</a>
+                <span>/</span>
+                
+                
             </div>
-            <a href="/post/link.html" class="title">
-                友链
+            <a href="/post/SFCMapping01.html" class="title">
+                NFV中虚拟网络功能智能编排方法研究
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2021-12-11，</span>
-                    <span class="hidden-xs">全文194字，</span>
-                    <span>阅读约1分钟</span>
+                    <span>发表于2022-03-18，</span>
+                    <span class="hidden-xs">全文2838字，</span>
+                    <span>阅读约10分钟</span>
                 </small>
             </p>
         </div>
@@ -657,7 +713,7 @@
             <p class="text-gray">
                 <small>
                     <span>发表于2021-12-11，</span>
-                    <span class="hidden-xs">全文274字，</span>
+                    <span class="hidden-xs">全文263字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -886,7 +942,7 @@
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">操作系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97"><span class="toc-nav-text">多级反馈队列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-MLFQ-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-nav-text">1. MLFQ: 基本原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%B0%9D%E8%AF%951%EF%BC%9A%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-text">2. 尝试1：如何改变优先级</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Linux"><span class="toc-nav-text">Linux</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB"><span class="toc-nav-text">1. 计算机硬件软件体系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E5%85%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-nav-text">2. 虚拟机安全与配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Linux%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">3. Linux命令</span></a></li></ol></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">操作系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97"><span class="toc-nav-text">多级反馈队列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-MLFQ-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-nav-text">1. MLFQ: 基本原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%B0%9D%E8%AF%951%EF%BC%9A%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-text">2. 尝试1：如何改变优先级</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Linux"><span class="toc-nav-text">Linux</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB"><span class="toc-nav-text">1. 计算机硬件软件体系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E5%85%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-nav-text">2. 虚拟机安全与配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Linux%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">3. Linux命令</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-nav-text">数据库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-nav-text">1. 数据库管理软件的由来</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%BF%B0"><span class="toc-nav-text">2. 数据库概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-nav-text">3. 存储引擎</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E4%BA%8B%E7%89%A9"><span class="toc-nav-text">4. 事物</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E8%AE%BA-2018-CMU-15-445-645"><span class="toc-nav-text">5. 数据库导论 2018 CMU 15-445&#x2F;645</span></a></li></ol></li></ol>
   
 </div>
 
