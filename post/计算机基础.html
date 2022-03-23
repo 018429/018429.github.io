@@ -269,6 +269,42 @@
 <p>IP地址由网络和主机两部分标识组成。</p>
 <p><strong>IP地址的分类</strong></p>
 <p>IP地址分为A类，B类，C类，D类。</p>
+<ul>
+<li>A类地址<ul>
+<li>首位以<code>0</code>开头。1到8位是网络标识。<code>0.0.0.0~127.0.0.0</code>是A类的网络地址。后24位相当于主机标识。一个网段可以容纳主机地址上限为16777214个。</li>
+</ul>
+</li>
+<li>B类地址<ul>
+<li>前两位是<code>01</code>，第1位到第16位是网络标识。十进制表示<code>128.0.0.1</code>~`191.255.0.0`是B类的网络地址。一个网段可以容纳的主机地址上限为65534个。</li>
+</ul>
+</li>
+<li>C类地址<ul>
+<li>前三位是<code>110</code>,第一位到第24位是网络标识。<code>192.168.0.0</code>~`239.255.255.0`是C类的网络地址。一个网段可以容纳的主机地址上限为254个。</li>
+</ul>
+</li>
+<li>D类地址<ul>
+<li>前四位为<code>1110</code>,第1位到第32位是网络标识。<code>224.0.0.0</code>~`239.255.255.255`是D类的网络地址。D类地址没有主机标识，常被用于多播。</li>
+</ul>
+</li>
+<li>注意事项<ul>
+<li>用比特位表示主机地址时，不可以全部为0或1。全部为0表示对应的网络地址或IP地址不可获知才使用。全部为1的主机地址通常作为广播地址。这也是为什么C类地址每个网段最多有254(256 - 2)个主机的原因。</li>
+</ul>
+</li>
+</ul>
+<p><strong>广播地址</strong></p>
+<ul>
+<li>本地广播</li>
+<li>直接广播</li>
+</ul>
+<p><strong>IP多播</strong></p>
+<p>多播用于将包发送给组内的所有主机。由于其直接使用了IP协议，因此不存在可靠传输。</p>
+<p><strong>子网掩码</strong>】</p>
+<p>引入子网以后，一个IP地址就有了两种识别码，一是IP地址本身，另一个是表示网络部的子网掩码。两种表示方式：</p>
+<ul>
+<li>ip地址：172.20.100.52</li>
+<li>子网掩码：255.255.255.192</li>
+<li>IP地址：172.20.100.52/26</li>
+</ul>
 <h1 id="Linux"><a href="#Linux" class="headerlink" title="Linux"></a>Linux</h1><h2 id="1-计算机硬件软件体系"><a href="#1-计算机硬件软件体系" class="headerlink" title="1. 计算机硬件软件体系"></a>1. 计算机硬件软件体系</h2><h3 id="1-1-冯-诺伊曼体系结构"><a href="#1-1-冯-诺伊曼体系结构" class="headerlink" title="1.1. 冯 诺伊曼体系结构"></a>1.1. 冯 诺伊曼体系结构</h3><ul>
 <li>计算机处理的数据和指令一律用二进制表示</li>
 <li>顺序执行程序</li>
@@ -571,7 +607,7 @@
             </p>
             
             <p>
-                <span>本文发表于 2022-03-21，最后修改于 2022-03-22。</span>
+                <span>本文发表于 2022-03-21，最后修改于 2022-03-23。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -798,8 +834,8 @@
             <p class="text-gray">
                 <small>
                     <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文7814字，</span>
-                    <span>阅读约27分钟</span>
+                    <span class="hidden-xs">全文8522字，</span>
+                    <span>阅读约29分钟</span>
                 </small>
             </p>
         </div>
@@ -807,7 +843,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
+    <div class="post-img" style="background-image: url('/')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -815,19 +851,19 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Golang"
-                    title="Golang">Golang</a>
+                <a class="text-gray" href="/tags/#关于我"
+                    title="关于我">关于我</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/GolangLearning01.html" class="title">
-                go语言学习
+            <a href="/post/about.html" class="title">
+                关于我
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文196字，</span>
+                    <span>发表于2021-12-11，</span>
+                    <span class="hidden-xs">全文263字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -861,11 +897,11 @@
     <a class="post-tag-item" href="/tags/#Golang" title="Golang"
         rel="2">#Golang (2) </a>
     
-    <a class="post-tag-item" href="/tags/#SFC" title="SFC"
-        rel="1">#SFC (1) </a>
-    
     <a class="post-tag-item" href="/tags/#关于我" title="关于我"
         rel="1">#关于我 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#SFC" title="SFC"
+        rel="1">#SFC (1) </a>
     
     <a class="post-tag-item" href="/tags/#计算机基础" title="计算机基础"
         rel="1">#计算机基础 (1) </a>
