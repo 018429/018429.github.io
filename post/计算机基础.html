@@ -119,15 +119,15 @@
                 </li>
                 
                 <li class="gkt-cate-name float-left active">
-                    <a class="float-left" href="/post/面试02.html">面试 ▾</a>
+                    <a class="float-left" href="/post/计算机基础.html">面试 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
-                        <li class="gkt-sub-cate-name "><a class="float-left"
-                                href="/post/面试02.html">Go语言面试</a></li>
-                        
                         <li class="gkt-sub-cate-name active"><a class="float-left"
                                 href="/post/计算机基础.html">计算机基础</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/面试02.html">Go语言面试</a></li>
                         
                     </ul>
                     
@@ -170,10 +170,10 @@
 <div class="float-left post-container box-shadow">
     <div class="u-arrow-wrapper hidden-xs">
         
-        <a class="float-left" href="/post/SFCMapping01.html"><i class="u-arrow-left"></i></a>
+        <a class="float-left" href="/post/面试02.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/面试02.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/GolangLearning02.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
@@ -236,6 +236,25 @@
 <li>物理层：以<code>0</code>、<code>1</code> 代表高低电压，灯光闪灭。界定连接器和网线的规格。</li>
 </ul>
 </li>
+</ul>
+<h3 id="1-2-基础知识"><a href="#1-2-基础知识" class="headerlink" title="1.2. 基础知识"></a>1.2. 基础知识</h3><ul>
+<li>时延带宽积<ul>
+<li>时延带宽积又称为以比特为单位的链路长度</li>
+<li>即“某段链路现在有多少比特”容量</li>
+</ul>
+</li>
+<li>往返时延RTT<ul>
+<li>从发送方发送数据开始，到发送方接收到接收方的确认，总共经历的时延。</li>
+<li>RTT越大，在收到确认之前，可以发送的数据越多。</li>
+<li>RTT包括：往返传播时延=传播时延*2;末端处理时延</li>
+</ul>
+</li>
+<li>利用率<ul>
+<li>信道利用率：有数据通过的时间/（有+无)数据通过时间</li>
+<li>网络利用率：信道利用率加权平均值</li>
+</ul>
+</li>
+<li></li>
 </ul>
 <h2 id="2-TCP-IP基础知识"><a href="#2-TCP-IP基础知识" class="headerlink" title="2. TCP/IP基础知识"></a>2. TCP/IP基础知识</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://www.rfc-editor.org/">RFC Editor (rfc-editor.org)</a></li>
@@ -524,7 +543,36 @@
 <li>快照克隆</li>
 <li>scp</li>
 </ul>
-<h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="1-数据库管理软件的由来"><a href="#1-数据库管理软件的由来" class="headerlink" title="1. 数据库管理软件的由来"></a>1. 数据库管理软件的由来</h2><h3 id="1-1-程序所有的组件不可能运行在一台机器上"><a href="#1-1-程序所有的组件不可能运行在一台机器上" class="headerlink" title="1.1. 程序所有的组件不可能运行在一台机器上"></a>1.1. 程序所有的组件不可能运行在一台机器上</h3><p>因为单点故障和单台机器性能有限，于是通过水平拓展方式增强整体性能。</p>
+<h2 id="5-Linux网络信息"><a href="#5-Linux网络信息" class="headerlink" title="5. Linux网络信息"></a>5. Linux网络信息</h2><h3 id="5-1-主机名称"><a href="#5-1-主机名称" class="headerlink" title="5.1. 主机名称"></a>5.1. 主机名称</h3><ul>
+<li>临时修改：hostname +主机名</li>
+<li>长久修改：vi /etc/hostname</li>
+</ul>
+<h3 id="5-2-DNS解析"><a href="#5-2-DNS解析" class="headerlink" title="5.2. DNS解析"></a>5.2. DNS解析</h3><ul>
+<li>域名解析服务</li>
+<li>可以将域名转换为IP地址</li>
+<li>DNS域名劫持</li>
+<li>修改域名地址<ul>
+<li>window-&gt;C:\Windows\System32\drivers\etc\hosts</li>
+<li>Linux-&gt;etc/hosts</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-3-网络相关命令"><a href="#5-3-网络相关命令" class="headerlink" title="5.3. 网络相关命令"></a>5.3. 网络相关命令</h3><ul>
+<li>ifconfig</li>
+<li>netstat</li>
+<li>ping</li>
+<li>telnet</li>
+<li>curl</li>
+</ul>
+<h3 id="5-4-防火墙"><a href="#5-4-防火墙" class="headerlink" title="5.4. 防火墙"></a>5.4. 防火墙</h3><ul>
+<li>防火墙技术是保护端口的</li>
+<li>在centOS7+中使用firewalld代替以前的iptables</li>
+</ul>
+<h3 id="5-5-加密算法"><a href="#5-5-加密算法" class="headerlink" title="5.5. 加密算法"></a>5.5. 加密算法</h3><h4 id="5-5-1-不可逆加密算法"><a href="#5-5-1-不可逆加密算法" class="headerlink" title="5.5.1. 不可逆加密算法"></a>5.5.1. 不可逆加密算法</h4><ul>
+<li>数字签名，哈希函数，不可逆。</li>
+<li>哈希函数，算MD5值</li>
+</ul>
+<h4 id="5-5-2-对称加密"><a href="#5-5-2-对称加密" class="headerlink" title="5.5.2. 对称加密"></a>5.5.2. 对称加密</h4><h4 id="5-5-3-非对称加密"><a href="#5-5-3-非对称加密" class="headerlink" title="5.5.3. 非对称加密"></a>5.5.3. 非对称加密</h4><h3 id="5-6-主机间相互免密钥"><a href="#5-6-主机间相互免密钥" class="headerlink" title="5.6. 主机间相互免密钥"></a>5.6. 主机间相互免密钥</h3><h1 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h1><h2 id="1-数据库管理软件的由来"><a href="#1-数据库管理软件的由来" class="headerlink" title="1. 数据库管理软件的由来"></a>1. 数据库管理软件的由来</h2><h3 id="1-1-程序所有的组件不可能运行在一台机器上"><a href="#1-1-程序所有的组件不可能运行在一台机器上" class="headerlink" title="1.1. 程序所有的组件不可能运行在一台机器上"></a>1.1. 程序所有的组件不可能运行在一台机器上</h3><p>因为单点故障和单台机器性能有限，于是通过水平拓展方式增强整体性能。</p>
 <h3 id="1-2-数据安全问题"><a href="#1-2-数据安全问题" class="headerlink" title="1.2. 数据安全问题"></a>1.2. 数据安全问题</h3><p>各个机器上的程序是一个整体，所有组件的数据需要共享，于是想到数据和程序分离，文件存放于一台机器，多台机器通过网络访问文件(socket实现)。</p>
 <h3 id="1-3-并发"><a href="#1-3-并发" class="headerlink" title="1.3. 并发"></a>1.3. 并发</h3><p>我们必须写一个socket服务端来管理这台机器，然后写一个socket客户端，完成如下功能：</p>
 <ul>
@@ -607,7 +655,7 @@
             </p>
             
             <p>
-                <span>本文发表于 2022-03-21，最后修改于 2022-03-23。</span>
+                <span>本文发表于 2022-03-21，最后修改于 2022-03-25。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -624,10 +672,10 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/SFCMapping01.html">上一篇 « NFV中虚拟网络功能智能编排方法研究</a>
+    <a class="float-left" href="/post/面试02.html">上一篇 « Go语言面试</a>
     
     
-    <a class="float-right" href="/post/面试02.html">下一篇 » Go语言面试</a>
+    <a class="float-right" href="/post/GolangLearning02.html">下一篇 » go语言学习</a>
     
 </p>
     </article>
@@ -793,20 +841,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#Golang"
-                    title="Golang">Golang</a>
+                <a class="text-gray" href="/tags/#计算机基础"
+                    title="计算机基础">计算机基础</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/GolangLearning02.html" class="title">
-                go语言学习
+            <a href="/post/计算机基础.html" class="title">
+                计算机基础
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文861字，</span>
-                    <span>阅读约3分钟</span>
+                    <span class="hidden-xs">全文9230字，</span>
+                    <span>阅读约31分钟</span>
                 </small>
             </p>
         </div>
@@ -814,27 +862,20 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
+    <div class="post-img" style="background-image: url('/')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
                 
                 
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Golang"
-                    title="Golang">Golang</a>
-                <span>/</span>
-                
-                
             </div>
-            <a href="/post/GolangLearning01.html" class="title">
-                go语言学习
+            <a href="/post/link.html" class="title">
+                友链
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文196字，</span>
+                    <span>发表于2021-12-11，</span>
+                    <span class="hidden-xs">全文194字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -897,6 +938,9 @@
     <a class="post-tag-item" href="/tags/#Golang" title="Golang"
         rel="2">#Golang (2) </a>
     
+    <a class="post-tag-item" href="/tags/#计算机基础" title="计算机基础"
+        rel="1">#计算机基础 (1) </a>
+    
     <a class="post-tag-item" href="/tags/#关于我" title="关于我"
         rel="1">#关于我 (1) </a>
     
@@ -905,9 +949,6 @@
     
     <a class="post-tag-item" href="/tags/#面试" title="面试"
         rel="1">#面试 (1) </a>
-    
-    <a class="post-tag-item" href="/tags/#计算机基础" title="计算机基础"
-        rel="1">#计算机基础 (1) </a>
     
 </div>
     </div>
@@ -1092,7 +1133,7 @@
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">操作系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97"><span class="toc-nav-text">多级反馈队列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-MLFQ-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-nav-text">1. MLFQ: 基本原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%B0%9D%E8%AF%951%EF%BC%9A%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-text">2. 尝试1：如何改变优先级</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-nav-text">计算机网络</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-nav-text">1. 网络基础知识</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-TCP-IP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-nav-text">2. TCP&#x2F;IP基础知识</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF"><span class="toc-nav-text">3. 数据链路</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-IP%E5%8D%8F%E8%AE%AE"><span class="toc-nav-text">4. IP协议</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Linux"><span class="toc-nav-text">Linux</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB"><span class="toc-nav-text">1. 计算机硬件软件体系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E5%85%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-nav-text">2. 虚拟机安全与配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Linux%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">3. Linux命令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">4. Linux文件系统</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-nav-text">数据库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-nav-text">1. 数据库管理软件的由来</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%BF%B0"><span class="toc-nav-text">2. 数据库概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-nav-text">3. 存储引擎</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E4%BA%8B%E7%89%A9"><span class="toc-nav-text">4. 事物</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E8%AE%BA-2018-CMU-15-445-645"><span class="toc-nav-text">5. 数据库导论 2018 CMU 15-445&#x2F;645</span></a></li></ol></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">操作系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97"><span class="toc-nav-text">多级反馈队列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-MLFQ-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-nav-text">1. MLFQ: 基本原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%B0%9D%E8%AF%951%EF%BC%9A%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-text">2. 尝试1：如何改变优先级</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-nav-text">计算机网络</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-nav-text">1. 网络基础知识</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-TCP-IP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-nav-text">2. TCP&#x2F;IP基础知识</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF"><span class="toc-nav-text">3. 数据链路</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-IP%E5%8D%8F%E8%AE%AE"><span class="toc-nav-text">4. IP协议</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Linux"><span class="toc-nav-text">Linux</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB"><span class="toc-nav-text">1. 计算机硬件软件体系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E5%85%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-nav-text">2. 虚拟机安全与配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Linux%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">3. Linux命令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">4. Linux文件系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-Linux%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF"><span class="toc-nav-text">5. Linux网络信息</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-nav-text">数据库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-nav-text">1. 数据库管理软件的由来</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%BF%B0"><span class="toc-nav-text">2. 数据库概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-nav-text">3. 存储引擎</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E4%BA%8B%E7%89%A9"><span class="toc-nav-text">4. 事物</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E8%AE%BA-2018-CMU-15-445-645"><span class="toc-nav-text">5. 数据库导论 2018 CMU 15-445&#x2F;645</span></a></li></ol></li></ol>
   
 </div>
 
@@ -1143,11 +1184,11 @@
             <ul>
                 
                 <li>
-                    <a href="/post/计算机基础.html">计算机基础</a>
+                    <a href="/post/面试02.html">Go语言面试</a>
                 </li>
                 
                 <li>
-                    <a href="/post/面试02.html">Go语言面试</a>
+                    <a href="/post/计算机基础.html">计算机基础</a>
                 </li>
                 
                 <li>
