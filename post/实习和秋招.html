@@ -15,17 +15,17 @@
   <!-- if page has tags, then add tags to keyword -->
   
   
-  <meta name="keywords" content="golang,gorun,临在跑的博客,Golang,">
+  <meta name="keywords" content="golang,gorun,临在跑的博客,面试,">
   <!-- page.description has higher priority -->
-  <meta name="description" content="go语言学习系列文章">
+  <meta name="description" content="面试系列文章">
   <link rel="shortcut icon" href="/img/icon.png">
   <title>
     
-    go语言学习 | GORUN
+    Go语言面试 | GORUN
     
   </title>
 
-  <link rel="canonical" href="https://gorun.top/post/GolangLearning02.html">
+  <link rel="canonical" href="https://gorun.top/post/实习和秋招.html">
   
 <link rel="stylesheet" href="/css/geektutu.css">
 
@@ -103,31 +103,31 @@
                     
                 </li>
                 
-                <li class="gkt-cate-name float-left active">
-                    <a class="float-left" href="/post/GolangLearning01.html">Golang ▾</a>
+                <li class="gkt-cate-name float-left ">
+                    <a class="float-left" href="/post/Golang竞赛和笔试.html">Golang ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
-                                href="/post/GolangLearning01.html">Golang教程</a></li>
+                                href="/post/Golang竞赛和笔试.html">Golang算法竞赛</a></li>
                         
-                        <li class="gkt-sub-cate-name active"><a class="float-left"
-                                href="/post/GolangLearning02.html">Golang算法竞赛</a></li>
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/Golang简明教程.html">Golang教程</a></li>
                         
                     </ul>
                     
                 </li>
                 
-                <li class="gkt-cate-name float-left ">
-                    <a class="float-left" href="/post/计算机基础.html">面试 ▾</a>
+                <li class="gkt-cate-name float-left active">
+                    <a class="float-left" href="/post/实习和秋招.html">面试 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
-                        <li class="gkt-sub-cate-name "><a class="float-left"
-                                href="/post/计算机基础.html">计算机基础</a></li>
+                        <li class="gkt-sub-cate-name active"><a class="float-left"
+                                href="/post/实习和秋招.html">Go语言面试</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
-                                href="/post/面试02.html">Go语言面试</a></li>
+                                href="/post/计算机基础.html">计算机基础</a></li>
                         
                     </ul>
                     
@@ -173,19 +173,19 @@
         <a class="float-left" href="/post/计算机基础.html"><i class="u-arrow-left"></i></a>
         
         
-        <a class="float-right" href="/post/GolangLearning01.html"><i class="u-arrow-right"></i></a>
+        <a class="float-right" href="/post/Golang简明教程.html"><i class="u-arrow-right"></i></a>
         
     </div>
     <article class="col-xs-12">
-        <h1> go语言学习 </h1>
+        <h1> Go语言面试 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
-            <p> <strong> Golang算法竞赛系列文章链接：</strong></p>
+            <p> <strong> Go语言面试系列文章链接：</strong></p>
             <ul>
                 
                 <li>
-                    <a href="/post/GolangLearning02.html">go语言学习</a>
+                    <a href="/post/实习和秋招.html">Go语言面试</a>
                     <span class="post-item-date">(Mar 21, 2022)</span>
                 </li>
                 
@@ -200,31 +200,22 @@
         </blockquote>
         
         <div class="gkt-article-start"></div>
-        <h1 id="Codeforces"><a href="#Codeforces" class="headerlink" title="Codeforces"></a>Codeforces</h1><h2 id="Codeforces-Round-778-Div-1-Div-2-based-on-Technocup-2022-Final-Round"><a href="#Codeforces-Round-778-Div-1-Div-2-based-on-Technocup-2022-Final-Round" class="headerlink" title="Codeforces Round #778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1654">Codeforces Round #778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)</a></h2><h3 id="C-Alice-and-the-Cake"><a href="#C-Alice-and-the-Cake" class="headerlink" title="C. Alice and the Cake"></a>C. Alice and the Cake</h3><p>题意：对集合中的任何一个数w &ge; 2，可以把它变成⌊w/2⌋and ⌈w/2⌉ (⌊x⌋ and ⌈x⌉ denote <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Floor_and_ceiling_functions">floor and ceiling functions</a>, respectively)，初始集合{n},判断若干操作之后可否得到集合{a1, a2…, an-1, an}。</p>
-<blockquote>
-<p>翻译个题目怎么这么费劲，表达能力需要补强。</p>
-</blockquote>
-<p>昨天比赛24分钟就交题了，本机能过Pretest，线上一直WA，比赛的时候没想明白，20分钟后改成cpp过了。今天中午去食堂的路上思考了下，对于go的int我是一知半解的，百度才知道go里面的int大小是和机器有关的，32位系统里面int是4个字节，64位系统里面int是8个字节，我一直以为go里面的int像py一样，可以取到无穷大，是万能类型。通过测试，把code有关变量调整为int64以后，就可以AC了。<a target="_blank" rel="noopener" href="https://codeforces.com/contest/1654/submission/150335041">150335041</a></p>
-<h1 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a>Leetcode</h1><h2 id="第-286-场周赛"><a href="#第-286-场周赛" class="headerlink" title="第 286 场周赛"></a>第 286 场周赛</h2><h3 id="1-Find-the-Difference-of-Two-Arrays"><a href="#1-Find-the-Difference-of-Two-Arrays" class="headerlink" title="1. Find the Difference of Two Arrays"></a>1. <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-the-difference-of-two-arrays/">Find the Difference of Two Arrays</a></h3><p>模拟</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findDifference</span><span class="params">(nums1 []<span class="keyword">int</span>, nums2 []<span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    dict1 := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    dict2 := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    dict3 := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    dict4 := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> _,v:=<span class="keyword">range</span> nums1&#123;</span><br><span class="line">        dict1[v] = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _,v:=<span class="keyword">range</span> nums2&#123;</span><br><span class="line">        dict2[v] = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _,v:= <span class="keyword">range</span> nums1&#123;</span><br><span class="line">        <span class="keyword">if</span> _,ok:=dict2[v];!ok&#123;</span><br><span class="line">            dict3[v] = <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _,v:= <span class="keyword">range</span> nums2&#123;</span><br><span class="line">        <span class="keyword">if</span> _,ok:=dict1[v];!ok&#123;</span><br><span class="line">            dict4[v] = <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ans1,ans2:=[]<span class="keyword">int</span>&#123;&#125;,[]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> k,_:=<span class="keyword">range</span> dict3&#123;</span><br><span class="line">        ans1 = <span class="built_in">append</span>(ans1,k)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> k,_:=<span class="keyword">range</span> dict4&#123;</span><br><span class="line">        ans2 = <span class="built_in">append</span>(ans2,k)</span><br><span class="line">    &#125;</span><br><span class="line">    ans:=[][]<span class="keyword">int</span>&#123;ans1,ans2&#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="2-Minimum-Deletions-to-Make-Array-Beautiful"><a href="#2-Minimum-Deletions-to-Make-Array-Beautiful" class="headerlink" title="2. Minimum Deletions to Make Array Beautiful"></a>2. <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-deletions-to-make-array-beautiful/">Minimum Deletions to Make Array Beautiful</a></h3><p>模拟</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">func minDeletion(nums []int) int &#123;</span><br><span class="line">    n:=len(nums)</span><br><span class="line">    if n==0&#123;</span><br><span class="line">        return 0</span><br><span class="line">    &#125;</span><br><span class="line">    i:=0</span><br><span class="line">    ans:=0</span><br><span class="line">    for i&lt;n-1&#123;</span><br><span class="line">        if nums[i]!=nums[i+1]&#123;</span><br><span class="line">            i+=2</span><br><span class="line">        &#125;else&#123;</span><br><span class="line">            ans++</span><br><span class="line">            i++</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    if i==n&#123;</span><br><span class="line">        return ans</span><br><span class="line">    &#125;</span><br><span class="line">    return ans+1</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="3-Find-Palindrome-With-Fixed-Length"><a href="#3-Find-Palindrome-With-Fixed-Length" class="headerlink" title="3. Find Palindrome With Fixed Length"></a>3. <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-palindrome-with-fixed-length/">Find Palindrome With Fixed Length</a></h3><p>枚举+二分</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">kthPalindrome</span><span class="params">(q []<span class="keyword">int</span>, iL <span class="keyword">int</span>)</span> []<span class="title">int64</span></span> &#123;</span><br><span class="line">    <span class="comment">//count the nums</span></span><br><span class="line">    n:=<span class="built_in">len</span>(q)</span><br><span class="line">    <span class="comment">//total := 0</span></span><br><span class="line">    ans:=<span class="built_in">make</span>([]<span class="keyword">int64</span>,n)</span><br><span class="line">    <span class="comment">// if iL == 1&#123;</span></span><br><span class="line">    <span class="comment">//     //total = 9</span></span><br><span class="line">    <span class="comment">//     for i,v:=range q&#123;</span></span><br><span class="line">    <span class="comment">//         ans[i]=int64(v)</span></span><br><span class="line">    <span class="comment">//     &#125;</span></span><br><span class="line">    <span class="comment">//     return ans</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    leng := (iL+<span class="number">1</span>)/<span class="number">2</span></span><br><span class="line">    low,high := <span class="number">1</span>,<span class="number">10</span></span><br><span class="line">    <span class="keyword">for</span> j:=<span class="number">0</span>;j&lt;leng<span class="number">-1</span>;j++&#123;</span><br><span class="line">        low*=<span class="number">10</span></span><br><span class="line">        high*=<span class="number">10</span></span><br><span class="line">    &#125;</span><br><span class="line">    high-=<span class="number">1</span></span><br><span class="line">    tmp1,tmp2:=low,high</span><br><span class="line">    <span class="comment">//fmt.Println(leng,low,high)</span></span><br><span class="line">    <span class="keyword">for</span> i,v:=<span class="keyword">range</span> q&#123;</span><br><span class="line">        </span><br><span class="line">        low,high=tmp1,tmp2</span><br><span class="line">        </span><br><span class="line">        find:=<span class="literal">false</span></span><br><span class="line">        <span class="keyword">for</span> low &lt; high&#123;</span><br><span class="line">            mid := (low+high)/<span class="number">2</span></span><br><span class="line">            tmp:=mid</span><br><span class="line">            sum:=<span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j:=<span class="number">0</span>;j&lt;leng;j++&#123;</span><br><span class="line">                last := mid%<span class="number">10</span></span><br><span class="line">                count:=<span class="number">1</span></span><br><span class="line">                <span class="keyword">for</span> k:=<span class="number">0</span>;k&lt;j;k++&#123;</span><br><span class="line">                    count*=<span class="number">10</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> j!=leng<span class="number">-1</span>&#123;</span><br><span class="line">                    sum+=last*count</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    sum+=(last - <span class="number">1</span>)*count</span><br><span class="line">                &#125;</span><br><span class="line">                mid/=<span class="number">10</span></span><br><span class="line">            &#125;</span><br><span class="line">            sum+=<span class="number">1</span></span><br><span class="line">            <span class="comment">//fmt.Println(tmp,sum,low,high)</span></span><br><span class="line">            <span class="keyword">if</span> sum &lt; v&#123;</span><br><span class="line">                low = tmp+<span class="number">1</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> sum &gt; v&#123;</span><br><span class="line">                high = tmp<span class="number">-1</span></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> sum == v&#123;</span><br><span class="line">                x:=<span class="keyword">int64</span>(tmp)</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> iL%<span class="number">2</span>==<span class="number">1</span>&#123;</span><br><span class="line">                    tmp/=<span class="number">10</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> tmp&gt;<span class="number">0</span>&#123;</span><br><span class="line">                    x*=<span class="number">10</span></span><br><span class="line">                    x+=<span class="keyword">int64</span>(tmp%<span class="number">10</span>)</span><br><span class="line">                    tmp/=<span class="number">10</span></span><br><span class="line">                &#125;</span><br><span class="line">                ans[i] = x</span><br><span class="line">                find = <span class="literal">true</span></span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> !find&#123;</span><br><span class="line">            mid := (low+high)/<span class="number">2</span></span><br><span class="line">            tmp:=mid</span><br><span class="line">            sum:=<span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> j:=<span class="number">0</span>;j&lt;leng;j++&#123;</span><br><span class="line">                last := mid%<span class="number">10</span></span><br><span class="line">                count:=<span class="number">1</span></span><br><span class="line">                <span class="keyword">for</span> k:=<span class="number">0</span>;k&lt;j;k++&#123;</span><br><span class="line">                    count*=<span class="number">10</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span> j!=leng<span class="number">-1</span>&#123;</span><br><span class="line">                    sum+=last*count</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    sum+=(last - <span class="number">1</span>)*count</span><br><span class="line">                &#125;</span><br><span class="line">                mid/=<span class="number">10</span></span><br><span class="line">            &#125;</span><br><span class="line">            sum+=<span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> sum == v&#123;</span><br><span class="line">                x:=<span class="keyword">int64</span>(tmp)</span><br><span class="line">                </span><br><span class="line">                <span class="keyword">if</span> iL%<span class="number">2</span>==<span class="number">1</span>&#123;</span><br><span class="line">                    tmp/=<span class="number">10</span></span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> tmp&gt;<span class="number">0</span>&#123;</span><br><span class="line">                    x*=<span class="number">10</span></span><br><span class="line">                    x+=<span class="keyword">int64</span>(tmp%<span class="number">10</span>)</span><br><span class="line">                    tmp/=<span class="number">10</span></span><br><span class="line">                &#125;</span><br><span class="line">                ans[i] = x</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                ans[i] = <span class="keyword">int64</span>(<span class="number">-1</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="4-Maximum-Value-of-K-Coins-From-Piles"><a href="#4-Maximum-Value-of-K-Coins-From-Piles" class="headerlink" title="4. Maximum Value of K Coins From Piles"></a>4. <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-value-of-k-coins-from-piles/">Maximum Value of K Coins From Piles</a></h3><p>动态规划</p>
-<p>转移方程:<code>dp[i][j]</code> = <code>dp[i-1][j-x-1]</code> + <code>prefix[x]</code></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">maxValueOfCoins</span><span class="params">(piles [][]<span class="keyword">int</span>, k <span class="keyword">int</span>)</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="comment">//dp</span></span><br><span class="line">    <span class="comment">// dp[i][j] = dp[i-1][j-x] + prefix[x]</span></span><br><span class="line">    <span class="comment">// 前i stack进行j次操作最大值</span></span><br><span class="line">    n := <span class="built_in">len</span>(piles)</span><br><span class="line">    dp := <span class="built_in">make</span>([][]<span class="keyword">int</span>,n+<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">0</span>;i&lt;n+<span class="number">1</span>;i++&#123;</span><br><span class="line">        dp[i] = <span class="built_in">make</span>([]<span class="keyword">int</span>,k+<span class="number">1</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//prefix := make([]int,2010)</span></span><br><span class="line">    <span class="keyword">for</span> i:=<span class="number">1</span>;i&lt;=n;i++&#123;</span><br><span class="line">        pile:=piles[i<span class="number">-1</span>]</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> j:=<span class="number">0</span>;j&lt;=k;j++&#123;</span><br><span class="line">            sum:=<span class="number">0</span></span><br><span class="line">            dp[i][j] = dp[i<span class="number">-1</span>][j]</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">for</span> y:=<span class="number">0</span>;y &lt; min(j,<span class="built_in">len</span>(pile));y++&#123;</span><br><span class="line">                sum+=pile[y]</span><br><span class="line">                dp[i][j] = max(dp[i][j],dp[i<span class="number">-1</span>][j - y - <span class="number">1</span>] + sum)</span><br><span class="line">            &#125;</span><br><span class="line">            </span><br><span class="line">        &#125;</span><br><span class="line">       </span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n][k]</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">min</span><span class="params">(a,b <span class="keyword">int</span>)</span><span class="title">int</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> a&lt;b&#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">max</span><span class="params">(a,b <span class="keyword">int</span>)</span><span class="title">int</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> a&gt;b&#123;</span><br><span class="line">        <span class="keyword">return</span> a</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> b</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>T3写的不好，不用麻烦的二分，10…+第几小即可。</p>
+        <p>这篇文章是整个 Go语言面试系列的第一篇，主要介绍了……</p>
+<h1 id="实习岗位整理"><a href="#实习岗位整理" class="headerlink" title="实习岗位整理"></a>实习岗位整理</h1><h2 id="1-百度"><a href="#1-百度" class="headerlink" title="1. 百度"></a>1. 百度</h2><h3 id="投递地址：百度招聘-baidu-com"><a href="#投递地址：百度招聘-baidu-com" class="headerlink" title="投递地址：百度招聘 (baidu.com)"></a>投递地址：<a target="_blank" rel="noopener" href="https://talent.baidu.com/static/index.html?source=NEITUI&recommendCode=IVKM8G#/intern/INTERN">百度招聘 (baidu.com)</a></h3><h3 id="内推码"><a href="#内推码" class="headerlink" title="内推码"></a>内推码</h3><p>作者：听，是心动的声音<br>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/855539">https://www.nowcoder.com/discuss/855539</a><br>来源：牛客网</p>
+<p>被推荐人进入 **<a target="_blank" rel="noopener" href="https://www.nowcoder.com/jump/super-jump/word?word=%E7%99%BE%E5%BA%A6">百度</a>招聘官网- [实习生招聘]**页面，完善个人简历信息，在实习生招聘栏目下找到自己喜欢的春实习项目职位( <strong>以[2022春实习]开头</strong>)，在投递的时候填入 <strong>内推码</strong>。</p>
+<p><strong>春季实习生只能选择一个职位进行投递，被推荐人只能被成功推荐一次</strong>，以其投递时填写的内推码为准，且成功填写后不能修改。 </p>
+<p> 被推荐人如果已经完成投递但未填写内推码，也可以在<a href="">百度</a>招聘官网一个人中心-投递进度补填内推码完成内推流程。 </p>
+<p> 笔试前，被推荐人可以随时登录个人中心修改除内推码外的简历信息也可以修改投递职位。 </p>
+<p>​         除设计类&amp;昆仑芯相关春实习岗位，其他均有笔试。技术类：选择+编程。其他类：行测+简答。        </p>
+<p> 面试前一周会陆续发出，第一批次面试在4月9日<br><img src="https://uploadfiles.nowcoder.com/compress/mw1000/images/20220316/186374166_1647406568691/1B2895A35C4BE021AACF26BFF2832991" alt="img"></p>
+<h2 id="2-美团"><a href="#2-美团" class="headerlink" title="2. 美团"></a>2. 美团</h2><h3 id="投递地址：职位列表-美团招聘官网-meituan-com"><a href="#投递地址：职位列表-美团招聘官网-meituan-com" class="headerlink" title="投递地址：职位列表 | 美团招聘官网 (meituan.com)"></a>投递地址：<a target="_blank" rel="noopener" href="https://campus.meituan.com/jobs?jobFamily=1&jobType=2&pageNo=1">职位列表 | 美团招聘官网 (meituan.com)</a></h3><h3 id="内推："><a href="#内推：" class="headerlink" title="内推："></a>内推：</h3><p>作者：美团小内推官<br>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/889381?type=post&amp;order=hot&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack&amp;gio_id=CE0173FBE49D5B8BFB2B417B76D7D2ED-1648379096285">https://www.nowcoder.com/discuss/889381?type=post&amp;order=hot&amp;pos=&amp;page=1&amp;ncTraceId=&amp;channel=-1&amp;source_id=search_post_nctrack&amp;gio_id=CE0173FBE49D5B8BFB2B417B76D7D2ED-1648379096285</a><br>来源：牛客网</p>
+<p>1）登录「    <a href="">美团</a>招聘」官网    <a target="_blank" rel="noopener" href="https://campus.meituan.com/">https://campus.meituan.com/</a> ，复制文字内推码 「 lBUqIQB 」 ，粘贴到「输入您的内推码」处即可完成内推！【注意：（1）一定要到按照该方式在官网使用内推码内推投递！（2）    <a href="">美团</a>平台缺人，投递时感兴趣事业群可优先考虑下选择【    <a href="">美团</a>平台】，其他平台也可内推。】    </p>
+<p> 2）内推后一定要私聊我确认是否内推成功！</p>
+<h2 id="3-携程"><a href="#3-携程" class="headerlink" title="3. 携程"></a>3. 携程</h2><h3 id="投递地址："><a href="#投递地址：" class="headerlink" title="投递地址："></a>投递地址：</h3><p>作者：yyyzl<br>链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/discuss/862916?type=0&amp;order=0&amp;pos=1&amp;page=3&amp;source_id=discuss_tag_nctrack&amp;channel=-1&amp;ncTraceId=5eaebf105bef4a39a6a5b9eff625ad13.5683.16483792838830459&amp;gio_id=CE0173FBE49D5B8BFB2B417B76D7D2ED-1648379283501">https://www.nowcoder.com/discuss/862916?type=0&amp;order=0&amp;pos=1&amp;page=3&amp;source_id=discuss_tag_nctrack&amp;channel=-1&amp;ncTraceId=5eaebf105bef4a39a6a5b9eff625ad13.5683.16483792838830459&amp;gio_id=CE0173FBE49D5B8BFB2B417B76D7D2ED-1648379283501</a><br>来源：牛客网</p>
+<p><strong>内推可以优先筛选简历，投递地址在下面~</strong>  </p>
+<p>   <a target="_blank" rel="noopener" href="https://app.mokahr.com/recommendation-apply/trip/38951?recommendCode=NTAH5aK&amp;hash=%23/jobs?zhineng=&page=1">https://app.mokahr.com/recommendation-apply/trip/38951?recommendCode=NTAH5aK&amp;hash=%23%2Fjobs%3Fzhineng%3D%26page%3D1</a>  </p>
+<p>   也可以直接使用内推码投递哦~【NTAH5aK】</p>
+<p><img src="https://uploadfiles.nowcoder.com/images/20220320/465366802_1647751780973/6AA9A0F221C437CDC9C08114F79A3C2A" alt="img"></p>
 
         
 <script src="/js/qrious.min.js"></script>
@@ -250,8 +241,8 @@
             <p>
                 <span>专题: </span>
                 
-                <a href="/series/#Golang算法竞赛">
-                    <code key="Golang算法竞赛" class="post-label">Golang算法竞赛</code>
+                <a href="/series/#Go语言面试">
+                    <code key="Go语言面试" class="post-label">Go语言面试</code>
                 </a>
                 
             </p>
@@ -263,7 +254,7 @@
             
             <p>
                 本站永久域名「 <a
-                        href="/post/GolangLearning02.html">gorun.top</a>
+                        href="/post/实习和秋招.html">gorun.top</a>
                     」，也可搜索「 GORUN 」找到我。
             </p>
             
@@ -277,7 +268,7 @@
     <a class="float-left" href="/post/计算机基础.html">上一篇 « 计算机基础</a>
     
     
-    <a class="float-right" href="/post/GolangLearning01.html">下一篇 » go语言学习</a>
+    <a class="float-right" href="/post/Golang简明教程.html">下一篇 » go语言学习</a>
     
 </p>
     </article>
@@ -449,7 +440,7 @@
                 
                 
             </div>
-            <a href="/post/GolangLearning01.html" class="title">
+            <a href="/post/Golang简明教程.html" class="title">
                 go语言学习
             </a>
             <p class="text-gray">
@@ -547,17 +538,17 @@
     <a class="post-tag-item" href="/tags/#Golang" title="Golang"
         rel="2">#Golang (2) </a>
     
-    <a class="post-tag-item" href="/tags/#SFC" title="SFC"
-        rel="1">#SFC (1) </a>
-    
     <a class="post-tag-item" href="/tags/#关于我" title="关于我"
         rel="1">#关于我 (1) </a>
     
-    <a class="post-tag-item" href="/tags/#计算机基础" title="计算机基础"
-        rel="1">#计算机基础 (1) </a>
+    <a class="post-tag-item" href="/tags/#SFC" title="SFC"
+        rel="1">#SFC (1) </a>
     
     <a class="post-tag-item" href="/tags/#面试" title="面试"
         rel="1">#面试 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#计算机基础" title="计算机基础"
+        rel="1">#计算机基础 (1) </a>
     
 </div>
     </div>
@@ -730,19 +721,19 @@
         
         
         <section class="gkt-sidebar-content box-shadow">
-            <strong>Golang算法竞赛</strong>
+            <strong>Go语言面试</strong>
             <ul>
                 
                 <li>
-                    <a href="/post/GolangLearning02.html"
-                        class="gkt-sidebar-active">go语言学习</a>
+                    <a href="/post/实习和秋招.html"
+                        class="gkt-sidebar-active">Go语言面试</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Codeforces"><span class="toc-nav-text">Codeforces</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Codeforces-Round-778-Div-1-Div-2-based-on-Technocup-2022-Final-Round"><span class="toc-nav-text">Codeforces Round #778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Leetcode"><span class="toc-nav-text">Leetcode</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC-286-%E5%9C%BA%E5%91%A8%E8%B5%9B"><span class="toc-nav-text">第 286 场周赛</span></a></li></ol></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E5%AE%9E%E4%B9%A0%E5%B2%97%E4%BD%8D%E6%95%B4%E7%90%86"><span class="toc-nav-text">实习岗位整理</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E7%99%BE%E5%BA%A6"><span class="toc-nav-text">1. 百度</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E7%BE%8E%E5%9B%A2"><span class="toc-nav-text">2. 美团</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E6%90%BA%E7%A8%8B"><span class="toc-nav-text">3. 携程</span></a></li></ol></li></ol>
   
 </div>
 
@@ -793,15 +784,15 @@
             <ul>
                 
                 <li>
-                    <a href="/post/面试02.html">Go语言面试</a>
-                </li>
-                
-                <li>
                     <a href="/post/计算机基础.html">计算机基础</a>
                 </li>
                 
                 <li>
-                    <a href="/post/GolangLearning02.html">go语言学习</a>
+                    <a href="/post/实习和秋招.html">Go语言面试</a>
+                </li>
+                
+                <li>
+                    <a href="/post/Golang简明教程.html">go语言学习</a>
                 </li>
                 
             </ul>
