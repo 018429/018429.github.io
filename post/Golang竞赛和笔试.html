@@ -236,6 +236,20 @@
 <h2 id="T4-穿过沼泽"><a href="#T4-穿过沼泽" class="headerlink" title="T4 穿过沼泽"></a>T4 穿过沼泽</h2><p>n*m,0表示平地，1表示沼泽，00或者11花费1单位，01或10花费2单位时间，可以向左右下方向前进，从左上角到右下角要花多少时间。</p>
 <h3 id="解法-3"><a href="#解法-3" class="headerlink" title="解法"></a>解法</h3><p>动态规划</p>
 <p><code>dp[i][j]</code>表示到<code>(i,j)</code>最少花费时间。按行迭代，注意迭代列的时候左右两个方向各迭代一次。</p>
+<h1 id="美团笔试0402"><a href="#美团笔试0402" class="headerlink" title="美团笔试0402"></a>美团笔试0402</h1><h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><ul>
+<li>第一题，36%，N个红蓝球，问能不能实现插入若干球使得不相邻？<ul>
+<li>迷的一批，这不就是一个O(n)贪心吗？调到15分钟还是36%case，最后18分钟我本来第四题想写个枚举+dfs，想着还是来调这题，这题真的有我想不到的case?无法理解？我不理解！</li>
+</ul>
+</li>
+<li>第二题，91%，问的是给一些数字加上一些值变成单峰数组，O(n)解决，后面三题的时间限制都是3MS，太便宜一些卡时间的了。解法是维护数组left,和right,下面介绍left，right同理，left[i]表示0~i严格递增的增加和值，这可以O(N)维护，维护好了枚举切开点Left和Right加和就好了，完了知道自己为什么91%了，他说的是切开后，至于两边的最大值相等，这是没关系的，自己给自己强行增加代码复杂度还维护了增加后的值，判断力两边最大值相等的情况下，ans++，这是画蛇添足！</li>
+<li>第三题，AC，自己的解法是O(N)的，这一点我很骄傲，问题是求子串个数，要求每个子串包含特定子序列t。解法是滑动窗口，维护每个最小的含子序列窗口，然后左右添字符做乘法计入贡献就好了。</li>
+<li>第四题,0%，一个数组分成三份，使每份的和最接近，题目说了答案1000以内，枚举答案，判断数组是否可以得到和为目标的子序列，判断两次，可以dfs搜索，注意剪枝，没时间写了得0分。补充：可以背包和力扣上找一半类似。</li>
+<li>测试，0%</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li>个人评价：速度太慢，第二，菜就算菜。没得说的。</li>
+<li>题目评价，234是好题，23尤其好，1是垃圾题，还发了两次公告。4是没时间了，测试题自己策略不对，没看重，也20分，自己要认真对待，不能把时间全部花在编程题上，IDE还是准备好四个文件，这样代码可以留下来，思路配合代码看，这样才正宗。当然，自己就是要有AK的目标，这种成果肯定是不可以接受的。3AC+0.85A这是可以满意的范围。心情有点down。anyway，pass it!Happy Holiday~</li>
+</ul>
 
         
 <script src="/js/qrious.min.js"></script>
@@ -268,7 +282,7 @@
             </p>
             
             <p>
-                <span>本文发表于 2022-03-21，最后修改于 2022-03-27。</span>
+                <span>本文发表于 2022-03-21，最后修改于 2022-04-02。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -481,20 +495,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#面试"
-                    title="面试">面试</a>
+                <a class="text-gray" href="/tags/#Golang"
+                    title="Golang">Golang</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/实习和秋招.html" class="title">
-                Go语言面试
+            <a href="/post/Golang简明教程.html" class="title">
+                go语言学习
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文2057字，</span>
-                    <span>阅读约7分钟</span>
+                    <span class="hidden-xs">全文196字，</span>
+                    <span>阅读约1分钟</span>
                 </small>
             </p>
         </div>
@@ -502,7 +516,7 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -510,20 +524,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#SFC"
-                    title="SFC">SFC</a>
+                <a class="text-gray" href="/tags/#Golang"
+                    title="Golang">Golang</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/SFCMapping01.html" class="title">
-                NFV中虚拟网络功能智能编排方法研究
+            <a href="/post/Golang竞赛和笔试.html" class="title">
+                go语言学习
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2022-03-18，</span>
-                    <span class="hidden-xs">全文4428字，</span>
-                    <span>阅读约15分钟</span>
+                    <span>发表于2022-03-21，</span>
+                    <span class="hidden-xs">全文7099字，</span>
+                    <span>阅读约24分钟</span>
                 </small>
             </p>
         </div>
@@ -751,7 +765,7 @@
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Codeforces"><span class="toc-nav-text">Codeforces</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Codeforces-Round-778-Div-1-Div-2-based-on-Technocup-2022-Final-Round"><span class="toc-nav-text">Codeforces Round #778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Leetcode"><span class="toc-nav-text">Leetcode</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC-286-%E5%9C%BA%E5%91%A8%E8%B5%9B"><span class="toc-nav-text">第 286 场周赛</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BD%91%E6%98%93%E7%AC%94%E8%AF%950327"><span class="toc-nav-text">网易笔试0327</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T1-%E6%89%93%E5%A6%96%E6%80%AA"><span class="toc-nav-text">T1 打妖怪</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T2-%E6%A0%87%E8%AE%B0%E5%AD%97%E6%AF%8D"><span class="toc-nav-text">T2 标记字母</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T3-%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-nav-text">T3 完全二叉树</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T4-%E7%A9%BF%E8%BF%87%E6%B2%BC%E6%B3%BD"><span class="toc-nav-text">T4 穿过沼泽</span></a></li></ol></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Codeforces"><span class="toc-nav-text">Codeforces</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Codeforces-Round-778-Div-1-Div-2-based-on-Technocup-2022-Final-Round"><span class="toc-nav-text">Codeforces Round #778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Leetcode"><span class="toc-nav-text">Leetcode</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC-286-%E5%9C%BA%E5%91%A8%E8%B5%9B"><span class="toc-nav-text">第 286 场周赛</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BD%91%E6%98%93%E7%AC%94%E8%AF%950327"><span class="toc-nav-text">网易笔试0327</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T1-%E6%89%93%E5%A6%96%E6%80%AA"><span class="toc-nav-text">T1 打妖怪</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T2-%E6%A0%87%E8%AE%B0%E5%AD%97%E6%AF%8D"><span class="toc-nav-text">T2 标记字母</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T3-%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-nav-text">T3 完全二叉树</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T4-%E7%A9%BF%E8%BF%87%E6%B2%BC%E6%B3%BD"><span class="toc-nav-text">T4 穿过沼泽</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BE%8E%E5%9B%A2%E7%AC%94%E8%AF%950402"><span class="toc-nav-text">美团笔试0402</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-text">题目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-text">总结</span></a></li></ol></li></ol>
   
 </div>
 
