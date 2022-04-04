@@ -21,7 +21,7 @@
   <link rel="shortcut icon" href="/img/icon.png">
   <title>
     
-    go语言学习 | GORUN
+    Golang算法竞赛 | GORUN
     
   </title>
 
@@ -112,7 +112,7 @@
                                 href="/post/Golang竞赛和笔试.html">Golang算法竞赛</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
-                                href="/post/Golang简明教程.html">Golang教程</a></li>
+                                href="/post/Golang简明教程.html">Go简明教程</a></li>
                         
                     </ul>
                     
@@ -175,7 +175,7 @@
         
     </div>
     <article class="col-xs-12">
-        <h1> go语言学习 </h1>
+        <h1> Golang算法竞赛 </h1>
         
         
         <div class="hidden-lg hidden-md series_links">
@@ -183,7 +183,7 @@
             <ul>
                 
                 <li>
-                    <a href="/post/Golang竞赛和笔试.html">go语言学习</a>
+                    <a href="/post/Golang竞赛和笔试.html">Golang算法竞赛</a>
                     <span class="post-item-date">(Mar 21, 2022)</span>
                 </li>
                 
@@ -217,7 +217,7 @@
 <p><strong>代码：</strong></p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;bufio&quot;</span></span><br><span class="line">	. <span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main_cfgr5_B</span><span class="params">()</span></span> &#123;</span><br><span class="line">	_in, _out := os.Stdin, os.Stdout</span><br><span class="line">	in, out := bufio.NewReader(_in), bufio.NewWriter(_out)</span><br><span class="line">	<span class="keyword">defer</span> out.Flush()</span><br><span class="line">	<span class="keyword">var</span> cas <span class="keyword">int</span> = <span class="number">1</span></span><br><span class="line">	<span class="comment">// Fscan(in, cas)</span></span><br><span class="line">	<span class="keyword">var</span> sol <span class="function"><span class="keyword">func</span><span class="params">()</span></span></span><br><span class="line">	<span class="comment">/* Begin Coding */</span></span><br><span class="line">	sol = <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">var</span> n, ans <span class="keyword">int</span></span><br><span class="line">		Fscan(in, &amp;n)</span><br><span class="line">		a, b := <span class="built_in">make</span>([]<span class="keyword">int</span>, n), <span class="built_in">make</span>([]<span class="keyword">int</span>, n)</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">			Fscan(in, &amp;a[i])</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; n; i++ &#123;</span><br><span class="line">			Fscan(in, &amp;b[i])</span><br><span class="line">		&#125;</span><br><span class="line">		i, j := <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">		count := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">struct</span>&#123;&#125;&#123;&#125;</span><br><span class="line">		<span class="keyword">for</span> j &lt; n &#123;</span><br><span class="line">			<span class="keyword">if</span> _, ok := count[a[i]]; ok &#123;</span><br><span class="line">				i++</span><br><span class="line">				<span class="keyword">continue</span></span><br><span class="line">			&#125;</span><br><span class="line">			count[b[j]] = <span class="keyword">struct</span>&#123;&#125;&#123;&#125;</span><br><span class="line">			<span class="keyword">if</span> a[i] == b[j] &#123;</span><br><span class="line">				i++</span><br><span class="line">				j++</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				ans++</span><br><span class="line">				j++</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		Fprintln(out, ans)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/* Code Ending */</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; cas; i++ &#123;</span><br><span class="line">		sol()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	main_cfgr5_B()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><strong>标程：</strong> 标程的解法写的比较晦涩，引入了一个中间数组c，记入每辆车实际的出隧道时刻，然后对于c中的每个数，如果比它前面出现的 最大的数还要小，则出现超车；自我感觉没有自己的解法好懂。</p>
+<p><strong>标程：</strong> 标程的解法写的比较晦涩，引入了一个中间数组<code>c</code>，记入每辆车实际的出隧道时刻，然后对于<code>c</code>中的每个数，如果比它前面出现的最大的数还要小，则出现超车；自我感觉没有自己的解法好懂。</p>
 <p><strong>Solution by tourist:</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">  cin.<span class="built_in">tie</span>(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">int</span> n;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">a</span><span class="params">(n)</span>, <span class="title">b</span><span class="params">(n)</span></span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    cin &gt;&gt; a[i];</span><br><span class="line">    --a[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    cin &gt;&gt; b[i];</span><br><span class="line">    --b[i];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">pos</span><span class="params">(n)</span></span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    pos[b[i]] = i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function">vector&lt;<span class="keyword">int</span>&gt; <span class="title">c</span><span class="params">(n)</span></span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    c[i] = pos[a[i]];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">int</span> mx = <span class="number">-1</span>, ans = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    <span class="keyword">if</span> (c[i] &gt; mx) &#123;</span><br><span class="line">      mx = c[i];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      ++ans;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -326,7 +326,7 @@
         <hr />
         <p name="pagination" style="font-size: 1.2em">
     
-    <a class="float-left" href="/post/Golang简明教程.html">上一篇 « go语言学习</a>
+    <a class="float-left" href="/post/Golang简明教程.html">上一篇 « Go简明教程</a>
     
     
 </p>
@@ -485,7 +485,7 @@
         <h3>推荐阅读</h3>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
@@ -493,20 +493,20 @@
                 
                 <span>/</span>
                 
-                <a class="text-gray" href="/tags/#SFC"
-                    title="SFC">SFC</a>
+                <a class="text-gray" href="/tags/#Golang"
+                    title="Golang">Golang</a>
                 <span>/</span>
                 
                 
             </div>
-            <a href="/post/SFCMapping01.html" class="title">
-                NFV中虚拟网络功能智能编排方法研究
+            <a href="/post/Golang简明教程.html" class="title">
+                Go简明教程
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2022-03-18，</span>
-                    <span class="hidden-xs">全文4428字，</span>
-                    <span>阅读约15分钟</span>
+                    <span>发表于2022-03-21，</span>
+                    <span class="hidden-xs">全文194字，</span>
+                    <span>阅读约1分钟</span>
                 </small>
             </p>
         </div>
@@ -514,21 +514,28 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
                 
                 
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#Golang"
+                    title="Golang">Golang</a>
+                <span>/</span>
+                
+                
             </div>
-            <a href="/post/link.html" class="title">
-                友链
+            <a href="/post/Golang竞赛和笔试.html" class="title">
+                Golang算法竞赛
             </a>
             <p class="text-gray">
                 <small>
-                    <span>发表于2021-12-11，</span>
-                    <span class="hidden-xs">全文194字，</span>
-                    <span>阅读约1分钟</span>
+                    <span>发表于2022-03-21，</span>
+                    <span class="hidden-xs">全文14178字，</span>
+                    <span>阅读约48分钟</span>
                 </small>
             </p>
         </div>
@@ -778,7 +785,7 @@
                 
                 <li>
                     <a href="/post/Golang竞赛和笔试.html"
-                        class="gkt-sidebar-active">go语言学习</a>
+                        class="gkt-sidebar-active">Golang算法竞赛</a>
                     
                     <!-- Table of Contents -->
 <div id="sidebar-toc">
@@ -844,7 +851,7 @@
                 </li>
                 
                 <li>
-                    <a href="/post/Golang简明教程.html">go语言学习</a>
+                    <a href="/post/Golang简明教程.html">Go简明教程</a>
                 </li>
                 
             </ul>
