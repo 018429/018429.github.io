@@ -119,15 +119,15 @@
                 </li>
                 
                 <li class="gkt-cate-name float-left ">
-                    <a class="float-left" href="/post/计算机基础.html">面试 ▾</a>
+                    <a class="float-left" href="/post/实习和秋招.html">面试 ▾</a>
                     
                     <ul class="gkt-sub-cate">
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
-                                href="/post/计算机基础.html">计算机基础</a></li>
+                                href="/post/实习和秋招.html">Go语言面试</a></li>
                         
                         <li class="gkt-sub-cate-name "><a class="float-left"
-                                href="/post/实习和秋招.html">Go语言面试</a></li>
+                                href="/post/计算机基础.html">计算机基础</a></li>
                         
                     </ul>
                     
@@ -239,6 +239,16 @@
 <h3 id="1515E-Phoenix-and-Computers"><a href="#1515E-Phoenix-and-Computers" class="headerlink" title="1515E - Phoenix and Computers"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1515/problem/E">1515E - Phoenix and Computers</a></h3><p>题意：问打开所有电脑的操作序列可能数，对M取模，有个特点，i打开，i+2打开，i+1会自动打开；不会；</p>
 <h3 id="1515F-Phoenix-and-Earthquake"><a href="#1515F-Phoenix-and-Earthquake" class="headerlink" title="1515F - Phoenix and Earthquake"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1515/problem/F">1515F - Phoenix and Earthquake</a></h3><p>题意：3250分的题，想了好久，虽然没A，思路和标准解法一模一样，解法一、优先队列+并查集，自己写了一版，WA第12个case；最小生成树+DFS；这是作者推荐的O(m+n)的方法，还没看；这是一道好题；</p>
 <h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>这场GR发挥不错，F都能想到正确思路，并提交代码虽然没AC；还是觉得自己挺不错的；这场虚拟竞赛的体验不比正式比赛差；</p>
+<h2 id="Codeforces-Round-781-Div-2"><a href="#Codeforces-Round-781-Div-2" class="headerlink" title="Codeforces Round #781 (Div. 2)"></a><a target="_blank" rel="noopener" href="https://codeforces.com/contest/1665">Codeforces Round #781 (Div. 2)</a></h2><h3 id="A-GCD-vs-LCM"><a href="#A-GCD-vs-LCM" class="headerlink" title="A: GCD vs LCM"></a><strong>A: GCD vs LCM</strong></h3><p>题意：给出n，构造a,b,c,d，使得a+b+c+d=n，且gcd(a,b)==lcm(c,d);</p>
+<p>解法：输出n-3,1,1,1</p>
+<p>吐槽：花了22分钟，分%4讨论实在是蠢，看样例1一分钟就可以写出来吧</p>
+<h2 id="B-Array-Cloning-Technique"><a href="#B-Array-Cloning-Technique" class="headerlink" title="B: Array Cloning Technique"></a><strong>B: Array Cloning Technique</strong></h2><p>题意：给复制数组和交换不同数组值两种操作，问最小操作数获得值全部相同的数组的数量；</p>
+<p>解法：贪心模拟，构造当前数组出现次数最多的值的全部相同的数组；交换一次*2</p>
+<h3 id="C-Tree-Infection"><a href="#C-Tree-Infection" class="headerlink" title="C: Tree Infection"></a><strong>C: Tree Infection</strong></h3><p>题意：每秒钟可以<strong>同时进行</strong>两种操作，感染和传播，问最少时间让所有节点感染；其中感染的只能感染兄弟节点，这样描述好多了，为什么要描述成感染至少有一个孩子节点感染的父亲节点的任意一个其他未感染的孩子？？？开始理解成了只能感染被感染节点的其中一个未被感染的孩子！话说这样描述自己写了一版DFS；是不是一个新题目？</p>
+<p>解法：贪心模拟，因为每个兄弟集合是独立的，维护一个兄弟集合数量的数组，每次选一个最大集合感染，然后有感染节点的集合每秒自动传播一个节点；自己贪心第二步步子迈大了，想直接按剩余未被感染节点除以二解决,但是这样存在贪心失败的case；还是一步一步模拟吧，每次总能让数组变小，节点个数不多的情况下复杂度也是O(n)啊，非要O(1);</p>
+<p><strong>code:</strong></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;bufio&quot;</span></span><br><span class="line">	. <span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;sort&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main_div2_781_C</span><span class="params">()</span></span> &#123;</span><br><span class="line">	_in, _out := os.Stdin, os.Stdout</span><br><span class="line">	in, out := bufio.NewReader(_in), bufio.NewWriter(_out)</span><br><span class="line">	<span class="keyword">defer</span> out.Flush()</span><br><span class="line">	<span class="keyword">var</span> cas <span class="keyword">int</span> = <span class="number">1</span></span><br><span class="line">	Fscan(in, &amp;cas)</span><br><span class="line">	<span class="keyword">var</span> sol <span class="function"><span class="keyword">func</span><span class="params">()</span></span></span><br><span class="line">	<span class="comment">/* Begin Coding */</span></span><br><span class="line">	sol = <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="keyword">var</span> n <span class="keyword">int</span></span><br><span class="line">		Fscan(in, &amp;n)</span><br><span class="line">		children := <span class="built_in">make</span>([][]<span class="keyword">int</span>, n+<span class="number">1</span>)</span><br><span class="line">		<span class="keyword">var</span> pa <span class="keyword">int</span></span><br><span class="line">		parent := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">struct</span>&#123;&#125;&#123;&#125;</span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">2</span>; i &lt;= n; i++ &#123;</span><br><span class="line">			Fscan(in, &amp;pa)</span><br><span class="line">			children[pa] = <span class="built_in">append</span>(children[pa], i)</span><br><span class="line">			parent[pa] = <span class="keyword">struct</span>&#123;&#125;&#123;&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		sort.Slice(children, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="built_in">len</span>(children[i]) &gt; <span class="built_in">len</span>(children[j])</span><br><span class="line">		&#125;)</span><br><span class="line">		arr := []<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">		Inject := <span class="built_in">len</span>(parent) + <span class="number">1</span></span><br><span class="line">		<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(children); i++ &#123;</span><br><span class="line">			<span class="keyword">if</span> <span class="built_in">len</span>(children[i]) == <span class="number">0</span> &#123;</span><br><span class="line">				<span class="keyword">break</span></span><br><span class="line">			&#125;</span><br><span class="line">			spreadTime := Inject - i - <span class="number">1</span></span><br><span class="line">			<span class="keyword">if</span> <span class="built_in">len</span>(children[i])<span class="number">-1</span> &gt; spreadTime &#123;</span><br><span class="line">				<span class="comment">// Inject += (len(children[i]) - 1 - spreadTime + 1) / 2</span></span><br><span class="line">				arr = <span class="built_in">append</span>(arr, <span class="built_in">len</span>(children[i])<span class="number">-1</span>-spreadTime)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		sort.Slice(arr, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">			<span class="keyword">return</span> arr[i] &gt; arr[j]</span><br><span class="line">		&#125;)</span><br><span class="line">		<span class="keyword">for</span> <span class="built_in">len</span>(arr) &gt; <span class="number">0</span> &#123;</span><br><span class="line">			arr[<span class="number">0</span>] -= <span class="number">1</span></span><br><span class="line">			Inject++</span><br><span class="line">			<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(arr); i++ &#123;</span><br><span class="line">				arr[i]--</span><br><span class="line">			&#125;</span><br><span class="line">			sort.Slice(arr, <span class="function"><span class="keyword">func</span><span class="params">(i, j <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">				<span class="keyword">return</span> arr[i] &gt; arr[j]</span><br><span class="line">			&#125;)</span><br><span class="line">			<span class="keyword">for</span> arr[<span class="built_in">len</span>(arr)<span class="number">-1</span>] &lt;= <span class="number">0</span> &#123;</span><br><span class="line">				arr = arr[:<span class="built_in">len</span>(arr)<span class="number">-1</span>]</span><br><span class="line">				<span class="keyword">if</span> <span class="built_in">len</span>(arr) == <span class="number">0</span> &#123;</span><br><span class="line">					<span class="keyword">break</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Inject := len(parent) + 1</span></span><br><span class="line">		<span class="comment">// for i := 0; i &lt; len(children); i++ &#123;</span></span><br><span class="line">		<span class="comment">// 	if len(children[i]) == 0 &#123;</span></span><br><span class="line">		<span class="comment">// 		break</span></span><br><span class="line">		<span class="comment">// 	&#125;</span></span><br><span class="line">		<span class="comment">// 	spreadTime := Inject - i - 1</span></span><br><span class="line">		<span class="comment">// 	if len(children[i])-1 &gt; spreadTime &#123;</span></span><br><span class="line">		<span class="comment">// 		Inject += (len(children[i]) - 1 - spreadTime + 1) / 2</span></span><br><span class="line">		<span class="comment">// 	&#125;</span></span><br><span class="line">		<span class="comment">// &#125;</span></span><br><span class="line">		Fprintln(out, Inject)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">/* Code Ending */</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; cas; i++ &#123;</span><br><span class="line">		sol()</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	main_div2_781_C()</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
 <h1 id="Leetcode"><a href="#Leetcode" class="headerlink" title="Leetcode"></a>Leetcode</h1><h2 id="第-286-场周赛"><a href="#第-286-场周赛" class="headerlink" title="第 286 场周赛"></a>第 286 场周赛</h2><h3 id="1-Find-the-Difference-of-Two-Arrays"><a href="#1-Find-the-Difference-of-Two-Arrays" class="headerlink" title="1. Find the Difference of Two Arrays"></a>1. <a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-the-difference-of-two-arrays/">Find the Difference of Two Arrays</a></h3><p>模拟</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">findDifference</span><span class="params">(nums1 []<span class="keyword">int</span>, nums2 []<span class="keyword">int</span>)</span> [][]<span class="title">int</span></span> &#123;</span><br><span class="line">    dict1 := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    dict2 := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    dict3 := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    dict4 := <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> _,v:=<span class="keyword">range</span> nums1&#123;</span><br><span class="line">        dict1[v] = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _,v:=<span class="keyword">range</span> nums2&#123;</span><br><span class="line">        dict2[v] = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _,v:= <span class="keyword">range</span> nums1&#123;</span><br><span class="line">        <span class="keyword">if</span> _,ok:=dict2[v];!ok&#123;</span><br><span class="line">            dict3[v] = <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> _,v:= <span class="keyword">range</span> nums2&#123;</span><br><span class="line">        <span class="keyword">if</span> _,ok:=dict1[v];!ok&#123;</span><br><span class="line">            dict4[v] = <span class="number">1</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ans1,ans2:=[]<span class="keyword">int</span>&#123;&#125;,[]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">for</span> k,_:=<span class="keyword">range</span> dict3&#123;</span><br><span class="line">        ans1 = <span class="built_in">append</span>(ans1,k)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> k,_:=<span class="keyword">range</span> dict4&#123;</span><br><span class="line">        ans2 = <span class="built_in">append</span>(ans2,k)</span><br><span class="line">    &#125;</span><br><span class="line">    ans:=[][]<span class="keyword">int</span>&#123;ans1,ans2&#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -318,7 +328,7 @@
             </p>
             
             <p>
-                <span>本文发表于 2022-03-21，最后修改于 2022-04-08。</span>
+                <span>本文发表于 2022-03-21，最后修改于 2022-04-09。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -502,6 +512,35 @@
                 
                 <span>/</span>
                 
+                <a class="text-gray" href="/tags/#计算机基础"
+                    title="计算机基础">计算机基础</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/计算机基础.html" class="title">
+                计算机基础
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2022-03-21，</span>
+                    <span class="hidden-xs">全文9230字，</span>
+                    <span>阅读约31分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
                 <a class="text-gray" href="/tags/#面试"
                     title="面试">面试</a>
                 <span>/</span>
@@ -523,49 +562,27 @@
 </div>
         
         <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Golang"
-                    title="Golang">Golang</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/Golang竞赛和笔试.html" class="title">
-                Golang算法竞赛
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文15508字，</span>
-                    <span>阅读约52分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
     <div class="post-img" style="background-image: url('/')"></div>
     <div class="post-info">
         <div class="post-info-center">
             <div class="hidden-xs">
                 
                 
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#关于我"
+                    title="关于我">关于我</a>
+                <span>/</span>
+                
+                
             </div>
-            <a href="/post/link.html" class="title">
-                友链
+            <a href="/post/about.html" class="title">
+                关于我
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2021-12-11，</span>
-                    <span class="hidden-xs">全文194字，</span>
+                    <span class="hidden-xs">全文263字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -605,11 +622,11 @@
     <a class="post-tag-item" href="/tags/#SFC" title="SFC"
         rel="1">#SFC (1) </a>
     
-    <a class="post-tag-item" href="/tags/#计算机基础" title="计算机基础"
-        rel="1">#计算机基础 (1) </a>
-    
     <a class="post-tag-item" href="/tags/#面试" title="面试"
         rel="1">#面试 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#计算机基础" title="计算机基础"
+        rel="1">#计算机基础 (1) </a>
     
 </div>
     </div>
@@ -794,7 +811,7 @@
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Codeforces"><span class="toc-nav-text">Codeforces</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Codeforces-Round-778-Div-1-Div-2-based-on-Technocup-2022-Final-Round"><span class="toc-nav-text">Codeforces Round #778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Codeforces-Global-Round-5"><span class="toc-nav-text">Codeforces Global Round 5</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Codeforces-Global-Round-14"><span class="toc-nav-text">Codeforces Global Round 14</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Leetcode"><span class="toc-nav-text">Leetcode</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC-286-%E5%9C%BA%E5%91%A8%E8%B5%9B"><span class="toc-nav-text">第 286 场周赛</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BD%91%E6%98%93%E7%AC%94%E8%AF%950327"><span class="toc-nav-text">网易笔试0327</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T1-%E6%89%93%E5%A6%96%E6%80%AA"><span class="toc-nav-text">T1 打妖怪</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T2-%E6%A0%87%E8%AE%B0%E5%AD%97%E6%AF%8D"><span class="toc-nav-text">T2 标记字母</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T3-%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-nav-text">T3 完全二叉树</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T4-%E7%A9%BF%E8%BF%87%E6%B2%BC%E6%B3%BD"><span class="toc-nav-text">T4 穿过沼泽</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BE%8E%E5%9B%A2%E7%AC%94%E8%AF%950402"><span class="toc-nav-text">美团笔试0402</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-text">题目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-text">总结</span></a></li></ol></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Codeforces"><span class="toc-nav-text">Codeforces</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Codeforces-Round-778-Div-1-Div-2-based-on-Technocup-2022-Final-Round"><span class="toc-nav-text">Codeforces Round #778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Codeforces-Global-Round-5"><span class="toc-nav-text">Codeforces Global Round 5</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Codeforces-Global-Round-14"><span class="toc-nav-text">Codeforces Global Round 14</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Codeforces-Round-781-Div-2"><span class="toc-nav-text">Codeforces Round #781 (Div. 2)</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#B-Array-Cloning-Technique"><span class="toc-nav-text">B: Array Cloning Technique</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Leetcode"><span class="toc-nav-text">Leetcode</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E7%AC%AC-286-%E5%9C%BA%E5%91%A8%E8%B5%9B"><span class="toc-nav-text">第 286 场周赛</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BD%91%E6%98%93%E7%AC%94%E8%AF%950327"><span class="toc-nav-text">网易笔试0327</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T1-%E6%89%93%E5%A6%96%E6%80%AA"><span class="toc-nav-text">T1 打妖怪</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T2-%E6%A0%87%E8%AE%B0%E5%AD%97%E6%AF%8D"><span class="toc-nav-text">T2 标记字母</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T3-%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91"><span class="toc-nav-text">T3 完全二叉树</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#T4-%E7%A9%BF%E8%BF%87%E6%B2%BC%E6%B3%BD"><span class="toc-nav-text">T4 穿过沼泽</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E7%BE%8E%E5%9B%A2%E7%AC%94%E8%AF%950402"><span class="toc-nav-text">美团笔试0402</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-nav-text">题目</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-nav-text">总结</span></a></li></ol></li></ol>
   
 </div>
 
@@ -845,11 +862,11 @@
             <ul>
                 
                 <li>
-                    <a href="/post/实习和秋招.html">Go语言面试</a>
+                    <a href="/post/计算机基础.html">计算机基础</a>
                 </li>
                 
                 <li>
-                    <a href="/post/计算机基础.html">计算机基础</a>
+                    <a href="/post/实习和秋招.html">Go语言面试</a>
                 </li>
                 
                 <li>
