@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<!-- Head tag -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  <meta name="baidu-site-verification" content="p7Pz3jlx4t" />
+  <meta name="google-site-verification" content="19ixTFj-X-rXuvZFvR1PMkqSHMXZ5GjN7nhYdYYFm-c" />
+  <meta name="msvalidate.01" content="7E2AEE3378AC93764DEAB411177A21A1" />
+  <meta name="360-site-verification" content="5c7e8a1fdbf35ed6003c48733208f705" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- if page has tags, then add tags to keyword -->
+  
+  
+  <meta name="keywords" content="golang,gorun,临在跑的博客,自学cs,">
+  <!-- page.description has higher priority -->
+  <meta name="description" content="golang">
+  <link rel="shortcut icon" href="/img/icon.png">
+  <title>
+    
+    MIT 6.824 分布式系统 | GORUN
+    
+  </title>
+
+  <link rel="canonical" href="https://gorun.top/post/自学cs.html">
+  
+<link rel="stylesheet" href="/css/geektutu.css">
+
+  <!-- global function -->
+  <script>
+    window.globalAddScript = function (url, onload, onerror) {
+      var s = document.createElement('script');
+      s.src = url;
+      onload && (s.onload = onload);
+      onerror && (s.onerror = onerror);
+      document.body.appendChild(s);
+    }
+    window.globalAddCss = function (url) {
+      var s = document.createElement('link');
+      s.rel = 'stylesheet';
+      s.href = url;
+      document.body.appendChild(s);
+    }
+    window.getPosition = function (ele) {
+      var x = 0, y = 0;
+      while (ele) {
+        x += (ele.offsetLeft - ele.scrollLeft + ele.clientLeft);
+        y += (ele.offsetTop - ele.scrollTop + ele.clientTop);
+        ele = ele.offsetParent;
+      }
+      return { x: x, y: y };
+    }
+    window.getDom = function (str) { return document.querySelector(str) }
+  </script>
+  <!-- google ad -->
+  
+  <script>
+    window.addEventListener('load', function () {
+      globalAddScript("https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js", "", function (e) {
+        if (window.localStorage.getItem('gkt_marker')) {
+          var rec = document.querySelector('.gkt-rec-links');
+          rec && (rec.style.display = 'none');
+        }
+      });
+    });
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-939225546",
+      enable_page_level_ads: true
+    });
+  </script>
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+    
+<header class="gkt-header col-xs-12 padding-0">
+    <div id="gkt-nav" class="gkt-header-container">
+        <a href="/" class="gkt-header-title float-left">
+            <img class="float-left" src="/img/icon.png" alt="">
+            <span>GORUN</span>
+        </a>
+        <nav class="gkt-header-nav text-right">
+            <ul>
+                <li><a class="hidden-xs" href="/feed.xml">订阅</a></li>
+                <li><a href="/series/">专题</a></li>
+                <li><a href="/archives/">归档</a></li>
+                <li><a href="/post/link.html">友链</a></li>
+                <li><a href="/post/about.html">关于</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="gkt-cate-nav" class="gkt-header-container hidden-xs">
+        
+        <nav class="gkt-header-nav float-left">
+            <ul>
+                
+                
+                <li class="gkt-cate-name float-left ">
+                    <a class="float-left" href="/post/SFCMapping01.html">SFC</a>
+                    
+                </li>
+                
+                <li class="gkt-cate-name float-left active">
+                    <a class="float-left" href="/post/自学cs.html">分布式系统</a>
+                    
+                </li>
+                
+                <li class="gkt-cate-name float-left ">
+                    <a class="float-left" href="/post/Golang简明教程.html">Golang ▾</a>
+                    
+                    <ul class="gkt-sub-cate">
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/Golang简明教程.html">Go简明教程</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/Golang竞赛和笔试.html">Golang算法竞赛</a></li>
+                        
+                    </ul>
+                    
+                </li>
+                
+                <li class="gkt-cate-name float-left ">
+                    <a class="float-left" href="/post/实习和秋招.html">面试 ▾</a>
+                    
+                    <ul class="gkt-sub-cate">
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/实习和秋招.html">Go语言面试</a></li>
+                        
+                        <li class="gkt-sub-cate-name "><a class="float-left"
+                                href="/post/计算机基础.html">计算机基础</a></li>
+                        
+                    </ul>
+                    
+                </li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+<div class="gkt-header-placeholder" style="height: 44px"></div>
+<div class="gkt-header-placeholder hidden-xs" style="height: 44px"></div>
+<script>
+    (function () {
+        window.addEventListener('scroll', function () {
+            if (window.innerWidth < 768) {
+                return;
+            }
+            var nav = document.querySelector('#gkt-nav');
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            scrollTop > 50 && (nav.classList.add('hide'));
+            scrollTop <= 50 && (nav.classList.remove('hide'));
+        });
+        var cateNavs = document.querySelectorAll('#gkt-cate-nav>nav>ul>li');
+        [].slice.call(cateNavs).forEach(function (item) {
+            var sub = item.querySelector('.gkt-sub-cate');
+            if (!sub) return;
+            item.addEventListener('mouseenter', function (e) { sub.style.display = 'block'; }, false);
+            item.addEventListener('mouseleave', function (e) { sub.style.display = 'none'; }, false);
+        })
+    })();
+</script>
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Main Content -->
+<main class="col-xs-12 padding-0 markdown-it">
+    <!-- Post Container -->
+    
+    
+    <!-- Post Content -->
+<div class="float-left post-container box-shadow">
+    <div class="u-arrow-wrapper hidden-xs">
+        
+        <a class="float-left" href="/post/link.html"><i class="u-arrow-left"></i></a>
+        
+        
+        <a class="float-right" href="/post/SFCMapping01.html"><i class="u-arrow-right"></i></a>
+        
+    </div>
+    <article class="col-xs-12">
+        <h1> MIT 6.824 分布式系统 </h1>
+        
+        
+        <div class="hidden-lg hidden-md series_links">
+            <p> <strong> MIT 6.824 分布式系统系列文章链接：</strong></p>
+            <ul>
+                
+                <li>
+                    <a href="/post/自学cs.html">MIT 6.824 分布式系统</a>
+                    <span class="post-item-date">(Mar 18, 2022)</span>
+                </li>
+                
+            </ul>
+        </div>
+        
+        
+        <blockquote>
+            <p>源代码/数据集已上传到
+                <a href="https://github.com/018429" target="_blank" rel="noopener">Github - </a>
+            </p>
+        </blockquote>
+        
+        <div class="gkt-article-start"></div>
+        <h1 id="P1-Lecture-1-Introduction"><a href="#P1-Lecture-1-Introduction" class="headerlink" title="P1. Lecture 1- Introduction"></a>P1. Lecture 1- Introduction</h1><ul>
+<li>parallelism</li>
+<li>fault tolerance</li>
+<li>physical</li>
+<li>security/isolated</li>
+</ul>
+<p>challenges:</p>
+<ul>
+<li>concurrence</li>
+<li>partial failure</li>
+<li>performance</li>
+</ul>
+<p>infrastructure——Abstractions </p>
+<ul>
+<li>storage</li>
+<li>communication</li>
+<li>computation</li>
+</ul>
+<p>Implementaion</p>
+<ul>
+<li>RPC，threads, concurrency </li>
+</ul>
+<p>Performance</p>
+<ul>
+<li>scalability 2 X computer 2 X throughput</li>
+</ul>
+<p>Fault Tolerance</p>
+<ul>
+<li>Availability NV Storage</li>
+<li>Recoverability Replication</li>
+</ul>
+<p>Topic -consistency</p>
+<p><strong>Mapreduce</strong></p>
+<h1 id="p2-Lecture-2-RPC-and-Threads"><a href="#p2-Lecture-2-RPC-and-Threads" class="headerlink" title="p2. Lecture 2-  RPC and Threads"></a>p2. Lecture 2-  RPC and Threads</h1><p>why threads</p>
+<ul>
+<li>I/O concurrency</li>
+<li>Parallelism</li>
+<li>Convenience</li>
+</ul>
+<p>thread challenge</p>
+<ul>
+<li>Race</li>
+</ul>
+<p>coordination</p>
+<ul>
+<li>channels</li>
+<li>sync.Cond</li>
+<li>wait.Group</li>
+</ul>
+<p>Deadlock </p>
+<h1 id="p3-GFS"><a href="#p3-GFS" class="headerlink" title="p3 GFS"></a>p3 GFS</h1><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br></pre></td><td class="code"><pre><span class="line">6.824 2020 Lecture 3: GFS</span><br><span class="line"></span><br><span class="line">The Google File System</span><br><span class="line">Sanjay Ghemawat, Howard Gobioff, and Shun-Tak Leung</span><br><span class="line">SOSP 2003</span><br><span class="line"></span><br><span class="line">Why are we reading this paper?</span><br><span class="line">  distributed storage is a key abstraction</span><br><span class="line"><span class="code">    what should the interface/semantics look like?</span></span><br><span class="line"><span class="code">    how should it work internally?</span></span><br><span class="line"><span class="code">  GFS paper touches on many themes of 6.824</span></span><br><span class="line"><span class="code">    parallel performance, fault tolerance, replication, consistency</span></span><br><span class="line"><span class="code">  good systems paper -- details from apps all the way to network</span></span><br><span class="line"><span class="code">  successful real-world design</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">Why is distributed storage hard?</span><br><span class="line">  high performance -&gt; shard data over many servers</span><br><span class="line">  many servers -&gt; constant faults</span><br><span class="line">  fault tolerance -&gt; replication</span><br><span class="line">  replication -&gt; potential inconsistencies</span><br><span class="line">  better consistency -&gt; low performance</span><br><span class="line"></span><br><span class="line">What would we like for consistency?</span><br><span class="line">  Ideal model: same behavior as a single server</span><br><span class="line">  server uses disk storage</span><br><span class="line">  server executes client operations one at a time (even if concurrent)</span><br><span class="line">  reads reflect previous writes</span><br><span class="line"><span class="code">    even if server crashes and restarts</span></span><br><span class="line"><span class="code">  thus:</span></span><br><span class="line"><span class="code">    suppose C1 and C2 write concurrently, and after the writes have</span></span><br><span class="line"><span class="code">      completed, C3 and C4 read. what can they see?</span></span><br><span class="line"><span class="code">    C1: Wx1</span></span><br><span class="line"><span class="code">    C2: Wx2</span></span><br><span class="line"><span class="code">    C3:     Rx?</span></span><br><span class="line"><span class="code">    C4:         Rx?</span></span><br><span class="line"><span class="code">    answer: either 1 or 2, but both have to see the same value.</span></span><br><span class="line"><span class="code">  This is a &quot;strong&quot; consistency model.</span></span><br><span class="line"><span class="code">  But a single server has poor fault-tolerance.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">Replication for fault-tolerance makes strong consistency tricky.</span><br><span class="line">  a simple but broken replication scheme:</span><br><span class="line"><span class="code">    two replica servers, S1 and S2</span></span><br><span class="line"><span class="code">    clients send writes to both, in parallel</span></span><br><span class="line"><span class="code">    clients send reads to either</span></span><br><span class="line"><span class="code">  in our example, C1&#x27;s and C2&#x27;s write messages could arrive in</span></span><br><span class="line"><span class="code">    different orders at the two replicas</span></span><br><span class="line"><span class="code">    if C3 reads S1, it might see x=1</span></span><br><span class="line"><span class="code">    if C4 reads S2, it might see x=2</span></span><br><span class="line"><span class="code">  or what if S1 receives a write, but </span></span><br><span class="line"><span class="code">    the client crashes before sending the write to S2?</span></span><br><span class="line"><span class="code">  that&#x27;s not strong consistency!</span></span><br><span class="line"><span class="code">  better consistency usually requires communication to</span></span><br><span class="line"><span class="code">    ensure the replicas stay in sync -- can be slow!</span></span><br><span class="line"><span class="code">  lots of tradeoffs possible between performance and consistency</span></span><br><span class="line"><span class="code">    we&#x27;ll see one today</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">GFS</span><br><span class="line"></span><br><span class="line">Context:</span><br><span class="line">  Many Google services needed a big fast unified storage system</span><br><span class="line"><span class="code">    Mapreduce, crawler/indexer, log storage/analysis, Youtube (?)</span></span><br><span class="line"><span class="code">  Global (over a single data center): any client can read any file</span></span><br><span class="line"><span class="code">    Allows sharing of data among applications</span></span><br><span class="line"><span class="code">  Automatic &quot;sharding&quot; of each file over many servers/disks</span></span><br><span class="line"><span class="code">    For parallel performance</span></span><br><span class="line"><span class="code">    To increase space available</span></span><br><span class="line"><span class="code">  Automatic recovery from failures</span></span><br><span class="line"><span class="code">  Just one data center per deployment</span></span><br><span class="line"><span class="code">  Just Google applications/users</span></span><br><span class="line"><span class="code">  Aimed at sequential access to huge files; read or append</span></span><br><span class="line"><span class="code">    I.e. not a low-latency DB for small items</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">What was new about this in 2003? How did they get an SOSP paper accepted?</span><br><span class="line">  Not the basic ideas of distribution, sharding, fault-tolerance.</span><br><span class="line">  Huge scale.</span><br><span class="line">  Used in industry, real-world experience.</span><br><span class="line">  Successful use of weak consistency.</span><br><span class="line">  Successful use of single master.</span><br><span class="line"></span><br><span class="line">Overall structure</span><br><span class="line">  clients (library, RPC -- but not visible as a UNIX FS)</span><br><span class="line">  each file split into independent 64 MB chunks</span><br><span class="line">  chunk servers, each chunk replicated on 3</span><br><span class="line">  every file&#x27;s chunks are spread over the chunk servers</span><br><span class="line"><span class="code">    for parallel read/write (e.g. MapReduce), and to allow huge files</span></span><br><span class="line"><span class="code">  single master (!), and master replicas</span></span><br><span class="line"><span class="code">  division of work: master deals w/ naming, chunkservers w/ data</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">Master state</span><br><span class="line">  in RAM (for speed, must be smallish):</span><br><span class="line"><span class="code">    file name -&gt; array of chunk handles (nv)</span></span><br><span class="line"><span class="code">    chunk handle -&gt; version # (nv)</span></span><br><span class="line"><span class="code">                    list of chunkservers (v)</span></span><br><span class="line"><span class="code">                    primary (v)</span></span><br><span class="line"><span class="code">                    lease time (v)</span></span><br><span class="line"><span class="code">  on disk:</span></span><br><span class="line"><span class="code">    log</span></span><br><span class="line"><span class="code">    checkpoint</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">Why a log? and checkpoint?</span><br><span class="line"></span><br><span class="line">Why big chunks?</span><br><span class="line"></span><br><span class="line">What are the steps when client C wants to read a file?</span><br><span class="line"><span class="bullet">  1.</span> C sends filename and offset to master M (if not cached)</span><br><span class="line"><span class="bullet">  2.</span> M finds chunk handle for that offset</span><br><span class="line"><span class="bullet">  3.</span> M replies with list of chunkservers</span><br><span class="line"><span class="code">     only those with latest version</span></span><br><span class="line"><span class="code">  4. C caches handle + chunkserver list</span></span><br><span class="line"><span class="code">  5. C sends request to nearest chunkserver</span></span><br><span class="line"><span class="code">     chunk handle, offset</span></span><br><span class="line"><span class="code">  6. chunk server reads from chunk file on disk, returns</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">How does the master know what chunkservers have a given chunk?</span><br><span class="line"></span><br><span class="line">What are the steps when C wants to do a &quot;record append&quot;?</span><br><span class="line">  paper&#x27;s Figure 2</span><br><span class="line"><span class="bullet">  1.</span> C asks M about file&#x27;s last chunk</span><br><span class="line"><span class="bullet">  2.</span> if M sees chunk has no primary (or lease expired):</span><br><span class="line"><span class="code">     2a. if no chunkservers w/ latest version #, error</span></span><br><span class="line"><span class="code">     2b. pick primary P and secondaries from those w/ latest version #</span></span><br><span class="line"><span class="code">     2c. increment version #, write to log on disk</span></span><br><span class="line"><span class="code">     2d. tell P and secondaries who they are, and new version #</span></span><br><span class="line"><span class="code">     2e. replicas write new version # to disk</span></span><br><span class="line"><span class="code">  3. M tells C the primary and secondaries</span></span><br><span class="line"><span class="code">  4. C sends data to all (just temporary...), waits</span></span><br><span class="line"><span class="code">  5. C tells P to append</span></span><br><span class="line"><span class="code">  6. P checks that lease hasn&#x27;t expired, and chunk has space</span></span><br><span class="line"><span class="code">  7. P picks an offset (at end of chunk)</span></span><br><span class="line"><span class="code">  8. P writes chunk file (a Linux file)</span></span><br><span class="line"><span class="code">  9. P tells each secondary the offset, tells to append to chunk file</span></span><br><span class="line"><span class="code">  10. P waits for all secondaries to reply, or timeout</span></span><br><span class="line"><span class="code">      secondary can reply &quot;error&quot; e.g. out of disk space</span></span><br><span class="line"><span class="code">  11. P tells C &quot;ok&quot; or &quot;error&quot;</span></span><br><span class="line"><span class="code">  12. C retries from start if error</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">What consistency guarantees does GFS provide to clients?</span><br><span class="line">  Needs to be in a form that tells applications how to use GFS.</span><br><span class="line"></span><br><span class="line">Here&#x27;s a possibility:</span><br><span class="line"></span><br><span class="line">  If the primary tells a client that a record append succeeded, then</span><br><span class="line">  any reader that subsequently opens the file and scans it will see</span><br><span class="line">  the appended record somewhere.</span><br><span class="line"></span><br><span class="line">(But not that failed appends won&#x27;t be visible, or that all readers</span><br><span class="line"> will see the same file content, or the same order of records.)</span><br><span class="line"></span><br><span class="line">How can we think about how GFS fulfils this guarantee?</span><br><span class="line">  Look at its handling of various failures:</span><br><span class="line"><span class="code">    crash, crash+reboot, crash+replacement, message loss, partition.</span></span><br><span class="line"><span class="code">  Ask how GFS ensures critical properties.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">*</span> What if an appending client fails at an awkward moment?</span><br><span class="line">  Is there an awkward moment?</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> What if the appending client has cached a stale (wrong) primary?</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> What if the reading client has cached a stale secondary list?</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> Could a master crash+reboot cause it to forget about the file?</span><br><span class="line">  Or forget what chunkservers hold the relevant chunk?</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> Two clients do record append at exactly the same time.</span><br><span class="line">  Will they overwrite each others&#x27; records?</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> Suppose one secondary never hears the append command from the primary.</span><br><span class="line">  What if reading client reads from that secondary?</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> What if the primary crashes before sending append to all secondaries?</span><br><span class="line">  Could a secondary that <span class="emphasis">*didn&#x27;t*</span> see the append be chosen as the new primary?</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> Chunkserver S4 with an old stale copy of chunk is offline.</span><br><span class="line">  Primary and all live secondaries crash.</span><br><span class="line">  S4 comes back to life (before primary and secondaries).</span><br><span class="line">  Will master choose S4 (with stale chunk) as primary?</span><br><span class="line">  Better to have primary with stale data, or no replicas at all?</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> What should a primary do if a secondary always fails writes?</span><br><span class="line">  e.g. dead, or out of disk space, or disk has broken.</span><br><span class="line">  Should the primary drop secondary from set of secondaries?</span><br><span class="line"><span class="code">    And then return success to client appends?</span></span><br><span class="line"><span class="code">  Or should the primary keep sending ops, and having them fail,</span></span><br><span class="line"><span class="code">    and thus fail every client write request?</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">*</span> What if primary S1 is alive and serving client requests,</span><br><span class="line"><span class="code">    but network between master and S1 fails?</span></span><br><span class="line"><span class="code">  &quot;network partition&quot;</span></span><br><span class="line"><span class="code">  Will the master pick a new primary?</span></span><br><span class="line"><span class="code">  Will there now be two primaries?</span></span><br><span class="line"><span class="code">  So that the append goes to one primary, and the read to the other?</span></span><br><span class="line"><span class="code">    Thus breaking the consistency guarantee?</span></span><br><span class="line"><span class="code">    &quot;split brain&quot;</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">*</span> If there&#x27;s a partitioned primary serving client appends, and its</span><br><span class="line">  lease expires, and the master picks a new primary, will the new</span><br><span class="line">  primary have the latest data as updated by partitioned primary?</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> What if the master fails altogether.</span><br><span class="line">  Will the replacement know everything the dead master knew?</span><br><span class="line">  E.g. each chunk&#x27;s version number? primary? lease expiry time?</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> Who/what decides the master is dead, and must be replaced?</span><br><span class="line">  Could the master replicas ping the master, take over if no response?</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> What happens if the entire building suffers a power failure?</span><br><span class="line">  And then power is restored, and all servers reboot.</span><br><span class="line"></span><br><span class="line"><span class="bullet">*</span> Suppose the master wants to create a new chunk replica.</span><br><span class="line">  Maybe because too few replicas.</span><br><span class="line">  Suppose it&#x27;s the last chunk in the file, and being appended to.</span><br><span class="line">  How does the new replica ensure it doesn&#x27;t miss any appends?</span><br><span class="line"><span class="code">    After all it is not yet one of the secondaries.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="bullet">*</span> Is there <span class="emphasis">*any*</span> circumstance in which GFS will break the guarantee?</span><br><span class="line">  i.e. append succeeds, but subsequent readers don&#x27;t see the record.</span><br><span class="line">  All master replicas permanently lose state (permanent disk failure).</span><br><span class="line"><span class="code">    Could be worse: result will be &quot;no answer&quot;, not &quot;incorrect data&quot;.</span></span><br><span class="line"><span class="code">    &quot;fail-stop&quot;</span></span><br><span class="line"><span class="code">  All chunkservers holding the chunk permanently lose disk content.</span></span><br><span class="line"><span class="code">    again, fail-stop; not the worse possible outcome</span></span><br><span class="line"><span class="code">  CPU, RAM, network, or disk yields an incorrect value.</span></span><br><span class="line"><span class="code">    checksum catches some cases, but not all</span></span><br><span class="line"><span class="code">  Time is not properly synchronized, so leases don&#x27;t work out.</span></span><br><span class="line"><span class="code">    So multiple primaries, maybe write goes to one, read to the other.</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">What application-visible anomalous behavior does GFS allow?</span><br><span class="line">  Will all clients see the same file content?</span><br><span class="line"><span class="code">    Could one client see a record that another client doesn&#x27;t see at all?</span></span><br><span class="line"><span class="code">    Will a client see the same content if it reads a file twice?</span></span><br><span class="line"><span class="code">  Will all clients see successfully appended records in the same order?</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">Will these anomalies cause trouble for applications?</span><br><span class="line">  How about MapReduce?</span><br><span class="line"></span><br><span class="line">What would it take to have no anomalies -- strict consistency?</span><br><span class="line">  I.e. all clients see the same file content.</span><br><span class="line">  Too hard to give a real answer, but here are some issues.</span><br><span class="line"><span class="bullet">  *</span> Primary should detect duplicate client write requests.</span><br><span class="line"><span class="code">    Or client should not issue them.</span></span><br><span class="line"><span class="code">  * All secondaries should complete each write, or none.</span></span><br><span class="line"><span class="code">    Perhaps tentative writes until all promise to complete it?</span></span><br><span class="line"><span class="code">    Don&#x27;t expose writes until all have agreed to perform them!</span></span><br><span class="line"><span class="code">  * If primary crashes, some replicas may be missing the last few ops.</span></span><br><span class="line"><span class="code">    New primary must talk to all replicas to find all recent ops,</span></span><br><span class="line"><span class="code">    and sync with secondaries.</span></span><br><span class="line"><span class="code">  * To avoid client reading from stale ex-secondary, either all client</span></span><br><span class="line"><span class="code">    reads must go to primary, or secondaries must also have leases.</span></span><br><span class="line"><span class="code">  You&#x27;ll see all this in Labs 2 and 3!</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">Performance (Figure 3)</span><br><span class="line">  large aggregate throughput for read (3 copies, striping)</span><br><span class="line"><span class="code">    94 MB/sec total for 16 chunkservers</span></span><br><span class="line"><span class="code">      or 6 MB/second per chunkserver</span></span><br><span class="line"><span class="code">      is that good?</span></span><br><span class="line"><span class="code">      one disk sequential throughput was about 30 MB/s</span></span><br><span class="line"><span class="code">      one NIC was about 10 MB/s</span></span><br><span class="line"><span class="code">    Close to saturating network (inter-switch link)</span></span><br><span class="line"><span class="code">    So: individual server performance is low</span></span><br><span class="line"><span class="code">        but scalability is good</span></span><br><span class="line"><span class="code">        which is more important?</span></span><br><span class="line"><span class="code">    Table 3 reports 500 MB/sec for production GFS, which is a lot</span></span><br><span class="line"><span class="code">  writes to different files lower than possible maximum</span></span><br><span class="line"><span class="code">    authors blame their network stack (but no detail)</span></span><br><span class="line"><span class="code">  concurrent appends to single file</span></span><br><span class="line"><span class="code">    limited by the server that stores last chunk</span></span><br><span class="line"><span class="code">  hard to interpret after 15 years, e.g. how fast were the disks?</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">Random issues worth considering</span><br><span class="line">  What would it take to support small files well?</span><br><span class="line">  What would it take to support billions of files?</span><br><span class="line">  Could GFS be used as wide-area file system?</span><br><span class="line"><span class="code">    With replicas in different cities?</span></span><br><span class="line"><span class="code">    All replicas in one datacenter is not very fault tolerant!</span></span><br><span class="line"><span class="code">  How long does GFS take to recover from a failure?</span></span><br><span class="line"><span class="code">    Of a primary/secondary?</span></span><br><span class="line"><span class="code">    Of the master?</span></span><br><span class="line"><span class="code">  How well does GFS cope with slow chunkservers?</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">Retrospective interview with GFS engineer:</span><br><span class="line">  http://queue.acm.org/detail.cfm?id=1594206</span><br><span class="line">  file count was the biggest problem</span><br><span class="line"><span class="code">    eventual numbers grew to 1000x those in Table 2 !</span></span><br><span class="line"><span class="code">    hard to fit in master RAM</span></span><br><span class="line"><span class="code">    master scanning of all files/chunks for GC is slow</span></span><br><span class="line"><span class="code">  1000s of clients too much CPU load on master</span></span><br><span class="line"><span class="code">  applications had to be designed to cope with GFS semantics</span></span><br><span class="line"><span class="code">    and limitations</span></span><br><span class="line"><span class="code">  master fail-over initially entirely manual, 10s of minutes</span></span><br><span class="line"><span class="code">  BigTable is one answer to many-small-files problem</span></span><br><span class="line"><span class="code">  and Colossus apparently shards master data over many masters</span></span><br><span class="line"><span class="code"></span></span><br><span class="line">Summary</span><br><span class="line">  case study of performance, fault-tolerance, consistency</span><br><span class="line"><span class="code">    specialized for MapReduce applications</span></span><br><span class="line"><span class="code">  good ideas:</span></span><br><span class="line"><span class="code">    global cluster file system as universal infrastructure</span></span><br><span class="line"><span class="code">    separation of naming (master) from storage (chunkserver)</span></span><br><span class="line"><span class="code">    sharding for parallel throughput</span></span><br><span class="line"><span class="code">    huge files/chunks to reduce overheads</span></span><br><span class="line"><span class="code">    primary to sequence writes</span></span><br><span class="line"><span class="code">    leases to prevent split-brain chunkserver primaries</span></span><br><span class="line"><span class="code">  not so great:</span></span><br><span class="line"><span class="code">    single master performance</span></span><br><span class="line"><span class="code">      ran out of RAM and CPU</span></span><br><span class="line"><span class="code">    chunkservers not very efficient for small files</span></span><br><span class="line"><span class="code">    lack of automatic fail-over to master replica</span></span><br><span class="line"><span class="code">    maybe consistency was too relaxed</span></span><br></pre></td></tr></table></figure>
+
+
+        
+<script src="/js/qrious.min.js"></script>
+
+
+<div class="hidden-xs col-xs-12 text-center">
+    <canvas id="geektutu-post-qr"></canvas>
+    <p style="margin-top: -10px;"><small>微信扫一扫，阅读/分享</small></p>
+</div>
+<script>
+    (function () {
+        new QRious({
+            element: document.getElementById('geektutu-post-qr'),
+            value: window.location.href,
+            size: 120
+        });
+    })();
+</script>
+
+        <hr style="margin-top: 2rem;">
+        <div>
+            
+            <p>
+                <span>专题: </span>
+                
+                <a href="/series/#MIT 6.824 分布式系统">
+                    <code key="MIT 6.824 分布式系统" class="post-label">MIT 6.824 分布式系统</code>
+                </a>
+                
+            </p>
+            
+            <p>
+                <span>本文发表于 2022-03-18，最后修改于 2022-04-19。</span>
+            </p>
+            <!-- 文章末尾的提示 start -->
+            
+            <p>
+                本站永久域名「 <a
+                        href="/post/自学cs.html">gorun.top</a>
+                    」，也可搜索「 GORUN 」找到我。
+            </p>
+            
+            
+                
+            <!-- 文章末尾的提示 end -->
+        </div>
+        <hr />
+        <p name="pagination" style="font-size: 1.2em">
+    
+    <a class="float-left" href="/post/link.html">上一篇 « 友链</a>
+    
+    
+    <a class="float-right" href="/post/SFCMapping01.html">下一篇 » NFV中虚拟网络功能智能编排方法研究</a>
+    
+</p>
+    </article>
+    <!-- 赞赏 -->
+    <!--打赏-->
+
+<style>
+    #reward .reward-btn-wrapper {
+        width: 100px;
+        padding-top: 35px;
+        cursor: pointer;
+        margin: 0 auto;
+    }
+
+    #reward .reward-btn {
+        padding: 2px 15px;
+        color: #fff;
+        background-color: #ea6f5a;
+        border-radius: 20px;
+    }
+
+    #reward .reward-code {
+        position: absolute;
+        top: -220px;
+        left: 50%;
+        display: none;
+        width: 360px;
+        height: 240px;
+        margin-left: -180px;
+        padding: 15px 20px;
+        border: 1px solid #e6e6e6;
+        background: #fff;
+        box-shadow: 0 1px 1px 1px #efefef;
+    }
+
+    #reward .reward-code:after,
+    #reward .reward-code:before {
+        position: absolute;
+        content: '';
+        border: 10px solid transparent
+    }
+
+    #reward .reward-code:after {
+        bottom: -19px;
+        left: 50%;
+        margin-left: -10px;
+        border-top-color: #fff
+    }
+
+    #reward .reward-code:before {
+        bottom: -20px;
+        left: 50%;
+        margin-left: -10px;
+        border-top-color: #e6e6e6
+    }
+
+    #reward .qr-code {
+        width: 50%;
+        float: left;
+        padding: 5px;
+    }
+
+    #reward .qr-code p {
+        margin-top: -6px;
+    }
+
+    #reward img {
+        transform: none;
+        -webkit-transform: none;
+        margin-left: 0;
+    }
+
+    #reward img[alt='i'] {
+        width: 20px;
+        height: 20px;
+        z-index: 2;
+        position: absolute;
+        margin: 65px 0 0 65px;
+    }
+
+    #reward img[alt="ali"] {
+        width: 100%;
+        box-sizing: border-box;
+        border: 5px solid #0f9be0;
+    }
+
+    #reward img[alt="wechat"] {
+        width: 100%;
+        box-sizing: border-box;
+        border: 5px solid #3db034;
+    }
+
+    #reward .reward-tip {
+        font-size: 1.2em;
+        margin-bottom: 0;
+        color: #ea6f5a;
+    }
+</style>
+<div id="reward" class="col-xs-12">
+    <div class="reward-btn-wrapper">
+        <div class="reward-btn text-center">赞赏支持</div>
+    </div>
+    <div class="reward-code text-center">
+        <p class="text-center reward-tip"><strong>请我吃胡萝卜 =^_^= </strong></p>
+        <div class="qr-code">
+            <img src="/img/icon.png" alt="i">
+            <img id="reward-ali" src="" alt="ali">
+            <p><small>支付宝</small></p>
+        </div>
+        <div class="qr-code">
+            <img src="/img/icon.png" alt="i">
+            <img id="reward-wechat" src="" alt="wechat">
+            <p><small>微信</small></p>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window, document) {
+        var aliQr = new QRious({ value: 'https://qr.alipay.com/fkx15255wozbr1uooxhm8c6' });
+        var wechatQr = new QRious({ value: 'wxp://f2f0dxmtz983IbDl8SuCD0zVbVnDFfjYijb60aYPdCrOoks' });
+        document.querySelector('#reward-ali').src = aliQr.toDataURL();
+        document.querySelector('#reward-wechat').src = wechatQr.toDataURL();
+
+        var rewardBtn = document.querySelector('#reward .reward-btn-wrapper');
+        var qrCode = document.querySelector('#reward .reward-code')
+        var activeFunc = function (e) {
+            qrCode.style.display = 'block';
+        }
+        var hideFunc = function (e) {
+            qrCode.style.display = 'none';
+        }
+
+        rewardBtn.addEventListener('mouseenter', activeFunc, false)
+        rewardBtn.addEventListener('mouseover', activeFunc, false)
+        rewardBtn.addEventListener('mouseleave', hideFunc, false)
+        qrCode.addEventListener('mouseenter', activeFunc, false)
+        qrCode.addEventListener('mouseover', activeFunc, false)
+        qrCode.addEventListener('mouseleave', hideFunc, false)
+    })(window, document);
+</script>
+
+    
+<div class="col-xs-12 text-center" style="margin-top: 30px;">
+    
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://github.com/018429" title=""><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/github.png" /></a>
+    
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://space.bilibili.com/28526479" title=""><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/bili.png" /></a>
+    
+    <a style="display:inline-block;" target="_blank" rel="noopener" href="https://www.zhihu.com/people/wa-jue-ji-65" title=""><img style="padding:5px;width:30px;margin-left:0;transform:none;-webkit-transform:none;" src="/img/related_links/zhihu.png" /></a>
+    
+</div>
+
+    <!-- 推荐阅读三篇文章 -->
+    <div class="col-xs-12">
+        <h3>推荐阅读</h3>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#计算机基础"
+                    title="计算机基础">计算机基础</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/计算机基础.html" class="title">
+                计算机基础
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2022-03-21，</span>
+                    <span class="hidden-xs">全文10034字，</span>
+                    <span>阅读约34分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#面试"
+                    title="面试">面试</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/实习和秋招.html" class="title">
+                Go语言面试
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2022-03-21，</span>
+                    <span class="hidden-xs">全文2077字，</span>
+                    <span>阅读约7分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#SFC"
+                    title="SFC">SFC</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/SFCMapping01.html" class="title">
+                NFV中虚拟网络功能智能编排方法研究
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2022-03-18，</span>
+                    <span class="hidden-xs">全文4426字，</span>
+                    <span>阅读约15分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+    </div>
+    <div class="col-xs-12">
+        <!-- 标签列表 -->
+        <!-- Featured Tags -->
+<style>
+    #featured-tag .post-tag-item {
+        font-size: 12px;
+        line-height: 30px;
+        display: inline-block;
+        height: 30px;
+        margin: 5px 0px;
+        padding: 0 7px;
+        color: #333;
+        border-radius: 15px;
+        background: #f6f6f6;
+    }
+
+    #featured-tag .post-tag-item:hover {
+        color: #337ab7;
+    }
+</style>
+<div id="featured-tag">
+    
+    <a class="post-tag-item" href="/tags/#SFC" title="SFC"
+        rel="1">#SFC (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#Golang" title="Golang"
+        rel="2">#Golang (2) </a>
+    
+    <a class="post-tag-item" href="/tags/#关于我" title="关于我"
+        rel="1">#关于我 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#面试" title="面试"
+        rel="1">#面试 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#自学cs" title="自学cs"
+        rel="1">#自学cs (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#计算机基础" title="计算机基础"
+        rel="1">#计算机基础 (1) </a>
+    
+</div>
+    </div>
+    <!-- 评论 -->
+    
+    <div class="col-xs-12">
+        
+<div class="col-xs-12 padding-0">
+    <div id="gitalk-container">
+        <div class="gt-container text-center" style="margin-top: 50px;">
+            <button class="gt-btn gt-btn-public"><span class="gt-btn-text">去 Github 评论</span></button>
+        </div>
+    </div>
+    <div id="gitalk-related"></div>
+</div>
+
+<link rel="stylesheet" href="/css/gitalk.css">
+
+
+<script src="/js/gitalk.min.js"></script>
+
+<script>
+    window.addEventListener('load', function () {
+        function renderCommentUrl(data) {
+            var url = (data[window.location.pathname] || {}).url
+            url && getDom('#gitalk-container button').addEventListener('click', function (e) { window.open(url)})
+            url || (getDom('#gitalk-container').style.display = 'none')
+        }
+        const gitalk = new Gitalk({
+            clientID: '1aa1d476e0bf3a9b4c39',
+            clientSecret: '7b933072278bc5569f4e81c0b0b72495e55cc2a9',
+            accessToken: 'xxxx',
+            repo: 'gotalk',
+            owner: '018429',
+            admin: ['018429'],
+            id: window.location.pathname,
+            distractionFreeMode: false
+        });
+        fetch("https://api.github.com/user").then(function(resp){
+            gitalk.render('gitalk-container');
+        }).catch(function(e){
+            fetch('/tool/issues.json').then(function (r) { return r.json() }).then(renderCommentUrl).catch(function (e) { })
+        })
+        getDom('#gitalk-container').addEventListener('click', function (e) {
+            e && e.stopPropagation && e.stopPropagation();
+        });
+    })
+</script>
+<script>
+    window.addEventListener('load', function () {
+        function render(comments) {
+            var template = '<a href="${comment.url}?utm_source=gitalk" class="dis-item-url"><h3 class="dis-item-title">${comment.title}</h3>' +
+                '<p class="dis-item-des">${comment.count} 评论 ● ${comment.date}</p>' +
+                '<div class="dis-item-content"><img class="dis-item-img" src="${comment.icon}" alt="icon"><p><b><span class="dis-item-user">${comment.user}</span></b>&nbsp;——&nbsp;${comment.body}</p></div>' +
+                '</a>'
+
+            var wrapper = getDom('#gitalk-related');
+            comments = shuffle(comments);
+            comments.slice(0, 4).forEach(function (c) {
+                var div = document.createElement('div');
+                div.classList.add('dis-item');
+                div.innerHTML = template.replace("${comment.url}", c.url)
+                    .replace("${comment.title}", c.title)
+                    .replace("${comment.count}", c.count)
+                    .replace("${comment.date}", c.date)
+                    .replace("${comment.icon}", c.icon)
+                    .replace("${comment.user}", c.user)
+                    .replace("${comment.body}", c.body)
+                wrapper.appendChild(div)
+            })
+            var p = document.createElement('p')
+            p.innerHTML = '<a target="_blank" rel="noopener" href="https://geektutu.com/post/blog-experience-7.html">Gitalk Plus</a>';
+            p.classList.add('dis-divide');
+            wrapper.appendChild(p);
+            wrapper.classList.add('dis-wrapper')
+        }
+        function shuffle(a) {
+            for (var i = a.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                [a[i], a[j]] = [a[j], a[i]];
+            }
+            return a;
+        }
+        fetch('/tool/comments.json').then(function (r) { return r.json() }).then(render).catch(function (e) { })
+    })
+</script>
+
+    </div>
+    
+</div>
+<aside class="float-left gkt-sidebar hidden-xs hidden-sm">
+    <div style="clear: both"></div>
+    <div class="gkt-sidebar-wrapper">
+        <section class="box-shadow"><style>
+    .gkt-summary {
+        border: 1px solid #DDDDDD;
+        border-radius: 3px;
+        padding: 5px;
+        width: 100%;
+    }
+
+
+    .gkt-summary nav {
+        overflow: hidden;
+    }
+
+    .gkt-summary nav a {
+        display: inline-block;
+        text-align: center;
+        color: #333;
+        font-size: 12px;
+    }
+
+    .gkt-summary nav span {
+        display: block;
+    }
+
+    .gkt-summary nav .middle {
+        border-left: 1px solid #eaecef;
+        border-right: 1px solid #eaecef;
+    }
+
+    .gkt-summary .number {
+        font-weight: bold;
+    }
+
+    .gkt-summary .link-list {
+        margin-top: 5px;
+        margin-bottom: -5px;
+        padding-top: 7px;
+        border-top: 1px dashed #999;
+        display: flex;
+    }
+
+    .gkt-summary .link-list a {
+        flex: 1;
+    }
+
+    .gkt-summary .link-list img {
+        width: 25px;
+        height: 25px;
+    }
+</style>
+
+<div class="gkt-summary">
+    <nav>
+        <a href="/" class="col-xs-4">
+            <span class="number">8</span><span>文章</span>
+        </a>
+        <a href="/series" class="col-xs-4 middle">
+            <span class="number">6</span><span>专题</span>
+        </a>
+        <a href="/tags" class="col-xs-4">
+            <span class="number">6</span><span>标签</span>
+        </a>
+    </nav>
+
+    
+    <div class="link-list">
+        
+        <a target="_blank" rel="noopener" href="https://github.com/018429"><img src="/img/related_links/github.png" /></a>
+        
+        <a target="_blank" rel="noopener" href="https://space.bilibili.com/28526479"><img src="/img/related_links/bili.png" /></a>
+        
+        <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/wa-jue-ji-65"><img src="/img/related_links/zhihu.png" /></a>
+        
+    </div>
+    
+</div></section>
+        
+        
+        <section class="gkt-sidebar-content box-shadow">
+            <strong>MIT 6.824 分布式系统</strong>
+            <ul>
+                
+                <li>
+                    <a href="/post/自学cs.html"
+                        class="gkt-sidebar-active">MIT 6.824 分布式系统</a>
+                    
+                    <!-- Table of Contents -->
+<div id="sidebar-toc">
+  <!-- TOC  -->
+  
+  
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#P1-Lecture-1-Introduction"><span class="toc-nav-text">P1. Lecture 1- Introduction</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#p2-Lecture-2-RPC-and-Threads"><span class="toc-nav-text">p2. Lecture 2-  RPC and Threads</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#p3-GFS"><span class="toc-nav-text">p3 GFS</span></a></li></ol>
+  
+</div>
+
+<script>
+  (function () {
+    var h2 = document.querySelectorAll('article h2');
+    var h3 = document.querySelectorAll('article h3');
+    var linkList = document.querySelectorAll('#sidebar-toc a');
+
+    function findLinkElement(name) {
+      for (var i = 0; i < linkList.length; i++) {
+        var items = linkList[i].href.split('#');
+        if (items && items[items.length - 1] === encodeURIComponent(name)) {
+          return i;
+        }
+      }
+      return -1;
+    }
+
+    function activeLink(titleList) {
+      var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      for (var i = titleList.length - 1; i >= 0; i--) {
+        if (scrollTop - titleList[i].offsetTop > 0) {
+          var index = findLinkElement(titleList[i].id);
+          index != -1 && linkList[index].classList.add('gkt-sidebar-active');
+          break;
+        }
+      }
+    }
+
+    window.addEventListener("scroll", function (e) {
+      [].slice.call(linkList).forEach(function (link) {
+        link.classList.remove('gkt-sidebar-active');
+      })
+      activeLink(h2);
+    })
+  })();
+</script>
+                    
+                </li>
+                
+            </ul>
+        </section>
+        
+        
+        <section class="gkt-sidebar-content box-shadow">
+            <strong>最近的文章</strong>
+            <ul>
+                
+                <li>
+                    <a href="/post/计算机基础.html">计算机基础</a>
+                </li>
+                
+                <li>
+                    <a href="/post/实习和秋招.html">Go语言面试</a>
+                </li>
+                
+                <li>
+                    <a href="/post/Golang竞赛和笔试.html">Golang算法竞赛</a>
+                </li>
+                
+            </ul>
+        </section>
+        
+    </div>
+</aside>
+
+<script>
+    (function () {
+        function resizeUArrow() {
+            var s = getDom('.u-arrow-wrapper').style
+            var pc = getDom('.post-container')
+            s.left = getPosition(pc).x + 'px';
+            s.width = pc.clientWidth + 'px';
+        }
+        resizeUArrow()
+        window.addEventListener('resize', resizeUArrow);
+    })();
+</script>
+
+    
+
+<script>
+    (function () {
+        var ele = getDom('.gkt-sidebar-content')
+        if(!ele) return;
+        var wrapper = getDom('.gkt-sidebar-wrapper')
+        var last = 0
+        ele.style.maxHeight = ((window.innerHeight || 798) - 200) + 'px'
+        var f = function (e) {
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var isDown = scrollTop > last;
+            var pos = getPosition(ele).y - scrollTop;
+            var downLimit = 50;
+            var upLimit = -100;
+            // uarrow.style.marginTop = scrollTop + 'px';
+            isDown && pos <= downLimit && wrapper.classList.add("gkt-sidebar-fixed");
+            !isDown && pos > upLimit && wrapper.classList.remove("gkt-sidebar-fixed");
+            last = scrollTop
+        }
+        f()
+        window.addEventListener("scroll", f)
+    })();
+</script>
+
+</main>
+    </div>
+    <style>
+    img#go-top {
+        position: fixed;
+        bottom: 100px;
+        width: 50px;
+        cursor: pointer;
+        z-index: 9999;
+    }
+</style>
+<img id="go-top" src="/icon/top.png" class="hidden-xs" style="display: none" />
+<script>
+    (function () {
+        var goTop = document.getElementById('go-top');
+        var mainContainer = document.querySelector('.main-container');
+        
+        goTop.addEventListener('click', function () {
+            window.scroll(0, 0);
+        }, false);
+        window.addEventListener('scroll', function () {
+            var right = document.body.offsetWidth - mainContainer.getBoundingClientRect().right;
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            goTop.style.right = right + 10 + 'px'
+            scrollTop > 700 && (goTop.style.display = "block");
+            scrollTop <= 700 && (goTop.style.display = "none");
+        });
+    })();
+</script>
+    <style>
+    #geektutu-click-img-container {
+        position: fixed;
+        left: 0;
+        top: 0;
+        text-align: center;
+        width: 100%;
+        display: none;
+        z-index: 9999;
+    }
+
+    #geektutu-click-img-container img {
+        object-fit: contain;
+        background: #eaecef;
+        padding: 15px;
+        border-radius: 10px;
+        height: auto;
+        width: auto;
+        vertical-align: middle;
+    }
+</style>
+
+
+<div id="geektutu-click-img-container">
+    <img src="" alt="Big Image">
+</div>
+
+<script>
+    (function () {
+        var container = document.querySelector('#geektutu-click-img-container')
+        var targetImg = container.querySelector('img')
+        var imgs = document.querySelectorAll('article img');
+        targetImg.addEventListener('click', function (e) {
+            container.style.display = 'none';
+            e && e.stopPropagation && e.stopPropagation();
+        }, false);
+
+        for (var i = 0; i < imgs.length; ++i) {
+            var img = imgs[i];
+            img.addEventListener('click', (function (src, rate) {
+                return function (e) {
+                    e && e.stopPropagation && e.stopPropagation();
+                    if (window.innerWidth < 980) {
+                        return
+                    }
+                    targetImg.style.height = targetImg.style.width = 'auto';
+                    if (window.innerWidth / window.innerHeight > rate) {
+                        targetImg.style.height = (window.innerHeight - 20) + 'px';
+                    } else {
+                        targetImg.style.width = (window.innerWidth - 20) + 'px';
+                    }
+                    container.style.height = window.innerHeight + 'px'
+                    container.style.lineHeight = window.innerHeight + 'px'
+                    container.style.display = 'block';
+                    targetImg.src = src;
+                };
+            }(img.src, img.width / img.height)), false)
+        }
+    })();
+</script>
+    <!-- Footer -->
+    <!-- Footer -->
+<style>
+    footer {
+        width: 100%;
+        line-height: 1.5;
+        padding: 20px;
+    }
+
+    footer a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .footer-hexo img {
+        height: 20px;
+        margin-bottom: -5px;
+    }
+
+    .footer-hexo a {
+        color: #337ab7;
+    }
+</style>
+<footer class="text-center col-xs-12">
+    <p>
+        <small>© 2022 - jwbao - </small>
+        <small>
+            <a target="_blank" rel="nofollow noopener" href="http://beian.miit.gov.cn/"></a>
+        </small>
+    </p>
+    <p class="footer-hexo">
+        <!-- 但若直接使用或修改主题，请务必保留这段声明 -->
+        <small>Powered by <a target="_blank" href="https://hexo.io">Hexo</a> | Theme
+            <a target="_blank" href="https://geektutu.com">Geektutu</a>
+            <a target="_blank" rel="noopener" href="https://github.com/geektutu/hexo-theme-geektutu">
+                <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAYGBgYHBgcICAcKCwoLCg8ODAwODxYQERAREBYiFRkVFRkVIh4kHhweJB42KiYmKjY+NDI0PkxERExfWl98fKcBBgYGBgcGBwgIBwoLCgsKDw4MDA4PFhAREBEQFiIVGRUVGRUiHiQeHB4kHjYqJiYqNj40MjQ+TERETF9aX3x8p//CABEIACIAUAMBIgACEQEDEQH/xAAcAAABBAMBAAAAAAAAAAAAAAAAAQQFBwIDBgj/2gAIAQEAAAAA9KrHSgAYL5/z6zZGuJd12uugbhq3uKtmuRtix20IS7lTLAfAAAn/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oACAECEAAAAAAB/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/aAAgBAxAAAAAAAf/EADEQAAICAQIEBQEGBwAAAAAAAAECAwQFAAYREhORBxQhUlQxQVFic5KxJDJCYYGC0f/aAAgBAQABPwCFHnjWUzuvN6hV4cANSRLGjO9yRVUcSzMoA7jVXJYe5N0a2dhmk9kc0bN2GvLN8mbuNeWb5M3ca8s3yZu415Y/Jm7jXlm+TN3H/NeVPyZu40vOk3TZywK8wJ+v3EHVM/wsI/Dq2lrxN3Nnca16eti8chSAIoMbzByhMwP14kHVfwIiSaF5c96J6kwwCOTnHsYk8uvCrdmQy1TI4rJuz3cZLyGR/wCd4+YoOf8AEpUjXitubLYPG4paFsUxcuiGe7yc5gTW3LW44szXmobsi3Dhmic2+Z4+vCVH9CpraPiQ+QvbgTJrPFBWd5YpWrmNIIEXiRO32Pqt4p7cnfHk18lFBdmEVW1LVdIZGOrniTt6plrWKaO69yCykDRxwF+LMAewB0Txtr+Sf31VI8tEPw62fZt7N3Humtbpzz13ucX6CGSWMSuzpLyD1eNgeUka3PuvHbaxq3biTMHfkiSNCS78CwU+3Xg7Vu3MhuTcU6cq3Zemn3Eh2dv8Lzcut+29x1atKbHYqLJUhLwyNMwiZ3j9yDWOxUOV3tgb+3No5LDx1pi9+aeIwRlNY6bc+Jv+IFGrhLxtXJZ7VKcw81diiAAEn0JOrkWZyNfbEr0tz27UGQgkuGzXdIIvyowq99bRxk9ffO/L81SZBPZgEEroQroIxxMZOgeNsfkn99QypHGqO4Vl9CDrN4LDZkwyzyyQ2IgRHZrzGCZVP1XnQglT9oOtw4LC7iqV6uRkZoYpxKFSQpzFRw4EjVRMfSrQ1qqwxQxKFjjTgFUD7BoWYR6iVe+mtxt9Zwf9teaj4AdccPu5tedX5A/VrzUR+sy/q1CwksF19VEfDj/cnQRW+qg66cfsXtrpx+xe2unH7F7a6cfsXtrpx+xe2unH7F7a6cfsXtoxx+xe2gAAOA1//8QAFBEBAAAAAAAAAAAAAAAAAAAAMP/aAAgBAgEBPwB//8QAFBEBAAAAAAAAAAAAAAAAAAAAMP/aAAgBAwEBPwB//9k="
+                    alt="Github Star">
+            </a>
+        </small>
+    </p>
+    
+    <p>
+        <small>
+            <span id="busuanzi_container_site_pv">👁<span id="busuanzi_value_site_pv"></span></span> &nbsp;
+            <span id="busuanzi_container_page_pv">📚<span id="busuanzi_value_page_pv"></span></span>
+        </small>
+    </p>
+    
+    
+    <p><small><span id="cnzz_stat_icon_123649"></span></small></p>
+    
+
+</footer>
+
+
+<script>
+    window.addEventListener('load', function () {
+        globalAddScript('//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js');
+    })
+</script>
+
+<!-- Baidu Tongji -->
+
+<script>
+    window.addEventListener('load', function () {
+        var _hmt = _hmt || [];
+        globalAddScript('//hm.baidu.com/hm.js?1a0ec33b1aa')
+    })
+</script>
+
+
+<script>
+    window.addEventListener('load', function () {
+        globalAddScript('//s23.cnzz.com/z_stat.php?id=123649&online=2');
+    })
+</script>
+
+
+<!-- baidu auto push for seo -->
+<script>
+    window.addEventListener('load', function () {
+        var src = 'http://push.zhanzhang.baidu.com/push.js'
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        }
+        globalAddScript(src);
+    })
+</script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-141425-1');
+
+    window.addEventListener('load', function () {
+        globalAddScript('https://www.googletagmanager.com/gtag/js?id=UA-141425-1');
+    });
+</script>
+
+
+    <script>
+        // 非本站网址，新开tab页签
+        (function () {
+            var stopBubble = function (e) {
+                e && e.stopPropagation && e.stopPropagation();
+            }
+            var links = document.querySelectorAll('a');
+            [].slice.call(links).forEach(function (item) {
+                if (item.href && item.href.indexOf(window.location.host) === -1) {
+                    item.target = '_blank'
+                }
+                // 阻止冒泡，不触发彩蛋。
+                item.addEventListener('click', stopBubble, false);
+            });
+            var article = document.querySelector('article');
+            article && article.addEventListener('click', stopBubble, false)
+        })();
+    </script>
+    
+<script>
+    (function (window, document, undefined) {
+        var hearts = [];
+        var keywords = ["点个赞", "留个言", "赞赏一下", "GORUN", "gorun.top"];
+        function randomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
+        }
+        window.addEventListener('click', createWord)
+
+        function createWord(e) {
+            var d = document.createElement("span");
+            d.style.position = 'fixed';
+            d.style.zIndex = 9999;
+            d.style.color = 'rgb(' + [randomInt(255), randomInt(255), randomInt(255)].join(',') + ')';
+            d.innerHTML = keywords[randomInt(keywords.length)];
+            d.onselectstart = function () { return false; }
+
+            hearts.push({ el: d, x: e.clientX - 5, y: e.clientY - 5, alpha: 1, scale: 1 });
+            document.body.appendChild(d);
+        }
+        (function gameloop() {
+            for (var i = 0; i < hearts.length; i++) {
+                heart = hearts[i];
+                if (heart.alpha <= 0) {
+                    document.body.removeChild(heart.el);
+                    hearts.splice(i, 1);
+                    continue;
+                }
+                heart.y -= heart.alpha < 0.5 ? 2 : 1;
+                heart.scale += 0.002;
+                heart.alpha -= 0.013;
+                heart.el.style.transform = 'scale(' + heart.scale + ')';
+                heart.el.style.left = heart.x + 'px';
+                heart.el.style.top = heart.y + 'px';
+            }
+            setTimeout(gameloop, 10)
+        })();
+    })(window, document);
+</script>
+
+</body>
+
+</html>

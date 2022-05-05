@@ -104,6 +104,11 @@
                 </li>
                 
                 <li class="gkt-cate-name float-left ">
+                    <a class="float-left" href="/post/自学cs.html">分布式系统</a>
+                    
+                </li>
+                
+                <li class="gkt-cate-name float-left ">
                     <a class="float-left" href="/post/Golang简明教程.html">Golang ▾</a>
                     
                     <ul class="gkt-sub-cate">
@@ -224,6 +229,7 @@
 <center>图1</center>
 
 <h2 id="2-尝试1：如何改变优先级"><a href="#2-尝试1：如何改变优先级" class="headerlink" title="2. 尝试1：如何改变优先级"></a>2. 尝试1：如何改变优先级</h2><p>我们必须决定，在一个工作的生命周期中，MLFQ如何改变其优先级（在哪个队列中）。要做到这一点，我们必须记得工作负载：既有运行时间很短，频繁放弃CPU的交互型工作，也有需要很多CPU时间，响应时间却不重要的长时间计算密集型工作。下面是我们第一次尝试优先级调整算法。</p>
+<h2 id="3-TLB"><a href="#3-TLB" class="headerlink" title="3. TLB"></a>3. TLB</h2><h3 id="3-1-what-is-TLB"><a href="#3-1-what-is-TLB" class="headerlink" title="3.1. what is TLB?"></a>3.1. what is TLB?</h3><p>translation-lookaside buffer:地址转换旁路缓冲存储器</p>
 <h1 id="计算机网络"><a href="#计算机网络" class="headerlink" title="计算机网络"></a>计算机网络</h1><h2 id="1-网络基础知识"><a href="#1-网络基础知识" class="headerlink" title="1. 网络基础知识"></a>1. 网络基础知识</h2><h3 id="1-1-协议分层与OSI参考模型"><a href="#1-1-协议分层与OSI参考模型" class="headerlink" title="1.1. 协议分层与OSI参考模型"></a>1.1. 协议分层与OSI参考模型</h3><ul>
 <li>每个分层都接收由它下一层所提供的特定服务，并且负责为自己的上一层提供特定的服务。上下层之间进行交互时所遵循的约定叫做接口。同一层之间交互所遵循的约定叫做”协议“</li>
 <li>OSI参考模型分为7层，从上到下分别是：<ul>
@@ -623,6 +629,20 @@
 <li>Hierarchical</li>
 <li>Network</li>
 </ul>
+<h2 id="Book1-Computer-Networks-A-Systems-Approach"><a href="#Book1-Computer-Networks-A-Systems-Approach" class="headerlink" title="Book1:Computer Networks: A Systems Approach"></a>Book1:<a target="_blank" rel="noopener" href="https://book.systemsapproach.org/index.html#Computer">Computer Networks: A Systems Approach</a></h2><ol>
+<li>A network that attempts to allocate bandwidth to particular flows is sometimes said to support <em>quality of service</em> (QoS)</li>
+<li>微信的消息是怎么传输的？二维码扫码登陆是怎么实现的？我们访问一个网页发生了什么？</li>
+<li>网络编程：服务器端是如何实现同时应对多个客户端的。</li>
+<li>操作系统立马的虚拟化技术和并发两个模块太有趣了。</li>
+<li>倒着看：从TLB-&gt;分段-&gt;分页-&gt;页面置换:直呼过瘾，缓存，虚拟地址空间紧密联系。</li>
+<li>LFU基于次数，双哈希表实现，每个哈希值连接到双链表；LRU基于时间，双链表+哈希表实现，LRU好的原因是由于局部性原理。TLB命中率高也是因为局部性原理（LRU和随机算法）；</li>
+<li>时钟算法，使用位来近似LRU，每一个算法都是一篇经典paper啊，都有实验的命中率对比图了哈哈哈哈哈。页面置换算法(最优置换（实验评估参考），FIFO，Random，LRU，LFU，时钟算法)。</li>
+<li>开始着迷（研究）进程（线程）并发环境之间通信的理论，还可以结合go学习，OMG，冲冲冲冲。</li>
+<li><strong>Abstraction is important everywhere</strong></li>
+</ol>
+<h2 id="工具链"><a href="#工具链" class="headerlink" title="工具链"></a>工具链</h2><ol>
+<li>github下载pdf慢，改成<a target="_blank" rel="noopener" href="https://raw.githubusercontent.com,去掉/blob">https://raw.githubusercontent.com，去掉/blob</a></li>
+</ol>
 
         
 <script src="/js/qrious.min.js"></script>
@@ -655,7 +675,7 @@
             </p>
             
             <p>
-                <span>本文发表于 2022-03-21，最后修改于 2022-03-25。</span>
+                <span>本文发表于 2022-03-21，最后修改于 2022-04-29。</span>
             </p>
             <!-- 文章末尾的提示 start -->
             
@@ -853,37 +873,8 @@
             <p class="text-gray">
                 <small>
                     <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文21944字，</span>
-                    <span>阅读约74分钟</span>
-                </small>
-            </p>
-        </div>
-    </div>
-</div>
-        
-        <div class="post-preview">
-    <div class="post-img" style="background-image: url('/post/gorm/xxx.jpg')"></div>
-    <div class="post-info">
-        <div class="post-info-center">
-            <div class="hidden-xs">
-                
-                
-                <span>/</span>
-                
-                <a class="text-gray" href="/tags/#Golang"
-                    title="Golang">Golang</a>
-                <span>/</span>
-                
-                
-            </div>
-            <a href="/post/Golang简明教程.html" class="title">
-                Go简明教程
-            </a>
-            <p class="text-gray">
-                <small>
-                    <span>发表于2022-03-21，</span>
-                    <span class="hidden-xs">全文194字，</span>
-                    <span>阅读约1分钟</span>
+                    <span class="hidden-xs">全文26573字，</span>
+                    <span>阅读约89分钟</span>
                 </small>
             </p>
         </div>
@@ -897,14 +888,50 @@
             <div class="hidden-xs">
                 
                 
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#SFC"
+                    title="SFC">SFC</a>
+                <span>/</span>
+                
+                
             </div>
-            <a href="/post/link.html" class="title">
-                友链
+            <a href="/post/SFCMapping01.html" class="title">
+                NFV中虚拟网络功能智能编排方法研究
+            </a>
+            <p class="text-gray">
+                <small>
+                    <span>发表于2022-03-18，</span>
+                    <span class="hidden-xs">全文4426字，</span>
+                    <span>阅读约15分钟</span>
+                </small>
+            </p>
+        </div>
+    </div>
+</div>
+        
+        <div class="post-preview">
+    <div class="post-img" style="background-image: url('/')"></div>
+    <div class="post-info">
+        <div class="post-info-center">
+            <div class="hidden-xs">
+                
+                
+                <span>/</span>
+                
+                <a class="text-gray" href="/tags/#关于我"
+                    title="关于我">关于我</a>
+                <span>/</span>
+                
+                
+            </div>
+            <a href="/post/about.html" class="title">
+                关于我
             </a>
             <p class="text-gray">
                 <small>
                     <span>发表于2021-12-11，</span>
-                    <span class="hidden-xs">全文194字，</span>
+                    <span class="hidden-xs">全文263字，</span>
                     <span>阅读约1分钟</span>
                 </small>
             </p>
@@ -935,17 +962,20 @@
 </style>
 <div id="featured-tag">
     
-    <a class="post-tag-item" href="/tags/#Golang" title="Golang"
-        rel="2">#Golang (2) </a>
-    
     <a class="post-tag-item" href="/tags/#SFC" title="SFC"
         rel="1">#SFC (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#Golang" title="Golang"
+        rel="2">#Golang (2) </a>
     
     <a class="post-tag-item" href="/tags/#关于我" title="关于我"
         rel="1">#关于我 (1) </a>
     
     <a class="post-tag-item" href="/tags/#面试" title="面试"
         rel="1">#面试 (1) </a>
+    
+    <a class="post-tag-item" href="/tags/#自学cs" title="自学cs"
+        rel="1">#自学cs (1) </a>
     
     <a class="post-tag-item" href="/tags/#计算机基础" title="计算机基础"
         rel="1">#计算机基础 (1) </a>
@@ -1096,13 +1126,13 @@
 <div class="gkt-summary">
     <nav>
         <a href="/" class="col-xs-4">
-            <span class="number">7</span><span>文章</span>
+            <span class="number">8</span><span>文章</span>
         </a>
         <a href="/series" class="col-xs-4 middle">
-            <span class="number">5</span><span>专题</span>
+            <span class="number">6</span><span>专题</span>
         </a>
         <a href="/tags" class="col-xs-4">
-            <span class="number">5</span><span>标签</span>
+            <span class="number">6</span><span>标签</span>
         </a>
     </nav>
 
@@ -1133,7 +1163,7 @@
   <!-- TOC  -->
   
   
-  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">操作系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97"><span class="toc-nav-text">多级反馈队列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-MLFQ-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-nav-text">1. MLFQ: 基本原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%B0%9D%E8%AF%951%EF%BC%9A%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-text">2. 尝试1：如何改变优先级</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-nav-text">计算机网络</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-nav-text">1. 网络基础知识</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-TCP-IP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-nav-text">2. TCP&#x2F;IP基础知识</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF"><span class="toc-nav-text">3. 数据链路</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-IP%E5%8D%8F%E8%AE%AE"><span class="toc-nav-text">4. IP协议</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Linux"><span class="toc-nav-text">Linux</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB"><span class="toc-nav-text">1. 计算机硬件软件体系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E5%85%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-nav-text">2. 虚拟机安全与配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Linux%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">3. Linux命令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">4. Linux文件系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-Linux%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF"><span class="toc-nav-text">5. Linux网络信息</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-nav-text">数据库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-nav-text">1. 数据库管理软件的由来</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%BF%B0"><span class="toc-nav-text">2. 数据库概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-nav-text">3. 存储引擎</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E4%BA%8B%E7%89%A9"><span class="toc-nav-text">4. 事物</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E8%AE%BA-2018-CMU-15-445-645"><span class="toc-nav-text">5. 数据库导论 2018 CMU 15-445&#x2F;645</span></a></li></ol></li></ol>
+  <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">操作系统</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%A4%9A%E7%BA%A7%E5%8F%8D%E9%A6%88%E9%98%9F%E5%88%97"><span class="toc-nav-text">多级反馈队列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-MLFQ-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="toc-nav-text">1. MLFQ: 基本原则</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E5%B0%9D%E8%AF%951%EF%BC%9A%E5%A6%82%E4%BD%95%E6%94%B9%E5%8F%98%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-nav-text">2. 尝试1：如何改变优先级</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-TLB"><span class="toc-nav-text">3. TLB</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C"><span class="toc-nav-text">计算机网络</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-nav-text">1. 网络基础知识</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-TCP-IP%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86"><span class="toc-nav-text">2. TCP&#x2F;IP基础知识</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF"><span class="toc-nav-text">3. 数据链路</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-IP%E5%8D%8F%E8%AE%AE"><span class="toc-nav-text">4. IP协议</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#Linux"><span class="toc-nav-text">Linux</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A1%AC%E4%BB%B6%E8%BD%AF%E4%BB%B6%E4%BD%93%E7%B3%BB"><span class="toc-nav-text">1. 计算机硬件软件体系</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E5%85%A8%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="toc-nav-text">2. 虚拟机安全与配置</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-Linux%E5%91%BD%E4%BB%A4"><span class="toc-nav-text">3. Linux命令</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-Linux%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-nav-text">4. Linux文件系统</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-Linux%E7%BD%91%E7%BB%9C%E4%BF%A1%E6%81%AF"><span class="toc-nav-text">5. Linux网络信息</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-nav-text">数据库</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AE%A1%E7%90%86%E8%BD%AF%E4%BB%B6%E7%9A%84%E7%94%B1%E6%9D%A5"><span class="toc-nav-text">1. 数据库管理软件的由来</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-%E6%95%B0%E6%8D%AE%E5%BA%93%E6%A6%82%E8%BF%B0"><span class="toc-nav-text">2. 数据库概述</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-nav-text">3. 存储引擎</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-%E4%BA%8B%E7%89%A9"><span class="toc-nav-text">4. 事物</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-%E6%95%B0%E6%8D%AE%E5%BA%93%E5%AF%BC%E8%AE%BA-2018-CMU-15-445-645"><span class="toc-nav-text">5. 数据库导论 2018 CMU 15-445&#x2F;645</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Book1-Computer-Networks-A-Systems-Approach"><span class="toc-nav-text">Book1:Computer Networks: A Systems Approach</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="toc-nav-text">工具链</span></a></li></ol></li></ol>
   
 </div>
 
